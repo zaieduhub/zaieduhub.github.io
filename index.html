@@ -51,7 +51,7 @@
     <div class="loading-bar">
         <div class="loading-bar-fill"></div>
     </div>
-    <p style="font-family: 'Baloo 2', cursive; color: #134E4A; font-size: 0.875rem;">Zai Education Hub loading...</p>
+    <p style="font-family: 'Baloo 2', cursive; color: #134E4A; font-size: 0.875rem;" data-i18n="loading.text">Zai Education Hub loading...</p>
 </div>
 
 <!-- ============================================
@@ -65,14 +65,14 @@
         </a>
 
         <div class="navbar-links">
-            <a href="#materials" class="navbar-link">Materials</a>
-            <a href="#recordings" class="navbar-link">Recordings</a>
-            <a href="#quiz" class="navbar-link">Quiz</a>
-            <a href="#doubt" class="navbar-link">Doubt</a>
-            <a href="#bots" class="navbar-link">Bots</a>
-            <a href="#games" class="navbar-link">Games</a>
-            <a href="#links" class="navbar-link">Links</a>
-            <a href="#author" class="navbar-link">Author</a>
+            <a href="#materials" class="navbar-link" data-i18n="nav.materials">Materials</a>
+            <a href="#recordings" class="navbar-link" data-i18n="nav.recordings">Recordings</a>
+            <a href="#quiz" class="navbar-link" data-i18n="nav.quiz">Quiz</a>
+            <a href="#doubt" class="navbar-link" data-i18n="nav.doubt">Doubt</a>
+            <a href="#bots" class="navbar-link" data-i18n="nav.bots">Bots</a>
+            <a href="#games" class="navbar-link" data-i18n="nav.games">Games</a>
+            <a href="#links" class="navbar-link" data-i18n="nav.links">Links</a>
+            <a href="#author" class="navbar-link" data-i18n="nav.author">Author</a>
         </div>
 
         <div class="navbar-actions">
@@ -80,6 +80,12 @@
                 <span class="sun-icon">☀️</span>
                 <span class="moon-icon">🌙</span>
             </button>
+            <button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
+            <div class="lang-dropdown" id="langDropdown">
+                <button class="lang-option" data-lang="en">English 🇬🇧</button>
+                <button class="lang-option" data-lang="si">සිංහල 🇱🇰</button>
+                <button class="lang-option" data-lang="ta">தமிழ் 🇱🇰</button>
+            </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">☰</button>
         </div>
     </div>
@@ -88,14 +94,14 @@
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-links">
-        <a href="#materials" class="mobile-menu-link">📚 Study Materials</a>
-        <a href="#recordings" class="mobile-menu-link">🎥 Class Recordings</a>
-        <a href="#quiz" class="mobile-menu-link">🧠 GK Quiz</a>
-        <a href="#doubt" class="mobile-menu-link">❓ Doubt Clearing</a>
-        <a href="#bots" class="mobile-menu-link">🤖 Bots</a>
-        <a href="#games" class="mobile-menu-link">🎮 Games</a>
-        <a href="#links" class="mobile-menu-link">🔗 Useful Links</a>
-        <a href="#author" class="mobile-menu-link">👤 Author</a>
+        <a href="#materials" class="mobile-menu-link" data-i18n="nav.mobile.materials">📚 Study Materials</a>
+        <a href="#recordings" class="mobile-menu-link" data-i18n="nav.mobile.recordings">🎥 Class Recordings</a>
+        <a href="#quiz" class="mobile-menu-link" data-i18n="nav.mobile.quiz">🧠 GK Quiz</a>
+        <a href="#doubt" class="mobile-menu-link" data-i18n="nav.mobile.doubt">❓ Doubt Clearing</a>
+        <a href="#bots" class="mobile-menu-link" data-i18n="nav.mobile.bots">🤖 Bots</a>
+        <a href="#games" class="mobile-menu-link" data-i18n="nav.mobile.games">🎮 Games</a>
+        <a href="#links" class="mobile-menu-link" data-i18n="nav.mobile.links">🔗 Useful Links</a>
+        <a href="#author" class="mobile-menu-link" data-i18n="nav.mobile.author">👤 Author</a>
     </div>
 </div>
 
@@ -116,15 +122,15 @@
             <div class="hero-text">
                 <div class="hero-badge">
                     <span class="hero-badge-dot"></span>
-                    Free Education for All Sri Lankan Students 🇱🇰
+                    <span data-i18n="hero.badge">Free Education for All Sri Lankan Students 🇱🇰</span>
                 </div>
 
                 <h1 class="hero-title">
-                    Learn. Grow. <br>
-                    <span class="highlight">Succeed.</span>
+                    <span data-i18n="hero.title">Learn. Grow.</span> <br>
+                    <span class="highlight" data-i18n="hero.title.highlight">Succeed.</span>
                 </h1>
 
-                <p class="hero-description">
+                <p class="hero-description" data-i18n="hero.desc">
                     Welcome to <strong>Zai Education Hub</strong> — your free gateway to quality education! 
                     Access comprehensive study materials, class recordings, real-time GK quizzes, 
                     and connect with fellow learners. Made with ❤️ by <strong>Zai Creations</strong> 
@@ -132,10 +138,10 @@
                 </p>
 
                 <div class="hero-actions">
-                    <a href="#materials" class="btn btn-primary btn-lg">
+                    <a href="#materials" class="btn btn-primary btn-lg" data-i18n="hero.cta.materials">
                         📚 Start Learning
                     </a>
-                    <a href="#quiz" class="btn btn-outline btn-lg">
+                    <a href="#quiz" class="btn btn-outline btn-lg" data-i18n="hero.cta.quiz">
                         🧠 Take a Quiz
                     </a>
                 </div>
@@ -143,19 +149,19 @@
                 <div class="hero-stats">
                     <div class="hero-stat">
                         <div class="hero-stat-number" data-count="500">0+</div>
-                        <div class="hero-stat-label">Study Resources</div>
+                        <div class="hero-stat-label" data-i18n="hero.stat.resources">Study Resources</div>
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-number" data-count="50">0+</div>
-                        <div class="hero-stat-label">Class Recordings</div>
+                        <div class="hero-stat-label" data-i18n="hero.stat.recordings">Class Recordings</div>
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-number" data-count="1000">0+</div>
-                        <div class="hero-stat-label">Happy Students</div>
+                        <div class="hero-stat-label" data-i18n="hero.stat.students">Happy Students</div>
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-number" data-count="10">0+</div>
-                        <div class="hero-stat-label">Subjects</div>
+                        <div class="hero-stat-label" data-i18n="hero.stat.subjects">Subjects</div>
                     </div>
                 </div>
             </div>
@@ -169,7 +175,7 @@
                                 <span class="hero-visual-dot"></span>
                                 <span class="hero-visual-dot"></span>
                             </div>
-                            <span class="hero-visual-title">Today's Learning</span>
+                            <span class="hero-visual-title" data-i18n="hero.visual.title">Today's Learning</span>
                         </div>
 
                         <div class="hero-subject-list">
@@ -215,19 +221,19 @@
 <section class="section study-materials" id="materials">
     <div class="container">
         <div class="section-header animate-on-scroll">
-            <span class="section-label">📚 Resources</span>
-            <h2 class="section-title">Study Materials</h2>
-            <p class="section-subtitle">
+            <span class="section-label" data-i18n="materials.label">📚 Resources</span>
+            <h2 class="section-title" data-i18n="materials.title">Study Materials</h2>
+            <p class="section-subtitle" data-i18n="materials.subtitle">
                 Comprehensive subject materials for all grades. Free access to high-quality educational resources covering the entire Sri Lankan curriculum.
             </p>
         </div>
 
         <!-- Grade Tabs -->
         <div class="grade-tabs animate-on-scroll">
-            <button class="grade-tab active" data-grade="al">A/L (Gr 12-13)</button>
-            <button class="grade-tab" data-grade="ol">O/L (Gr 10-11)</button>
-            <button class="grade-tab" data-grade="grade6-9">Grade 6-9</button>
-            <button class="grade-tab" data-grade="grade1-5">Grade 1-5</button>
+            <button class="grade-tab active" data-grade="al" data-i18n="materials.tab.al">A/L (Gr 12-13)</button>
+            <button class="grade-tab" data-grade="ol" data-i18n="materials.tab.ol">O/L (Gr 10-11)</button>
+            <button class="grade-tab" data-grade="grade6-9" data-i18n="materials.tab.g6">Grade 6-9</button>
+            <button class="grade-tab" data-grade="grade1-5" data-i18n="materials.tab.g1">Grade 1-5</button>
         </div>
 
         <!-- Subject Grid -->
@@ -241,9 +247,9 @@
 <section class="section" id="recordings">
     <div class="container">
         <div class="section-header animate-on-scroll">
-            <span class="section-label">🎥 Videos</span>
-            <h2 class="section-title">Class Recordings</h2>
-            <p class="section-subtitle">
+            <span class="section-label" data-i18n="recordings.label">🎥 Videos</span>
+            <h2 class="section-title" data-i18n="recordings.title">Class Recordings</h2>
+            <p class="section-subtitle" data-i18n="recordings.subtitle">
                 Watch recorded classes from expert teachers. Learn at your own pace, anytime, anywhere.
             </p>
         </div>
@@ -366,9 +372,9 @@
 <section class="section gk-quiz" id="quiz">
     <div class="container">
         <div class="section-header animate-on-scroll">
-            <span class="section-label">🧠 Knowledge</span>
-            <h2 class="section-title">General Knowledge Quiz</h2>
-            <p class="section-subtitle">
+            <span class="section-label" data-i18n="quiz.label">🧠 Knowledge</span>
+            <h2 class="section-title" data-i18n="quiz.title">General Knowledge Quiz</h2>
+            <p class="section-subtitle" data-i18n="quiz.subtitle">
                 Test your knowledge with real-time quizzes! Choose a subject and challenge yourself. New questions added regularly.
             </p>
         </div>
@@ -378,10 +384,10 @@
             <div id="quizStart">
                 <div style="text-align: center; padding: var(--space-4);">
                     <div style="font-size: 4rem; margin-bottom: 1rem;">🧠</div>
-                    <h3 style="font-family: var(--font-heading); font-size: var(--text-2xl); margin-bottom: 0.5rem; color: var(--color-foreground);">
+                    <h3 style="font-family: var(--font-heading); font-size: var(--text-2xl); margin-bottom: 0.5rem; color: var(--color-foreground);" data-i18n="quiz.ready">
                         Ready to Test Your Knowledge?
                     </h3>
-                    <p style="color: var(--color-foreground-secondary); margin-bottom: 1rem;">
+                    <p style="color: var(--color-foreground-secondary); margin-bottom: 1rem;" data-i18n="quiz.choose">
                         Choose a subject and start the quiz. You have 15 seconds per question!
                     </p>
                     
@@ -392,7 +398,7 @@
                         <button class="quiz-subject-btn" data-subject="english">📖 English</button>
                     </div>
 
-                    <button class="btn btn-primary btn-lg" id="quizStartBtn">
+                    <button class="btn btn-primary btn-lg" id="quizStartBtn" data-i18n="quiz.start">
                         🚀 Start Quiz
                     </button>
                 </div>
@@ -413,7 +419,7 @@
                 <div class="quiz-options" id="quizOptions"></div>
 
                 <div class="quiz-footer">
-                    <button class="btn btn-accent" id="quizNextBtn" style="display: none;">
+                    <button class="btn btn-accent" id="quizNextBtn" style="display: none;" data-i18n="quiz.next">
                         Next Question →
                     </button>
                 </div>
@@ -431,9 +437,9 @@
 <section class="section" id="doubt">
     <div class="container">
         <div class="section-header animate-on-scroll">
-            <span class="section-label">❓ Help</span>
-            <h2 class="section-title">Doubt Clearing</h2>
-            <p class="section-subtitle">
+            <span class="section-label" data-i18n="doubt.label">❓ Help</span>
+            <h2 class="section-title" data-i18n="doubt.title">Doubt Clearing</h2>
+            <p class="section-subtitle" data-i18n="doubt.subtitle">
                 Have questions? Reach out to me directly! I'm here to help you with any doubts regarding your studies.
             </p>
         </div>
@@ -441,36 +447,36 @@
         <div class="doubt-grid">
             <div class="contact-card stagger-item">
                 <div class="contact-card-icon">💬</div>
-                <h3>WhatsApp</h3>
-                <p>Quick replies on WhatsApp. Send me a message anytime!</p>
-                <a href="https://wa.me/94750761016" target="_blank" class="btn btn-primary">
+                <h3 data-i18n="doubt.whatsapp.title">WhatsApp</h3>
+                <p data-i18n="doubt.whatsapp.desc">Quick replies on WhatsApp. Send me a message anytime!</p>
+                <a href="https://wa.me/94750761016" target="_blank" class="btn btn-primary" data-i18n="doubt.whatsapp.btn">
                     <i class="fab fa-whatsapp"></i> Chat on WhatsApp
                 </a>
             </div>
 
             <div class="contact-card stagger-item">
                 <div class="contact-card-icon">📧</div>
-                <h3>Email</h3>
-                <p>Prefer email? Write to me and I'll respond within 24 hours.</p>
-                <a href="mailto:ruzaith2007@gmail.com" class="btn btn-accent">
+                <h3 data-i18n="doubt.email.title">Email</h3>
+                <p data-i18n="doubt.email.desc">Prefer email? Write to me and I'll respond within 24 hours.</p>
+                <a href="mailto:ruzaith2007@gmail.com" class="btn btn-accent" data-i18n="doubt.email.btn">
                     <i class="fas fa-envelope"></i> Send Email
                 </a>
             </div>
 
             <div class="contact-card stagger-item">
                 <div class="contact-card-icon">✈️</div>
-                <h3>Telegram</h3>
-                <p>Join me on Telegram for updates and direct chat.</p>
-                <a href="https://t.me/Zai2007_r" target="_blank" class="btn btn-primary" style="background: #0088CC;">
+                <h3 data-i18n="doubt.telegram.title">Telegram</h3>
+                <p data-i18n="doubt.telegram.desc">Join me on Telegram for updates and direct chat.</p>
+                <a href="https://t.me/Zai2007_r" target="_blank" class="btn btn-primary" style="background: #0088CC;" data-i18n="doubt.telegram.btn">
                     <i class="fab fa-telegram"></i> Message on Telegram
                 </a>
             </div>
 
             <div class="contact-card stagger-item">
                 <div class="contact-card-icon">📞</div>
-                <h3>Phone Call</h3>
-                <p>Prefer talking? Give me a call during study hours.</p>
-                <a href="tel:+94750761016" class="btn btn-accent">
+                <h3 data-i18n="doubt.phone.title">Phone Call</h3>
+                <p data-i18n="doubt.phone.desc">Prefer talking? Give me a call during study hours.</p>
+                <a href="tel:+94750761016" class="btn btn-accent" data-i18n="doubt.phone.btn">
                     <i class="fas fa-phone-alt"></i> Call +94 75 076 1016
                 </a>
             </div>
@@ -484,9 +490,9 @@
 <section class="section bot-section" id="bots">
     <div class="container">
         <div class="section-header animate-on-scroll">
-            <span class="section-label">🤖 Automation</span>
-            <h2 class="section-title">AI Bots</h2>
-            <p class="section-subtitle">
+            <span class="section-label" data-i18n="bots.label">🤖 Automation</span>
+            <h2 class="section-title" data-i18n="bots.title">AI Bots</h2>
+            <p class="section-subtitle" data-i18n="bots.subtitle">
                 Automated bots to keep you updated with notes, news, and study resources in real-time!
             </p>
         </div>
@@ -497,15 +503,15 @@
                     <span class="bot-status pulse"></span>
                     <i class="fab fa-whatsapp" style="font-size: 2.5rem; color: #25D366;"></i>
                 </div>
-                <h3>WhatsApp Bot 🤖</h3>
-                <p>Get daily study tips, subject notes, exam updates, and GK questions directly on WhatsApp!</p>
+                <h3 data-i18n="bots.whatsapp.title">WhatsApp Bot 🤖</h3>
+                <p data-i18n="bots.whatsapp.desc">Get daily study tips, subject notes, exam updates, and GK questions directly on WhatsApp!</p>
                 <div class="bot-features">
-                    <div class="bot-feature">✅ Daily subject notes & summaries</div>
-                    <div class="bot-feature">✅ Exam reminders & alerts</div>
-                    <div class="bot-feature">✅ GK question of the day</div>
-                    <div class="bot-feature">✅ Quick resource search</div>
+                    <div class="bot-feature" data-i18n="bots.whatsapp.f1">✅ Daily subject notes & summaries</div>
+                    <div class="bot-feature" data-i18n="bots.whatsapp.f2">✅ Exam reminders & alerts</div>
+                    <div class="bot-feature" data-i18n="bots.whatsapp.f3">✅ GK question of the day</div>
+                    <div class="bot-feature" data-i18n="bots.whatsapp.f4">✅ Quick resource search</div>
                 </div>
-                <a href="https://wa.me/94750761016?text=Hi!%20I%20want%20to%20learn%20about%20the%20WhatsApp%20Bot%20%F0%9F%A4%96" target="_blank" class="btn btn-primary">
+                <a href="https://wa.me/94750761016?text=Hi!%20I%20want%20to%20learn%20about%20the%20WhatsApp%20Bot%20%F0%9F%A4%96" target="_blank" class="btn btn-primary" data-i18n="bots.whatsapp.btn">
                     <i class="fab fa-whatsapp"></i> Activate Bot
                 </a>
             </div>
@@ -515,15 +521,15 @@
                     <span class="bot-status pulse"></span>
                     <i class="fab fa-telegram" style="font-size: 2.5rem; color: #0088CC;"></i>
                 </div>
-                <h3>Telegram Bot 🤖</h3>
-                <p>Get real-time updates, study materials, and interactive quizzes sent to your Telegram!</p>
+                <h3 data-i18n="bots.telegram.title">Telegram Bot 🤖</h3>
+                <p data-i18n="bots.telegram.desc">Get real-time updates, study materials, and interactive quizzes sent to your Telegram!</p>
                 <div class="bot-features">
-                    <div class="bot-feature">✅ Real-time news & updates</div>
-                    <div class="bot-feature">✅ Subject-wise material delivery</div>
-                    <div class="bot-feature">✅ Interactive quiz challenges</div>
-                    <div class="bot-feature">✅ Study group access</div>
+                    <div class="bot-feature" data-i18n="bots.telegram.f1">✅ Real-time news & updates</div>
+                    <div class="bot-feature" data-i18n="bots.telegram.f2">✅ Subject-wise material delivery</div>
+                    <div class="bot-feature" data-i18n="bots.telegram.f3">✅ Interactive quiz challenges</div>
+                    <div class="bot-feature" data-i18n="bots.telegram.f4">✅ Study group access</div>
                 </div>
-                <a href="https://t.me/Zai2007_r" target="_blank" class="btn" style="background: #0088CC; color: white;">
+                <a href="https://t.me/Zai2007_r" target="_blank" class="btn" style="background: #0088CC; color: white;" data-i18n="bots.telegram.btn">
                     <i class="fab fa-telegram"></i> Activate Bot
                 </a>
             </div>
@@ -537,9 +543,9 @@
 <section class="section" id="games">
     <div class="container">
         <div class="section-header animate-on-scroll">
-            <span class="section-label">🎮 Fun</span>
-            <h2 class="section-title">Educational Games</h2>
-            <p class="section-subtitle">
+            <span class="section-label" data-i18n="games.label">🎮 Fun</span>
+            <h2 class="section-title" data-i18n="games.title">Educational Games</h2>
+            <p class="section-subtitle" data-i18n="games.subtitle">
                 Take a break and have fun while learning! These games will boost your memory and reduce study stress.
             </p>
         </div>
@@ -548,8 +554,8 @@
             <div class="game-card stagger-item">
                 <div class="game-card-banner">🧠</div>
                 <div class="game-card-body">
-                    <h3>Memory Match</h3>
-                    <p>Flip cards and match pairs to sharpen your memory. Great for brain training!</p>
+                    <h3 data-i18n="games.memory.title">Memory Match</h3>
+                    <p data-i18n="games.memory.desc">Flip cards and match pairs to sharpen your memory. Great for brain training!</p>
                     <div class="game-difficulty">
                         <span class="star">★</span>
                         <span class="star">★</span>
@@ -557,7 +563,7 @@
                         <span class="star" style="opacity: 0.3;">★</span>
                         <span class="star" style="opacity: 0.3;">★</span>
                     </div>
-                    <button class="btn btn-primary btn-sm" style="margin-top: 0.75rem;">
+                    <button class="btn btn-primary btn-sm" style="margin-top: 0.75rem;" data-i18n="games.memory.btn">
                         🎮 Play Now
                     </button>
                 </div>
@@ -566,8 +572,8 @@
             <div class="game-card stagger-item">
                 <div class="game-card-banner">🔤</div>
                 <div class="game-card-body">
-                    <h3>Word Puzzle</h3>
-                    <p>Build vocabulary with fun word puzzles. Coming with Sinhala & English words!</p>
+                    <h3 data-i18n="games.word.title">Word Puzzle</h3>
+                    <p data-i18n="games.word.desc">Build vocabulary with fun word puzzles. Coming with Sinhala & English words!</p>
                     <div class="game-difficulty">
                         <span class="star">★</span>
                         <span class="star">★</span>
@@ -575,7 +581,7 @@
                         <span class="star">★</span>
                         <span class="star" style="opacity: 0.3;">★</span>
                     </div>
-                    <button class="btn btn-accent btn-sm" style="margin-top: 0.75rem;" onclick="showToast('🔤 Word Puzzle coming soon!', 'info')">
+                    <button class="btn btn-accent btn-sm" style="margin-top: 0.75rem;" onclick="showToast('🔤 Word Puzzle coming soon!', 'info')" data-i18n="games.word.btn">
                         🎮 Play Now
                     </button>
                 </div>
@@ -584,8 +590,8 @@
             <div class="game-card stagger-item">
                 <div class="game-card-banner">🔢</div>
                 <div class="game-card-body">
-                    <h3>Math Speed</h3>
-                    <p>Solve math problems against the clock. Improves calculation speed!</p>
+                    <h3 data-i18n="games.math.title">Math Speed</h3>
+                    <p data-i18n="games.math.desc">Solve math problems against the clock. Improves calculation speed!</p>
                     <div class="game-difficulty">
                         <span class="star">★</span>
                         <span class="star">★</span>
@@ -593,7 +599,7 @@
                         <span class="star">★</span>
                         <span class="star">★</span>
                     </div>
-                    <button class="btn btn-primary btn-sm" style="margin-top: 0.75rem;" onclick="showToast('🔢 Math Speed coming soon!', 'info')">
+                    <button class="btn btn-primary btn-sm" style="margin-top: 0.75rem;" onclick="showToast('🔢 Math Speed coming soon!', 'info')" data-i18n="games.math.btn">
                         🎮 Play Now
                     </button>
                 </div>
@@ -621,9 +627,9 @@
 <section class="section useful-links" id="links">
     <div class="container">
         <div class="section-header animate-on-scroll">
-            <span class="section-label">🔗 Resources</span>
-            <h2 class="section-title">Useful Links</h2>
-            <p class="section-subtitle">
+            <span class="section-label" data-i18n="links.label">🔗 Resources</span>
+            <h2 class="section-title" data-i18n="links.title">Useful Links</h2>
+            <p class="section-subtitle" data-i18n="links.subtitle">
                 Curated collection of free educational resources to help you excel in your studies.
             </p>
         </div>
@@ -632,10 +638,10 @@
             <div class="link-card stagger-item">
                 <div class="link-card-header">
                     <div class="link-card-icon" style="background: rgba(102, 126, 234, 0.1); color: #667eea;">📄</div>
-                    <h3>Past Papers</h3>
+                    <h3 data-i18n="links.past.title">Past Papers</h3>
                 </div>
-                <p>Download free past exam papers for A/L and O/L from the Department of Examinations.</p>
-                <a href="https://www.doenets.lk/" target="_blank" class="link-btn">
+                <p data-i18n="links.past.desc">Download free past exam papers for A/L and O/L from the Department of Examinations.</p>
+                <a href="https://www.doenets.lk/" target="_blank" class="link-btn" data-i18n="links.visit">
                     Visit Site →
                 </a>
             </div>
@@ -643,10 +649,10 @@
             <div class="link-card stagger-item">
                 <div class="link-card-header">
                     <div class="link-card-icon" style="background: rgba(67, 233, 123, 0.1); color: #43e97b;">📚</div>
-                    <h3>Textbooks</h3>
+                    <h3 data-i18n="links.textbook.title">Textbooks</h3>
                 </div>
-                <p>Access official Sri Lankan school textbooks online for all grades, free of charge.</p>
-                <a href="https://www.epodering.lk/" target="_blank" class="link-btn">
+                <p data-i18n="links.textbook.desc">Access official Sri Lankan school textbooks online for all grades, free of charge.</p>
+                <a href="https://www.epodering.lk/" target="_blank" class="link-btn" data-i18n="links.visit">
                     Visit Site →
                 </a>
             </div>
@@ -654,10 +660,10 @@
             <div class="link-card stagger-item">
                 <div class="link-card-header">
                     <div class="link-card-icon" style="background: rgba(250, 112, 154, 0.1); color: #fa709a;">🎓</div>
-                    <h3>NIE Resources</h3>
+                    <h3 data-i18n="links.nie.title">NIE Resources</h3>
                 </div>
-                <p>Official National Institute of Education resources including teacher guides and syllabus.</p>
-                <a href="https://www.nie.lk/" target="_blank" class="link-btn">
+                <p data-i18n="links.nie.desc">Official National Institute of Education resources including teacher guides and syllabus.</p>
+                <a href="https://www.nie.lk/" target="_blank" class="link-btn" data-i18n="links.visit">
                     Visit Site →
                 </a>
             </div>
@@ -665,10 +671,10 @@
             <div class="link-card stagger-item">
                 <div class="link-card-header">
                     <div class="link-card-icon" style="background: rgba(246, 211, 101, 0.1); color: #f6d365;">📖</div>
-                    <h3>Wikipedia</h3>
+                    <h3 data-i18n="links.wiki.title">Wikipedia</h3>
                 </div>
-                <p>Free encyclopedia for all subjects. Great for quick reference and general knowledge.</p>
-                <a href="https://en.wikipedia.org/" target="_blank" class="link-btn">
+                <p data-i18n="links.wiki.desc">Free encyclopedia for all subjects. Great for quick reference and general knowledge.</p>
+                <a href="https://en.wikipedia.org/" target="_blank" class="link-btn" data-i18n="links.visit">
                     Visit Site →
                 </a>
             </div>
@@ -676,10 +682,10 @@
             <div class="link-card stagger-item">
                 <div class="link-card-header">
                     <div class="link-card-icon" style="background: rgba(162, 155, 254, 0.1); color: #a29bfe;">💻</div>
-                    <h3>Khan Academy</h3>
+                    <h3 data-i18n="links.khan.title">Khan Academy</h3>
                 </div>
-                <p>World-class free online education platform with video lessons and practice exercises.</p>
-                <a href="https://www.khanacademy.org/" target="_blank" class="link-btn">
+                <p data-i18n="links.khan.desc">World-class free online education platform with video lessons and practice exercises.</p>
+                <a href="https://www.khanacademy.org/" target="_blank" class="link-btn" data-i18n="links.visit">
                     Visit Site →
                 </a>
             </div>
@@ -687,10 +693,10 @@
             <div class="link-card stagger-item">
                 <div class="link-card-header">
                     <div class="link-card-icon" style="background: rgba(253, 121, 168, 0.1); color: #fd79a8;">🎥</div>
-                    <h3>YouTube Learning</h3>
+                    <h3 data-i18n="links.youtube.title">YouTube Learning</h3>
                 </div>
-                <p>Curated YouTube playlists with educational content for Sri Lankan curriculum.</p>
-                <a href="https://www.youtube.com/" target="_blank" class="link-btn">
+                <p data-i18n="links.youtube.desc">Curated YouTube playlists with educational content for Sri Lankan curriculum.</p>
+                <a href="https://www.youtube.com/" target="_blank" class="link-btn" data-i18n="links.visit">
                     Visit Site →
                 </a>
             </div>
@@ -710,9 +716,9 @@
             </div>
 
             <h2 class="author-name">Ruzaith <span class="gradient-text">(Zai)</span></h2>
-            <p class="author-role">Founder, Zai Creations • Creator, Zai Education Hub</p>
+            <p class="author-role" data-i18n="author.role">Founder, Zai Creations • Creator, Zai Education Hub</p>
             
-            <p class="author-bio">
+            <p class="author-bio" data-i18n="author.bio">
                 With a vision to make <strong>quality education accessible to every Sri Lankan student</strong>, 
                 I created Zai Education Hub as a free platform where learning has no barriers. 
                 From A/L to Grade 1, every student deserves the best resources to succeed. 
@@ -745,7 +751,7 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <h3><span>Zai Education Hub</span></h3>
-                <p>
+                <p data-i18n="footer.brand">
                     Empowering Sri Lankan students with free, quality education. 
                     Study materials, class recordings, quizzes & more — all 100% free.
                     Made with ❤️ by Zai Creations.
@@ -753,42 +759,42 @@
             </div>
 
             <div>
-                <h4>Quick Links</h4>
+                <h4 data-i18n="footer.quick">Quick Links</h4>
                 <div class="footer-links">
-                    <a href="#materials" class="footer-link">📚 Study Materials</a>
-                    <a href="#recordings" class="footer-link">🎥 Recordings</a>
-                    <a href="#quiz" class="footer-link">🧠 Quiz</a>
-                    <a href="#games" class="footer-link">🎮 Games</a>
+                    <a href="#materials" class="footer-link" data-i18n="nav.mobile.materials">📚 Study Materials</a>
+                    <a href="#recordings" class="footer-link" data-i18n="nav.mobile.recordings">🎥 Recordings</a>
+                    <a href="#quiz" class="footer-link" data-i18n="nav.mobile.quiz">🧠 Quiz</a>
+                    <a href="#games" class="footer-link" data-i18n="nav.mobile.games">🎮 Games</a>
                 </div>
             </div>
 
             <div>
-                <h4>Contact</h4>
+                <h4 data-i18n="footer.contact">Contact</h4>
                 <div class="footer-links">
-                    <a href="https://wa.me/94750761016" class="footer-link">💬 WhatsApp</a>
-                    <a href="mailto:ruzaith2007@gmail.com" class="footer-link">📧 Email</a>
-                    <a href="https://t.me/Zai2007_r" class="footer-link">✈️ Telegram</a>
-                    <a href="tel:+94750761016" class="footer-link">📞 Phone</a>
+                    <a href="https://wa.me/94750761016" class="footer-link" data-i18n="doubt.whatsapp.title">💬 WhatsApp</a>
+                    <a href="mailto:ruzaith2007@gmail.com" class="footer-link" data-i18n="doubt.email.title">📧 Email</a>
+                    <a href="https://t.me/Zai2007_r" class="footer-link" data-i18n="doubt.telegram.title">✈️ Telegram</a>
+                    <a href="tel:+94750761016" class="footer-link" data-i18n="doubt.phone.title">📞 Phone</a>
                 </div>
             </div>
 
             <div>
-                <h4>Resources</h4>
+                <h4 data-i18n="footer.resources">Resources</h4>
                 <div class="footer-links">
-                    <a href="#links" class="footer-link">🔗 Useful Links</a>
-                    <a href="#author" class="footer-link">👤 About Author</a>
+                    <a href="#links" class="footer-link" data-i18n="nav.links">🔗 Useful Links</a>
+                    <a href="#author" class="footer-link" data-i18n="footer.about">👤 About Author</a>
                     <a href="https://github.com/zaieduhub" class="footer-link">💻 GitHub</a>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>
-                © 2026 <strong>Zai Education Hub</strong> by Zai Creations. 
+            <p data-i18n="footer.copyright">
+                © 2026 <strong data-i18n="footer.copyright">Zai Education Hub</strong> by Zai Creations. 
                 Built with <span class="heart">❤</span> for Sri Lankan students. 🇱🇰
             </p>
             <p>
-                📍 Sri Lanka | 🌐 Free for All
+                <span data-i18n="footer.location">📍 Sri Lanka</span> | <span data-i18n="footer.free">🌐 Free for All</span>
             </p>
         </div>
     </div>
@@ -813,7 +819,7 @@
     <div class="content-backdrop"></div>
     <div class="content-viewer-inner">
         <div class="content-viewer-header">
-            <span style="font-family: var(--font-heading); font-weight: 600; color: var(--color-foreground);">
+            <span style="font-family: var(--font-heading); font-weight: 600; color: var(--color-foreground);" data-i18n="content.viewer.title">
                 📖 Study Materials Viewer
             </span>
             <button class="content-close" onclick="closeContentViewer()">✕</button>
@@ -825,6 +831,7 @@
 <!-- ============================================
      SCRIPTS
      ============================================ -->
+<script src="js/translations.js"></script>
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
 

@@ -7,6 +7,7 @@
 // 1. DOM READY - Initialize Everything
 // =============================================
 document.addEventListener('DOMContentLoaded', () => {
+    initLanguage();
     initLoadingScreen();
     initThemeToggle();
     initMobileMenu();
