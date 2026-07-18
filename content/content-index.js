@@ -898,19 +898,57 @@ const TOPIC_KEY_MAP = {
     'Polonnaruwa & Medieval Period': 'polonnaruwa-medieval',
     'Colonial Period': 'colonial-period',
     'Independence & Modern Sri Lanka': 'independence-modern',
+    'Ancient Civilizations': 'ancient-civilizations',
+    'World Wars': 'world-wars',
+    'United Nations & Global Organizations': 'united-nations-global',
     // O/L Geography
     'Earth Structure & Landforms': 'earth-structure',
     'Climate & Weather': 'climate-weather',
+    'Natural Disasters': 'natural-disasters',
+    'Population & Settlements': 'population-settlements',
+    'Economic Activities': 'economic-activities',
+    'Sri Lanka - Regional Geography': 'sri-lanka-regional-geography',
     // O/L English
     'Grammar & Parts of Speech': 'grammar-parts',
+    'Tenses & Voice': 'tenses-voice',
+    'Essay & Letter Writing': 'essay-writing',
+    'Comprehension Skills': 'comprehension-skills',
+    'Poetry Analysis': 'poetry-analysis',
+    'Short Stories': 'short-stories',
+    'Drama & Prose': 'drama-prose',
+    // O/L Religion
+    'Life of the Buddha': 'life-of-the-buddha',
+    'Dhamma - Core Teachings': 'dhamma-core-teachings',
+    'Buddhist Ethics & Meditation': 'buddhist-ethics-meditation',
+    'Hindu Deities & Philosophy': 'hindu-deities-philosophy',
+    'Hindu Ethics & Practices': 'hindu-ethics-practices',
+    'Core Beliefs & Practices': 'islam-christianity-core',
     // G6-9 Maths
     'Whole Numbers & Decimals': 'whole-numbers',
     'Fractions & Percentages': 'fractions',
+    'Integers & Rational Numbers': 'integers-rational-numbers',
+    'Algebraic Expressions': 'algebraic-expressions-g6',
+    'Angles & Triangles': 'angles-triangles',
+    'Perimeter & Area': 'perimeter-area',
+    'Data Collection & Representation': 'data-collection-representation',
+    'Probability Basics': 'probability-basics',
     // G6-9 Science
     'Plant Diversity': 'plant-diversity',
+    'Animal Diversity': 'animal-diversity',
+    'Human Body Systems': 'human-body-systems',
     'Force & Motion': 'force-motion-g6',
+    'Energy Forms & Transfer': 'energy-forms-transfer',
+    'Sound & Light': 'sound-light-g6',
+    'Earth & Solar System': 'earth-solar-system',
+    'Weather & Climate': 'weather-climate-g6',
+    'Natural Resources': 'natural-resources',
     // G6-9 English
     'Parts of Speech Basics': 'parts-of-speech-g6',
+    'Simple Tenses': 'simple-tenses-g6',
+    'Vocabulary Building': 'vocabulary-building',
+    'Reading Comprehension': 'reading-comprehension-g6',
+    'Paragraph Writing': 'paragraph-writing',
+    'Letter Writing': 'letter-writing-g6',
     // G6-9 History
     'Ancient Kingdoms': 'ancient-kingdoms',
     'Cultural Heritage': 'cultural-heritage',
@@ -925,14 +963,36 @@ const TOPIC_KEY_MAP = {
     // G1-5 Maths
     'Number Recognition (1-100)': 'number-recognition',
     'Addition & Subtraction': 'addition-subtraction',
+    'Multiplication Tables': 'multiplication-tables',
+    'Division Basics': 'division-basics',
+    'Basic Shapes': 'basic-shapes',
+    'Length & Weight': 'length-weight',
+    'Time & Money': 'time-money',
     // G1-5 English
     'Letters & Sounds': 'letters-sounds',
+    'Simple Words & Spelling': 'simple-words-spelling',
+    'Simple Sentences': 'simple-sentences',
+    'Greetings & Introductions': 'greetings-introductions',
+    'Colors, Numbers & Days': 'colors-numbers-days',
     // G1-5 Sinhala
     'හෝඩිය හඳුනා ගැනීම': 'hodiya',
+    'වචන කියවීම': 'wachana-kiyavima',
+    'සරල වාක්‍ය': 'sarala-wakya',
+    'අකුරු ලිවීම': 'akuru-liwima',
+    'සංඛ්‍යා හඳුනා ගැනීම': 'sankyawa-hadunaganima',
     // G1-5 Tamil
     'உயிர் எழுத்துகள்': 'uyir-eluthukal',
+    'மெய் எழுத்துகள்': 'mey-eluthukal',
+    'சொற்கள் வாசித்தல்': 'solkal-vasithal',
+    'எழுத்துகள் எழுதுதல்': 'eluthukal-eluthuthal',
+    'எண்கள் அறிதல்': 'enkal-arithal',
     // G1-5 Environment
-    'School & Home Environment': 'school-home'
+    'School & Home Environment': 'school-home',
+    'Plants & Animals Around Us': 'plants-animals',
+    'Weather & Seasons': 'weather-seasons',
+    'Personal Hygiene': 'personal-hygiene',
+    'Food & Nutrition': 'food-nutrition',
+    'Road Safety': 'road-safety'
 };
 
 function mergeGradeContent(gradeKey, contentData) {

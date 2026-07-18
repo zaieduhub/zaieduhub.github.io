@@ -1,6 +1,6 @@
 /* ============================================
    ZAI EDUCATION HUB - Grade 6-9 Study Notes
-   Full HTML content for junior secondary
+   Full HTML content for ALL junior secondary subjects
    Source: Based on Sri Lanka curriculum
    ============================================ */
 
@@ -83,6 +83,264 @@ const G6_MATHEMATICS = {
 <li>Calculate: 1/4 + 3/8</li>
 <li>Find 15% of 200</li>
 </ol>
+`,
+
+    'integers-rational-numbers': `
+<h3>Integers & Rational Numbers (Gr 6-9)</h3>
+<h4>Integers</h4>
+<p><strong>Integers</strong> are whole numbers and their opposites (negatives). They include: ..., -3, -2, -1, 0, 1, 2, 3, ...</p>
+
+<h4>Positive and Negative Numbers</h4>
+<ul>
+<li>Numbers above zero are positive (+)</li>
+<li>Numbers below zero are negative (-)</li>
+<li>Zero is neither positive nor negative</li>
+<li>Examples: Temperature, elevation, bank balance, floors of a building</li>
+</ul>
+
+<h4>Number Line with Integers</h4>
+<p>Numbers increase as you move to the right.</p>
+
+<h4>Operations with Integers</h4>
+<p><strong>Addition:</strong></p>
+<ul>
+<li>Same signs: Add and keep the sign. (-3) + (-5) = -8</li>
+<li>Different signs: Subtract and take the sign of the larger. (-7) + 3 = -4</li>
+</ul>
+
+<p><strong>Subtraction:</strong> Change subtraction to addition of the opposite.</p>
+<ul>
+<li>5 - (-3) = 5 + 3 = 8</li>
+<li>(-6) - 4 = (-6) + (-4) = -10</li>
+</ul>
+
+<p><strong>Multiplication/Division:</strong></p>
+<ul>
+<li>Positive × Positive = Positive (3 × 2 = 6)</li>
+<li>Negative × Positive = Negative (-3 × 2 = -6)</li>
+<li>Negative × Negative = Positive (-3 × -2 = 6)</li>
+<li>Same rule for division: (-8) ÷ (-2) = 4</li>
+</ul>
+
+<h4>Rational Numbers</h4>
+<p><strong>Rational numbers</strong> are numbers that can be written as p/q where q ≠ 0.</p>
+<p>Examples: 3, -5, ½, 0.75, -2.333...</p>
+
+<h4>Practice</h4>
+<ol>
+<li>Calculate: (-8) + 5 - (-3)</li>
+<li>Multiply: (-4) × 6</li>
+<li>Divide: (-15) ÷ (-3)</li>
+</ol>
+`,
+
+    'algebraic-expressions-g6': `
+<h3>Algebraic Expressions (Gr 6-9)</h3>
+<h4>Introduction to Algebra</h4>
+<p>Algebra uses letters (variables) to represent unknown numbers.</p>
+
+<h4>Variables and Constants</h4>
+<ul>
+<li><strong>Variable:</strong> A letter that represents an unknown number. Common letters: x, y, z, a, b</li>
+<li><strong>Constant:</strong> A fixed number. Examples: 3, -7, 12</li>
+<li><strong>Algebraic Expression:</strong> A combination of variables, constants, and operations. Example: 2x + 5</li>
+</ul>
+
+<h4>Writing Algebraic Expressions</h4>
+<table>
+<tr><th>Word Phrase</th><th>Algebraic Expression</th></tr>
+<tr><td>A number increased by 5</td><td>x + 5</td></tr>
+<tr><td>Twice a number</td><td>2x</td></tr>
+<tr><td>Three less than a number</td><td>x - 3</td></tr>
+<tr><td>Half of a number</td><td>x/2 or ½x</td></tr>
+<tr><td>5 more than twice a number</td><td>2x + 5</td></tr>
+<tr><td>A number divided by 4</td><td>x/4</td></tr>
+</table>
+
+<h4>Simplifying Expressions</h4>
+<p><strong>Like Terms:</strong> Terms with the same variable and exponent. Only like terms can be combined.</p>
+<p>Example: 3x + 5x = 8x (combine coefficients)</p>
+<p>Example: 4x + 3y - 2x + y = (4x - 2x) + (3y + y) = 2x + 4y</p>
+
+<h4>Evaluating Expressions</h4>
+<p><strong>Example:</strong> Evaluate 2x + 3 when x = 5</p>
+<p>2(5) + 3 = 10 + 3 = 13</p>
+
+<h4>Solving Simple Equations</h4>
+<p>To solve x + 5 = 12: Subtract 5 from both sides. x = 7</p>
+<p>To solve 3x = 21: Divide both sides by 3. x = 7</p>
+<p>To solve 2x + 3 = 11: Subtract 3, then divide by 2. x = 4</p>
+
+<h4>Practice</h4>
+<ol>
+<li>Write an expression for "A number multiplied by 4, then add 7"</li>
+<li>Simplify: 5x + 3y - 2x + 4y</li>
+<li>Evaluate 3x - 2 when x = 6</li>
+<li>Solve: 2x + 5 = 13</li>
+</ol>
+`,
+
+    'angles-triangles': `
+<h3>Angles & Triangles</h3>
+<h4>What is an Angle?</h4>
+<p>An <strong>angle</strong> is formed when two lines meet at a point (vertex). Angles are measured in degrees (°).</p>
+
+<h4>Types of Angles</h4>
+<ul>
+<li><strong>Acute Angle:</strong> Less than 90° (e.g., 30°, 45°)</li>
+<li><strong>Right Angle:</strong> Exactly 90°</li>
+<li><strong>Obtuse Angle:</strong> Between 90° and 180° (e.g., 120°, 150°)</li>
+<li><strong>Straight Angle:</strong> Exactly 180°</li>
+<li><strong>Reflex Angle:</strong> Between 180° and 360°</li>
+</ul>
+
+<h4>Angle Relationships</h4>
+<ul>
+<li><strong>Complementary Angles:</strong> Sum is 90°. 30° + 60° = 90°</li>
+<li><strong>Supplementary Angles:</strong> Sum is 180°. 110° + 70° = 180°</li>
+<li><strong>Vertically Opposite Angles:</strong> Equal when two lines cross</li>
+<li><strong>Angles at a Point:</strong> Sum is 360°</li>
+</ul>
+
+<h4>Triangles</h4>
+<p>A <strong>triangle</strong> is a polygon with 3 sides and 3 angles. Sum of interior angles = 180°.</p>
+
+<h4>Types of Triangles (by sides)</h4>
+<ul>
+<li><strong>Equilateral:</strong> All sides equal, all angles 60°</li>
+<li><strong>Isosceles:</strong> Two sides equal, two angles equal</li>
+<li><strong>Scalene:</strong> No sides equal, no angles equal</li>
+</ul>
+
+<h4>Types of Triangles (by angles)</h4>
+<ul>
+<li><strong>Acute Triangle:</strong> All angles less than 90°</li>
+<li><strong>Right Triangle:</strong> One angle exactly 90°</li>
+<li><strong>Obtuse Triangle:</strong> One angle greater than 90°</li>
+</ul>
+
+<h4>Properties of Triangles</h4>
+<ul>
+<li>Sum of interior angles = 180°</li>
+<li>Exterior angle = Sum of two opposite interior angles</li>
+<li>Area = ½ × base × height</li>
+<li>Perimeter = sum of all sides</li>
+</ul>
+
+<h4>Practice</h4>
+<ol>
+<li>Classify a triangle with angles 90°, 45°, 45°</li>
+<li>Find the missing angle: triangle has 50° and 70°</li>
+<li>Calculate area of triangle with base 8 cm and height 5 cm</li>
+</ol>
+`,
+
+    'perimeter-area': `
+<h3>Perimeter & Area</h3>
+<h4>Perimeter</h4>
+<p><strong>Perimeter</strong> is the total distance around the outside of a shape.</p>
+
+<h4>Perimeter Formulas</h4>
+<ul>
+<li><strong>Square:</strong> P = 4s (where s = side length)</li>
+<li><strong>Rectangle:</strong> P = 2(l + w) (where l = length, w = width)</li>
+<li><strong>Triangle:</strong> P = a + b + c (sum of all 3 sides)</li>
+<li><strong>Circle:</strong> P = 2πr (also called circumference)</li>
+</ul>
+
+<h4>Area</h4>
+<p><strong>Area</strong> is the amount of space inside a shape. It is measured in square units (cm², m²).</p>
+
+<h4>Area Formulas</h4>
+<ul>
+<li><strong>Square:</strong> A = s²</li>
+<li><strong>Rectangle:</strong> A = l × w</li>
+<li><strong>Triangle:</strong> A = ½ × b × h</li>
+<li><strong>Parallelogram:</strong> A = b × h</li>
+<li><strong>Circle:</strong> A = πr²</li>
+<li><strong>Trapezium:</strong> A = ½(a + b)h</li>
+</ul>
+
+<h4>Practice</h4>
+<ol>
+<li>Find the area of a square with side 7 cm</li>
+<li>A rectangle has area 48 cm² and width 6 cm. Find its length.</li>
+<li>Find the circumference of a circle with radius 14 cm (π = 22/7)</li>
+</ol>
+`,
+
+    'data-collection-representation': `
+<h3>Data Collection & Representation</h3>
+<h4>What is Data?</h4>
+<p><strong>Data</strong> is information collected about people, events, or things.</p>
+
+<h4>Methods of Collecting Data</h4>
+<ul>
+<li><strong>Surveys:</strong> Asking people questions</li>
+<li><strong>Interviews:</strong> One-on-one questioning</li>
+<li><strong>Observations:</strong> Watching and recording</li>
+<li><strong>Experiments:</strong> Controlled tests</li>
+<li><strong>Existing Records:</strong> Using already collected data</li>
+</ul>
+
+<h4>Types of Data</h4>
+<ul>
+<li><strong>Primary Data:</strong> Collected directly by the researcher</li>
+<li><strong>Secondary Data:</strong> Already collected by someone else</li>
+<li><strong>Qualitative Data:</strong> Descriptive (colors, names, opinions)</li>
+<li><strong>Quantitative Data:</strong> Numerical (heights, scores, ages)</li>
+</ul>
+
+<h4>Mean, Median, Mode, Range</h4>
+<p><strong>Mean (Average):</strong> Sum of values ÷ Number of values</p>
+<p><strong>Median:</strong> Middle value when data is arranged in order</p>
+<p><strong>Mode:</strong> Most frequent value</p>
+<p><strong>Range:</strong> Highest value - Lowest value</p>
+
+<h4>Example</h4>
+<p>Data: 5, 8, 3, 8, 10, 6, 5, 8</p>
+<p>Mean = (5+8+3+8+10+6+5+8) ÷ 8 = 53 ÷ 8 = 6.625</p>
+<p>Sorted: 3, 5, 5, 6, 8, 8, 8, 10. Median = (6+8)/2 = 7</p>
+<p>Mode = 8 (appears 3 times). Range = 10 - 3 = 7</p>
+
+<h4>Practice</h4>
+<ol>
+<li>Find mean and mode of: 12, 15, 12, 18, 20, 15</li>
+<li>A pie chart has total = 360. What angle for 25%?</li>
+<li>Explain primary versus secondary data</li>
+</ol>
+`,
+
+    'probability-basics': `
+<h3>Probability Basics</h3>
+<h4>What is Probability?</h4>
+<p><strong>Probability</strong> is the measure of how likely an event is to occur. It ranges from 0 (impossible) to 1 (certain).</p>
+
+<h4>Key Terms</h4>
+<ul>
+<li><strong>Experiment:</strong> An action with uncertain outcomes (rolling a die, flipping a coin)</li>
+<li><strong>Outcome:</strong> A possible result of an experiment</li>
+<li><strong>Event:</strong> A set of one or more outcomes</li>
+<li><strong>Sample Space:</strong> All possible outcomes</li>
+</ul>
+
+<h4>Probability Formula</h4>
+<p>P(event) = Number of favorable outcomes / Total number of possible outcomes</p>
+
+<h4>Examples</h4>
+<p><strong>Coin toss:</strong> P(Heads) = 1/2 = 0.5 = 50%</p>
+<p><strong>Rolling a die:</strong> P(getting 3) = 1/6 ≈ 0.167</p>
+
+<h4>Complementary Events</h4>
+<p>P(event NOT happening) = 1 - P(event)</p>
+<p>P(not rolling a 3) = 1 - 1/6 = 5/6</p>
+
+<h4>Practice</h4>
+<ol>
+<li>What is the probability of rolling an even number on a die?</li>
+<li>A bag has 3 red, 2 blue, 5 green marbles. P(blue) = ?</li>
+<li>If P(rain) = 0.3, what is P(no rain)?</li>
+</ol>
 `
 };
 
@@ -108,18 +366,7 @@ const G6_SCIENCE = {
 </ul>
 
 <h4>Photosynthesis</h4>
-<p>Plants make their own food using sunlight, water, and carbon dioxide.</p>
-<p>Carbon Dioxide + Water → (sunlight, chlorophyll) → Glucose + Oxygen</p>
-<p>6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂</p>
-
-<h4>Importance of Plants</h4>
-<ul>
-<li>Produce oxygen for animals to breathe</li>
-<li>Provide food for all living things</li>
-<li>Prevent soil erosion</li>
-<li>Provide medicine, wood, and shelter</li>
-<li>Regulate climate</li>
-</ul>
+<p>6CO₂ + 6H₂O → (sunlight, chlorophyll) → C₆H₁₂O₆ + 6O₂</p>
 
 <h4>Practice Questions</h4>
 <ol>
@@ -154,7 +401,7 @@ const G6_SCIENCE = {
 </ul>
 
 <h4>Measuring Force</h4>
-<p>Force is measured in <strong>Newtons (N)</strong> using a spring balance or force meter.</p>
+<p>Force is measured in <strong>Newtons (N)</strong> using a spring balance.</p>
 
 <h4>Simple Machines</h4>
 <ul>
@@ -170,7 +417,214 @@ const G6_SCIENCE = {
 <ol>
 <li>What unit is used to measure force?</li>
 <li>Name three effects that a force can have on an object</li>
-<li>Give an example of a lever used in daily life</li>
+<li>Give an example of a lever</li>
+</ol>
+`,
+
+    'animal-diversity': `
+<h3>Animal Diversity</h3>
+<h4>Invertebrates (No Backbone)</h4>
+<ul>
+<li><strong>Insects:</strong> 6 legs, 3 body parts. Examples: butterfly, ant, bee</li>
+<li><strong>Arachnids:</strong> 8 legs. Examples: spider, scorpion</li>
+<li><strong>Crustaceans:</strong> Hard outer shell. Examples: crab, shrimp</li>
+<li><strong>Mollusks:</strong> Soft bodies, often with a shell. Examples: snail, octopus</li>
+<li><strong>Annelids:</strong> Segmented worms. Examples: earthworm</li>
+<li><strong>Cnidarians:</strong> Stinging cells. Examples: jellyfish, coral</li>
+</ul>
+
+<h4>Vertebrates (Have Backbone)</h4>
+<p><strong>Fish:</strong> Gills, scales, fins. Examples: tuna, shark</p>
+<p><strong>Amphibians:</strong> Live in water and land. Moist skin. Examples: frog, toad</p>
+<p><strong>Reptiles:</strong> Dry scaly skin, lay eggs on land. Examples: snake, lizard, crocodile</p>
+<p><strong>Birds:</strong> Feathers, wings, beaks, lay eggs. Examples: eagle, parrot</p>
+<p><strong>Mammals:</strong> Hair/fur, produce milk, live young. Examples: human, elephant, whale</p>
+
+<h4>Practice</h4>
+<ol>
+<li>What is the main difference between vertebrates and invertebrates?</li>
+<li>Name three mammals found in Sri Lanka</li>
+<li>How do amphibians differ from reptiles?</li>
+</ol>
+`,
+
+    'human-body-systems': `
+<h3>Human Body Systems</h3>
+<h4>Skeletal System</h4>
+<p>206 bones. Functions: support, protection, movement, mineral storage, blood cell production.</p>
+
+<h4>Muscular System</h4>
+<ul>
+<li><strong>Skeletal Muscles:</strong> Voluntary, attached to bones</li>
+<li><strong>Smooth Muscles:</strong> Involuntary, in organs</li>
+<li><strong>Cardiac Muscle:</strong> Involuntary, only in the heart</li>
+</ul>
+
+<h4>Digestive System</h4>
+<p>Mouth → Esophagus → Stomach → Small Intestine → Large Intestine</p>
+
+<h4>Circulatory System</h4>
+<p><strong>Heart:</strong> Four chambers. <strong>Arteries:</strong> Away from heart. <strong>Veins:</strong> Toward heart.</p>
+
+<h4>Respiratory System</h4>
+<p>Nose → Trachea → Bronchi → Lungs (alveoli for gas exchange)</p>
+
+<h4>Practice</h4>
+<ol>
+<li>Name the organs in the digestive system in order</li>
+<li>What is the function of the heart?</li>
+<li>Which system controls voluntary movements?</li>
+</ol>
+`,
+
+    'energy-forms-transfer': `
+<h3>Energy Forms & Transfer</h3>
+<h4>Forms of Energy</h4>
+<ul>
+<li><strong>Kinetic Energy:</strong> Energy of motion</li>
+<li><strong>Potential Energy:</strong> Stored energy (height, chemical bonds)</li>
+<li><strong>Thermal Energy:</strong> Heat energy</li>
+<li><strong>Electrical Energy:</strong> From moving charges</li>
+<li><strong>Light Energy:</strong> From the sun, light bulbs</li>
+<li><strong>Sound Energy:</strong> From vibrations</li>
+</ul>
+
+<h4>Energy Transfer Examples</h4>
+<ul>
+<li>A light bulb: Electrical → Light + Heat</li>
+<li>Photosynthesis: Light → Chemical</li>
+<li>Moving car: Chemical → Kinetic + Heat + Sound</li>
+</ul>
+
+<h4>Law of Conservation of Energy</h4>
+<p>Energy cannot be created or destroyed, only converted from one form to another.</p>
+
+<h4>Practice</h4>
+<ol>
+<li>What energy transformations happen in a solar panel?</li>
+<li>Explain renewable vs non-renewable energy</li>
+<li>Give two examples of energy conservation</li>
+</ol>
+`,
+
+    'sound-light-g6': `
+<h3>Sound & Light (Gr 6-9)</h3>
+<h4>Sound</h4>
+<p>Sound is produced when objects <strong>vibrate</strong>. The vibrations travel through a medium as waves.</p>
+
+<h4>Properties of Sound</h4>
+<ul>
+<li><strong>Loudness:</strong> Determined by amplitude. Measured in decibels (dB).</li>
+<li><strong>Pitch:</strong> Determined by frequency. High frequency = high pitch.</li>
+<li><strong>Speed:</strong> ~340 m/s in air, ~1500 m/s in water, ~5000 m/s in solids</li>
+</ul>
+
+<h4>Light</h4>
+<p>Light travels at 300,000 km/s in a vacuum.</p>
+
+<h4>Properties of Light</h4>
+<ul>
+<li>Travels in straight lines</li>
+<li>Can be reflected (bounces off surfaces)</li>
+<li>Can be refracted (bends when passing through different materials)</li>
+</ul>
+
+<h4>Colors of Light</h4>
+<p>White light is made of 7 colors: Red, Orange, Yellow, Green, Blue, Indigo, Violet (ROYGBIV)</p>
+
+<h4>Practice</h4>
+<ol>
+<li>Why does sound travel faster in solids than in air?</li>
+<li>What happens to light when it hits a mirror?</li>
+<li>Name the 7 colors of the rainbow</li>
+</ol>
+`,
+
+    'earth-solar-system': `
+<h3>Earth & Solar System</h3>
+<h4>The 8 Planets (in order from the Sun)</h4>
+<ol>
+<li><strong>Mercury:</strong> Smallest, closest to Sun, no atmosphere</li>
+<li><strong>Venus:</strong> Hottest planet (465°C), thick clouds</li>
+<li><strong>Earth:</strong> Our planet, 71% water, only known life</li>
+<li><strong>Mars:</strong> The "Red Planet," largest volcano (Olympus Mons)</li>
+<li><strong>Jupiter:</strong> Largest planet, Great Red Spot (giant storm)</li>
+<li><strong>Saturn:</strong> Beautiful ring system made of ice and rock</li>
+<li><strong>Uranus:</strong> Rotates on its side, blue-green color</li>
+<li><strong>Neptune:</strong> Farthest planet, strongest winds</li>
+</ol>
+
+<h4>Earth's Movement</h4>
+<ul>
+<li><strong>Rotation:</strong> Spins on axis once every 24 hours → Day and night</li>
+<li><strong>Revolution:</strong> Orbits the Sun once every 365.25 days → Seasons</li>
+</ul>
+
+<h4>Practice</h4>
+<ol>
+<li>Name the planets in order from the Sun</li>
+<li>What causes day and night?</li>
+<li>Why do we have different seasons?</li>
+</ol>
+`,
+
+    'weather-climate-g6': `
+<h3>Weather & Climate (Gr 6-9)</h3>
+<h4>Weather vs Climate</h4>
+<p><strong>Weather:</strong> Day-to-day atmospheric conditions. Changes constantly.</p>
+<p><strong>Climate:</strong> Average weather over many years (30+ years). Stable.</p>
+
+<h4>Elements of Weather</h4>
+<ul>
+<li><strong>Temperature:</strong> Measured with thermometer (°C)</li>
+<li><strong>Rainfall:</strong> Measured with rain gauge (mm)</li>
+<li><strong>Wind:</strong> Direction (wind vane), speed (anemometer)</li>
+<li><strong>Humidity:</strong> Water vapor in air (hygrometer)</li>
+<li><strong>Air Pressure:</strong> Weight of air (barometer)</li>
+</ul>
+
+<h4>Climate of Sri Lanka</h4>
+<ul>
+<li><strong>Southwest Monsoon (May-Sep):</strong> Rain to southwest</li>
+<li><strong>Northeast Monsoon (Dec-Feb):</strong> Rain to north/east</li>
+<li>Average temp: 27-30°C lowlands, 15-20°C hills</li>
+</ul>
+
+<h4>Practice</h4>
+<ol>
+<li>List four weather instruments and what they measure</li>
+<li>What is the difference between weather and climate?</li>
+<li>Describe the two monsoon seasons in Sri Lanka</li>
+</ol>
+`,
+
+    'natural-resources': `
+<h3>Natural Resources</h3>
+<h4>Renewable Resources</h4>
+<ul>
+<li>Sunlight (solar energy)</li>
+<li>Wind</li>
+<li>Water (hydro energy)</li>
+<li>Trees and forests (if replanted)</li>
+<li>Animals and plants</li>
+</ul>
+
+<h4>Non-Renewable Resources</h4>
+<ul>
+<li>Fossil fuels (coal, oil, natural gas)</li>
+<li>Minerals (gold, iron, graphite)</li>
+<li>Gemstones (sapphires, rubies)</li>
+<li>Rocks and sand</li>
+</ul>
+
+<h4>Conservation (3 Rs)</h4>
+<p><strong>Reduce:</strong> Use less. <strong>Reuse:</strong> Use again. <strong>Recycle:</strong> Make new products.</p>
+
+<h4>Practice</h4>
+<ol>
+<li>Give examples of renewable and non-renewable resources</li>
+<li>Why is water conservation important?</li>
+<li>Name three ways to conserve natural resources</li>
 </ol>
 `
 };
@@ -178,62 +632,15 @@ const G6_SCIENCE = {
 const G6_ENGLISH = {
     'parts-of-speech-g6': `
 <h3>Parts of Speech Basics</h3>
-<h4>What are Parts of Speech?</h4>
-<p>Every word in English has a job to do in a sentence. These jobs are called parts of speech.</p>
-
 <h4>The 8 Parts of Speech</h4>
-
-<p><strong>1. Noun:</strong> A person, place, thing, or idea</p>
-<ul>
-<li>Person: teacher, mother, doctor, Suren</li>
-<li>Place: school, park, Colombo, Sri Lanka</li>
-<li>Thing: book, pencil, car, computer</li>
-<li>Idea: love, peace, happiness</li>
-</ul>
-
-<p><strong>2. Pronoun:</strong> A word that replaces a noun</p>
-<ul>
-<li>I, you, he, she, it, we, they</li>
-<li>me, him, her, us, them</li>
-<li>Example: "Suren is happy. <strong>He</strong> got a new book."</li>
-</ul>
-
-<p><strong>3. Verb:</strong> An action word or state of being</p>
-<ul>
-<li><strong>Action verbs:</strong> run, jump, eat, read, write, play, sing</li>
-<li><strong>Being verbs:</strong> am, is, are, was, were, be</li>
-<li>Example: "The cat <strong>chases</strong> the mouse."</li>
-</ul>
-
-<p><strong>4. Adjective:</strong> Describes a noun</p>
-<ul>
-<li>Example: The <strong>big</strong>, <strong>red</strong> ball</li>
-<li>Common adjectives: beautiful, tall, small, hot, cold, happy, sad</li>
-</ul>
-
-<p><strong>5. Adverb:</strong> Describes a verb, adjective, or another adverb</p>
-<ul>
-<li>Often ends in -ly (quickly, slowly, carefully)</li>
-<li>Example: "She ran <strong>quickly</strong>."</li>
-</ul>
-
-<p><strong>6. Preposition:</strong> Shows position or time relationship</p>
-<ul>
-<li>in, on, at, under, above, between, behind, next to</li>
-<li>Example: "The book is <strong>on</strong> the table."</li>
-</ul>
-
-<p><strong>7. Conjunction:</strong> Connects words or sentences</p>
-<ul>
-<li>and, but, or, because, so</li>
-<li>Example: "I like cats <strong>and</strong> dogs."</li>
-</ul>
-
-<p><strong>8. Interjection:</strong> Shows strong emotion</p>
-<ul>
-<li>Wow! Oh! Ouch! Hurray!</li>
-<li>Example: "<strong>Wow!</strong> That's amazing!"</li>
-</ul>
+<p><strong>1. Noun:</strong> Person, place, thing, or idea. Example: teacher, school, book, love</p>
+<p><strong>2. Pronoun:</strong> Replaces a noun. I, you, he, she, it, we, they</p>
+<p><strong>3. Verb:</strong> Action word. run, eat, read, write, play, is, are</p>
+<p><strong>4. Adjective:</strong> Describes a noun. big, red, beautiful, tall</p>
+<p><strong>5. Adverb:</strong> Describes a verb. quickly, slowly, carefully (often ends in -ly)</p>
+<p><strong>6. Preposition:</strong> Shows position. in, on, at, under, above, between</p>
+<p><strong>7. Conjunction:</strong> Connects words. and, but, or, because</p>
+<p><strong>8. Interjection:</strong> Shows emotion. Wow! Oh! Ouch! Hurray!</p>
 
 <h4>Practice</h4>
 <ol>
@@ -241,9 +648,158 @@ const G6_ENGLISH = {
 <li>Find the verb: "She <u>reads</u> a book."</li>
 <li>Find the adjective: "The <u>beautiful</u> flower"</li>
 </ol>
+`,
+
+    'simple-tenses-g6': `
+<h3>Simple Tenses (Gr 6-9)</h3>
+<h4>Present Tense</h4>
+<p><strong>Simple Present:</strong> Habits, facts. I walk to school. She reads books.</p>
+<p><strong>Present Continuous:</strong> Happening now. I am writing. He is playing.</p>
+
+<h4>Past Tense</h4>
+<p><strong>Simple Past:</strong> Completed actions. I visited Kandy. She watched a movie.</p>
+<p><strong>Past Continuous:</strong> Was in progress. I was reading when you called.</p>
+
+<h4>Future Tense</h4>
+<p><strong>Simple Future (will):</strong> I will visit my grandmother tomorrow.</p>
+<p><strong>Going to:</strong> Plans. I am going to study for the exam.</p>
+
+<h4>Practice</h4>
+<ol>
+<li>Change to past tense: "I eat breakfast."</li>
+<li>Fill in: She ___ (read) a book now.</li>
+<li>Write about what you will do tomorrow</li>
+</ol>
+`,
+
+    'vocabulary-building': `
+<h3>Vocabulary Building (Gr 6-9)</h3>
+<h4>Synonyms (Same meaning)</h4>
+<p>happy: joyful, cheerful, glad, delighted, pleased</p>
+<p>big: large, huge, enormous, giant, massive</p>
+<p>brave: courageous, fearless, bold, daring</p>
+
+<h4>Antonyms (Opposite meaning)</h4>
+<p>hot ↔ cold, fast ↔ slow, light ↔ dark, rich ↔ poor</p>
+
+<h4>Prefixes</h4>
+<ul>
+<li>un- (not): unhappy, unable, unclear</li>
+<li>re- (again): rewrite, return, rebuild</li>
+<li>pre- (before): preview, preheat</li>
+<li>dis- (opposite): disagree, disappear</li>
+</ul>
+
+<h4>Suffixes</h4>
+<ul>
+<li>-ful (full of): beautiful, hopeful</li>
+<li>-less (without): helpless, useless</li>
+<li>-ly (in a way): quickly, carefully</li>
+</ul>
+
+<h4>Practice</h4>
+<ol>
+<li>Find a synonym for "brave"</li>
+<li>Add a prefix to "appear" to make its opposite</li>
+<li>Add a suffix to "hope" to mean "full of hope"</li>
+</ol>
+`,
+
+    'reading-comprehension-g6': `
+<h3>Reading Comprehension (Gr 6-9)</h3>
+<h4>Steps for Good Comprehension</h4>
+<ol>
+<li><strong>Preview:</strong> Look at title, headings, pictures</li>
+<li><strong>Read Carefully:</strong> Understand each sentence</li>
+<li><strong>Find the Main Idea:</strong> What is this mostly about?</li>
+<li><strong>Look for Details:</strong> Who, what, when, where, why</li>
+<li><strong>Summarize:</strong> Tell the main points</li>
+</ol>
+
+<h4>Sample Passage</h4>
+<p>"Elephants are the largest land animals on Earth. There are two main types: African elephants and Asian elephants. Sri Lankan elephants are a subspecies of Asian elephants. They are smaller than African elephants and have smaller ears. Elephants live in herds led by the oldest female. They eat grass, leaves, bark, and fruits. An adult elephant can eat up to 150 kg of food per day! Sadly, elephants are endangered because of habitat loss and poaching."</p>
+
+<p><strong>Questions:</strong></p>
+<ol>
+<li>What is the main idea?</li>
+<li>How much food can an adult elephant eat per day?</li>
+<li>Why are elephants endangered?</li>
+</ol>
+
+<h4>Practice</h4>
+<ol>
+<li>Read the passage and answer the questions</li>
+<li>Find three facts from the passage</li>
+<li>Write a one-sentence summary</li>
+</ol>
+`,
+
+    'paragraph-writing': `
+<h3>Paragraph Writing</h3>
+<h4>Parts of a Paragraph</h4>
+<ol>
+<li><strong>Topic Sentence:</strong> The main idea (first sentence)</li>
+<li><strong>Supporting Sentences:</strong> 3-5 sentences with details</li>
+<li><strong>Concluding Sentence:</strong> Sums up the paragraph</li>
+</ol>
+
+<h4>Example</h4>
+<p><strong>Topic:</strong> Cleanliness is very important for good health.</p>
+<p><strong>Supporting:</strong> We should wash our hands before eating. Taking a bath every day keeps our body clean. Brushing teeth twice a day prevents tooth decay.</p>
+<p><strong>Conclusion:</strong> By maintaining cleanliness, we can stay healthy and happy.</p>
+
+<h4>Practice</h4>
+<ol>
+<li>Write a paragraph about "My School"</li>
+<li>Identify the topic sentence</li>
+</ol>
+`,
+
+    'letter-writing-g6': `
+<h3>Letter Writing (Gr 6-9)</h3>
+<h4>Informal Letter Format</h4>
+<pre>
+[Your Address]
+[Date]
+
+Dear [Name],
+
+How are you? I hope you are doing well.
+[Body - share your news]
+Please write back soon.
+
+Your loving friend,
+[Your Name]
+</pre>
+
+<h4>Formal Letter Format</h4>
+<pre>
+[Your Address]
+[Date]
+
+[Recipient's Name/Title]
+[Address]
+
+Dear [Sir/Madam],
+
+Subject: [Purpose]
+
+[Body - explain in 2-3 paragraphs]
+
+Yours faithfully,
+[Your Full Name]
+</pre>
+
+<h4>Practice</h4>
+<ol>
+<li>Write a letter to your cousin about your school</li>
+<li>Write a formal letter to your principal about a science club</li>
+<li>List three differences between formal and informal letters</li>
+</ol>
 `
 };
 
+// G6 History
 const G6_HISTORY = {
     'ancient-kingdoms': `
 <h3>Ancient Kingdoms of Sri Lanka</h3>
@@ -251,7 +807,7 @@ const G6_HISTORY = {
 <p>The first people to live in Sri Lanka were the <strong>Veddahs</strong> (original indigenous people). According to the Mahavamsa, Prince Vijaya arrived from India in 543 BC and established the first kingdom.</p>
 
 <h4>Tambapanni Kingdom</h4>
-<p>The first Sinhalese kingdom was established at <strong>Tambapanni</strong> by Prince Vijaya. The kingdom was named after the copper-colored sand (tamba = copper, panni = hands).</p>
+<p>The first Sinhalese kingdom was established at <strong>Tambapanni</strong> by Prince Vijaya.</p>
 
 <h4>Anuradhapura Kingdom (377 BC - 1017 AD)</h4>
 <p>Anuradhapura was founded by King <strong>Pandukabhaya</strong>. It became one of the greatest cities in the ancient world, lasting over 1400 years.</p>
@@ -264,14 +820,14 @@ const G6_HISTORY = {
 </ul>
 
 <h4>Polonnaruwa Kingdom (1017-1232 AD)</h4>
-<p>After the Chola invasion, the capital moved to <strong>Polonnaruwa</strong>. King Vijayabahu I defeated the Cholas. King <strong>Parakramabahu I</strong> was the greatest ruler of this period, famous for building the Parakrama Samudra reservoir.</p>
+<p>After the Chola invasion, the capital moved to <strong>Polonnaruwa</strong>. King <strong>Parakramabahu I</strong> was the greatest ruler, famous for building the Parakrama Samudra reservoir.</p>
 
 <h4>Later Kingdoms</h4>
 <ul>
 <li><strong>Dambadeniya (1232-1341):</strong> Center of Sinhalese literature</li>
 <li><strong>Gampola (1341-1412):</strong> Known for temple architecture</li>
-<li><strong>Kotte (1412-1597):</strong> Last indigenous kingdom before Portuguese arrived</li>
-<li><strong>Kandy (1597-1815):</strong> Last independent kingdom, resisted European colonial powers for 200+ years</li>
+<li><strong>Kotte (1412-1597):</strong> Last indigenous kingdom before Portuguese</li>
+<li><strong>Kandy (1597-1815):</strong> Last independent kingdom, resisted Europeans for 200+ years</li>
 </ul>
 
 <h4>Practice Questions</h4>
@@ -284,46 +840,42 @@ const G6_HISTORY = {
 
     'cultural-heritage': `
 <h3>Sri Lankan Cultural Heritage</h3>
-<h4>Introduction to Cultural Heritage</h4>
-<p><strong>Cultural heritage</strong> includes the traditions, customs, monuments, artifacts, and values passed down from generation to generation.</p>
-
 <h4>Types of Heritage</h4>
 <ul>
-<li><strong>Tangible Heritage:</strong> Physical objects like buildings, monuments, artifacts, books</li>
-<li><strong>Intangible Heritage:</strong> Traditions, customs, music, dance, rituals, knowledge</li>
+<li><strong>Tangible Heritage:</strong> Physical objects like buildings, monuments, artifacts</li>
+<li><strong>Intangible Heritage:</strong> Traditions, customs, music, dance, rituals</li>
 </ul>
 
 <h4>UNESCO World Heritage Sites in Sri Lanka</h4>
-<p>Sri Lanka has <strong>8 UNESCO World Heritage Sites</strong>:</p>
 <ol>
-<li><strong>Sacred City of Anuradhapura</strong> - Ancient Buddhist monuments and stupas</li>
-<li><strong>Ancient City of Polonnaruwa</strong> - Medieval capital with Gal Vihara rock carvings</li>
-<li><strong>Ancient City of Sigiriya</strong> - The Lion Rock fortress with frescoes and water gardens</li>
-<li><strong>Sacred City of Kandy</strong> - Temple of the Tooth Relic (Sri Dalada Maligawa)</li>
-<li><strong>Old Town of Galle and its Fortifications</strong> - Dutch colonial fort</li>
-<li><strong>Sinharaja Forest Reserve</strong> - Rainforest with unique biodiversity</li>
-<li><strong>Central Highlands of Sri Lanka</strong> - Horton Plains, Knuckles, Peak Wilderness</li>
-<li><strong>Rangiri Dambulla Cave Temple</strong> - Cave temple with Buddha statues and paintings</li>
+<li><strong>Sacred City of Anuradhapura</strong></li>
+<li><strong>Ancient City of Polonnaruwa</strong></li>
+<li><strong>Ancient City of Sigiriya</strong> - The Lion Rock fortress</li>
+<li><strong>Sacred City of Kandy</strong> - Temple of the Tooth</li>
+<li><strong>Old Town of Galle and its Fortifications</strong></li>
+<li><strong>Sinharaja Forest Reserve</strong></li>
+<li><strong>Central Highlands of Sri Lanka</strong></li>
+<li><strong>Rangiri Dambulla Cave Temple</strong></li>
 </ol>
 
 <h4>Sri Lankan Art & Crafts</h4>
 <ul>
-<li><strong>Kandyan Dancing:</strong> Traditional dance form with intricate movements and costumes</li>
-<li><strong>Mask Making:</strong> Traditional wooden masks used in rituals and performances (Ambalangoda)</li>
-<li><strong>Batik:</strong> Wax-resist dyeing technique for creating colorful fabrics</li>
-<li><strong>Lace Making:</strong> Traditional craft from the coastal areas</li>
-<li><strong>Wood Carving:</strong> Intricate carvings on wood for furniture and decorations</li>
-<li><strong>Pottery:</strong> Traditional clay pot making for household use</li>
+<li><strong>Kandyan Dancing:</strong> Traditional dance form</li>
+<li><strong>Mask Making:</strong> Traditional wooden masks (Ambalangoda)</li>
+<li><strong>Batik:</strong> Wax-resist dyeing technique</li>
+<li><strong>Lace Making:</strong> Traditional craft from coastal areas</li>
+<li><strong>Wood Carving:</strong> Intricate carvings on wood</li>
+<li><strong>Pottery:</strong> Traditional clay pot making</li>
 </ul>
 
 <h4>Traditional Festivals</h4>
 <ul>
-<li><strong>Vesak:</strong> Celebration of Buddha's birth, enlightenment, and passing away</li>
-<li><strong>Sinhala & Tamil New Year (April):</strong> Traditional new year festival</li>
+<li><strong>Vesak:</strong> Buddha's birth, enlightenment, passing away</li>
+<li><strong>Sinhala & Tamil New Year (April):</strong> Traditional new year</li>
 <li><strong>Thai Pongal:</strong> Tamil harvest festival</li>
-<li><strong>Eid:</strong> Muslim festival after Ramadan</li>
+<li><strong>Eid:</strong> Muslim festival</li>
 <li><strong>Christmas:</strong> Christian festival</li>
-<li><strong>Kandy Esala Perahera:</strong> Grand procession with elephants, dancers, drummers</li>
+<li><strong>Kandy Esala Perahera:</strong> Grand procession with elephants</li>
 </ul>
 
 <h4>Practice Questions</h4>
@@ -336,154 +888,89 @@ const G6_HISTORY = {
 
     'independence-movement': `
 <h3>Independence Movement</h3>
-<h4>Background</h4>
-<p>Sri Lanka (then called <strong>Ceylon</strong>) was under British colonial rule from 1815 to 1948. Over time, Sri Lankans developed a desire for self-rule and independence.</p>
-
 <h4>Early Resistance</h4>
 <ul>
-<li><strong>1817-1818 Uva-Wellassa Rebellion:</strong> Led by Keppetipola Disawe against British rule</li>
+<li><strong>1817-1818 Uva-Wellassa Rebellion:</strong> Led by Keppetipola Disawe</li>
 <li><strong>1848 Matale Rebellion:</strong> Led by Puran Appu and Gongalegoda Banda</li>
-<li>Both rebellions were suppressed but showed the desire for freedom</li>
 </ul>
 
 <h4>Nationalist Movement (Early 1900s)</h4>
 <ul>
-<li><strong>Anagarika Dharmapala (1864-1933):</strong> A Buddhist revivalist who awakened national consciousness. He spoke about Sri Lanka's proud heritage and the need to regain independence.</li>
-<li><strong>Sir Ponnambalam Arunachalam:</strong> Tamil leader who worked for constitutional reforms</li>
-<li><strong>Henry Pedris:</strong> A young Ceylonese who was executed by the British, becoming a symbol of resistance</li>
+<li><strong>Anagarika Dharmapala (1864-1933):</strong> Buddhist revivalist, awakened national consciousness</li>
+<li><strong>Sir Ponnambalam Arunachalam:</strong> Tamil leader for constitutional reforms</li>
+<li><strong>Henry Pedris:</strong> Executed by British, symbol of resistance</li>
 </ul>
 
 <h4>Key Organizations</h4>
 <ul>
-<li><strong>Ceylon National Congress (1919):</strong> First political organization demanding independence</li>
-<li><strong>Jaffna Youth Congress:</strong> Led the youth movement in the north</li>
+<li><strong>Ceylon National Congress (1919):</strong> First political organization for independence</li>
+<li><strong>Jaffna Youth Congress:</strong> Youth movement in the north</li>
 <li><strong>Suriya-Mal Movement:</strong> Social welfare and nationalist movement</li>
 </ul>
 
 <h4>Constitutional Reforms</h4>
 <ul>
-<li><strong>1910: Legislative Council</strong> - Limited representation for Ceylonese</li>
-<li><strong>1931: Donoughmore Constitution</strong> - Universal adult suffrage (right to vote)</li>
-<li><strong>1946: Soulbury Constitution</strong> - Paved the way for independence</li>
+<li><strong>1910:</strong> Legislative Council with limited representation</li>
+<li><strong>1931:</strong> Donoughmore Constitution - universal adult suffrage</li>
+<li><strong>1946:</strong> Soulbury Constitution - paved way for independence</li>
 </ul>
 
 <h4>Independence (February 4, 1948)</h4>
-<p>Sri Lanka gained independence peacefully through negotiations. <strong>Sir D. S. Senanayake</strong> became the first Prime Minister. He is known as the "Father of the Nation."</p>
+<p>Sri Lanka gained independence peacefully. <strong>Sir D. S. Senanayake</strong> became first Prime Minister.</p>
 
 <h4>Practice Questions</h4>
 <ol>
 <li>When did Sri Lanka gain independence?</li>
-<li>Who was the first Prime Minister of independent Sri Lanka?</li>
-<li>Name two rebellions against British rule in Sri Lanka</li>
+<li>Who was the first Prime Minister?</li>
+<li>Name two rebellions against British rule</li>
 </ol>
 `,
 
     'early-human-societies': `
 <h3>Early Human Societies</h3>
 <h4>The Stone Age</h4>
-<p>The <strong>Stone Age</strong> is the earliest period of human history, when people used stone tools. It is divided into three periods:</p>
 <ul>
-<li><strong>Paleolithic (Old Stone Age):</strong> 2.5 million - 10,000 BC. Hunter-gatherer society. Used simple stone tools.</li>
-<li><strong>Mesolithic (Middle Stone Age):</strong> 10,000 - 8,000 BC. Smaller tools, fishing, first settlements.</li>
-<li><strong>Neolithic (New Stone Age):</strong> 8,000 - 3,000 BC. Farming, domestication of animals, permanent villages.</li>
+<li><strong>Paleolithic:</strong> 2.5 million - 10,000 BC. Hunter-gatherers, stone tools.</li>
+<li><strong>Mesolithic:</strong> 10,000 - 8,000 BC. Smaller tools, fishing, first settlements.</li>
+<li><strong>Neolithic:</strong> 8,000 - 3,000 BC. Farming, domestication, permanent villages.</li>
 </ul>
 
 <h4>Early Humans in Sri Lanka</h4>
-<p>The earliest evidence of human habitation in Sri Lanka dates back to <strong>125,000 years ago</strong>. The <strong>Balangoda Man</strong> (Homo sapiens balangodensis) lived in caves and used stone tools. Important archaeological sites include:</p>
+<p>Earliest evidence of human habitation dates back <strong>125,000 years</strong>. The <strong>Balangoda Man</strong> lived in caves and used stone tools.</p>
 <ul>
-<li>Fa Hien Cave (Kalutara district) - Oldest human remains in Sri Lanka</li>
-<li>Batadomba Lena (Ratnapura district) - Mesolithic tools and remains</li>
-<li>Kitulgala Beli Lena</li>
+<li>Fa Hien Cave (Kalutara) - Oldest human remains</li>
+<li>Batadomba Lena (Ratnapura) - Mesolithic tools</li>
 </ul>
 
-<h4>The Agricultural Revolution</h4>
-<p>Around 10,000 BC, humans learned to <strong>cultivate crops</strong> and <strong>domesticate animals</strong>. This changed human society forever:</p>
-<ul>
-<li>People settled in permanent villages</li>
-<li>Population grew</li>
-<li>Specialization of labor (farmers, artisans, traders)</li>
-<li>Trade between communities began</li>
-<li>Social classes emerged</li>
-</ul>
-
-<h4>Early Civilizations (River Valley Civilizations)</h4>
-<p>The first great civilizations emerged in river valleys around 3500-3000 BC:</p>
-<ul>
-<li><strong>Mesopotamia (Tigris & Euphrates):</strong> Sumerians, Babylonians - first writing system (cuneiform)</li>
-<li><strong>Ancient Egypt (Nile River):</strong> Pharaohs, pyramids, hieroglyphics</li>
-<li><strong>Indus Valley (Indus River):</strong> Harappa, Mohenjo-Daro - advanced city planning</li>
-<li><strong>Ancient China (Yellow River):</strong> Shang dynasty - bronze technology, writing</li>
-</ul>
+<h4>The Agricultural Revolution (10,000 BC)</h4>
+<p>Humans learned to cultivate crops and domesticate animals. This led to permanent settlements, population growth, and specialization of labor.</p>
 
 <h4>Practice Questions</h4>
 <ol>
 <li>What is the earliest period of human history called?</li>
-<li>How did the Agricultural Revolution change human society?</li>
+<li>How did the Agricultural Revolution change society?</li>
 <li>Name two river valley civilizations</li>
 </ol>
 `,
 
     'ancient-civilizations-overview': `
 <h3>Ancient Civilizations Overview</h3>
-<h4>What is a Civilization?</h4>
-<p>A <strong>civilization</strong> is a complex society with cities, government, writing, religion, and social classes.</p>
-
 <h4>Characteristics of a Civilization</h4>
 <ul>
 <li><strong>Cities:</strong> Large, organized settlements</li>
-<li><strong>Government:</strong> Organized systems of leadership and laws</li>
+<li><strong>Government:</strong> Organized systems of leadership</li>
 <li><strong>Writing:</strong> Systems of recording information</li>
 <li><strong>Religion:</strong> Organized belief systems</li>
-<li><strong>Social Classes:</strong> Different levels of society (kings, priests, farmers, slaves)</li>
-<li><strong>Specialized Workers:</strong> Artisans, traders, soldiers, priests</li>
-<li><strong>Monuments:</strong> Large public buildings</li>
+<li><strong>Social Classes:</strong> Different levels of society</li>
+<li><strong>Specialized Workers:</strong> Artisans, traders, soldiers</li>
 </ul>
 
 <h4>Major Ancient Civilizations</h4>
-
-<p><strong>1. Mesopotamian Civilization (3500-539 BC)</strong></p>
-<ul>
-<li>Located between Tigris and Euphrates Rivers (modern Iraq)</li>
-<li>Invented writing (cuneiform)</li>
-<li>Built ziggurats (temple towers)</li>
-<li>Code of Hammurabi - one of the first law codes</li>
-<li>Epic of Gilgamesh - one of the earliest works of literature</li>
-</ul>
-
-<p><strong>2. Ancient Egyptian Civilization (3100-332 BC)</strong></p>
-<ul>
-<li>Located along the Nile River</li>
-<li>Built pyramids as tombs for pharaohs</li>
-<li>Developed hieroglyphic writing</li>
-<li>Advanced knowledge of mathematics and astronomy</li>
-<li>Mummification of the dead</li>
-</ul>
-
-<p><strong>3. Indus Valley Civilization (2600-1900 BC)</strong></p>
-<ul>
-<li>Located in modern Pakistan and India</li>
-<li>Advanced city planning with grid streets and drainage systems</li>
-<li>Had writing that is still not fully deciphered</li>
-<li>Major cities: Harappa and Mohenjo-Daro</li>
-<li>Declined mysteriously around 1900 BC</li>
-</ul>
-
-<p><strong>4. Ancient Chinese Civilization (1600 BC onwards)</strong></p>
-<ul>
-<li>Located along the Yellow River</li>
-<li>Shang dynasty - first Chinese dynasty with written records</li>
-<li>Developed bronze technology</li>
-<li>Oracle bones - earliest Chinese writing</li>
-<li>Concept of the "Mandate of Heaven" - ruler's right to rule</li>
-</ul>
-
-<p><strong>5. Ancient Greek Civilization (800-146 BC)</strong></p>
-<ul>
-<li>Birthplace of democracy (Athens)</li>
-<li>Philosophy: Socrates, Plato, Aristotle</li>
-<li>Olympic Games started in 776 BC</li>
-<li>Art, architecture, theater, and science flourished</li>
-</ul>
+<p><strong>1. Mesopotamian (3500-539 BC):</strong> Between Tigris and Euphrates. Invented writing (cuneiform) and the wheel. Code of Hammurabi.</p>
+<p><strong>2. Egyptian (3100-332 BC):</strong> Along the Nile. Built pyramids, hieroglyphics, mummification.</p>
+<p><strong>3. Indus Valley (2600-1900 BC):</strong> Modern Pakistan/India. Advanced city planning, grid streets, drainage.</p>
+<p><strong>4. Chinese (1600 BC onwards):</strong> Along Yellow River. Bronze technology, oracle bone writing.</p>
+<p><strong>5. Greek (800-146 BC):</strong> Birthplace of democracy. Socrates, Plato, Aristotle. Olympic Games.</p>
 
 <h4>Practice Questions</h4>
 <ol>
@@ -494,51 +981,34 @@ const G6_HISTORY = {
 `
 };
 
+// G6 Geography
 const G6_GEOGRAPHY = {
     'maps-directions': `
 <h3>Maps & Directions</h3>
-<h4>What is a Map?</h4>
-<p>A <strong>map</strong> is a drawing or representation of an area on a flat surface. Maps help us understand locations, directions, and distances.</p>
-
 <h4>Types of Maps</h4>
 <ul>
-<li><strong>Physical Map:</strong> Shows natural features like mountains, rivers, lakes, forests</li>
-<li><strong>Political Map:</strong> Shows countries, cities, borders, and capitals</li>
-<li><strong>Thematic Map:</strong> Shows specific information like population, rainfall, crops</li>
-<li><strong>Topographic Map:</strong> Shows elevation and landforms using contour lines</li>
-<li><strong>Road Map:</strong> Shows roads, highways, and transportation routes</li>
+<li><strong>Physical Map:</strong> Shows natural features (mountains, rivers, lakes)</li>
+<li><strong>Political Map:</strong> Shows countries, cities, borders</li>
+<li><strong>Thematic Map:</strong> Shows specific info (population, rainfall)</li>
+<li><strong>Topographic Map:</strong> Shows elevation with contour lines</li>
 </ul>
 
 <h4>Parts of a Map</h4>
 <ul>
-<li><strong>Title:</strong> Tells what the map is about</li>
-<li><strong>Legend/Key:</strong> Explains the symbols used on the map</li>
+<li><strong>Title:</strong> What the map is about</li>
+<li><strong>Legend/Key:</strong> Explains symbols used</li>
 <li><strong>Compass Rose:</strong> Shows directions (N, S, E, W)</li>
-<li><strong>Scale:</strong> Shows the relationship between distances on the map and real distances</li>
-<li><strong>Grid Lines:</strong> Lines of latitude and longitude to find locations</li>
+<li><strong>Scale:</strong> Shows relationship between map and real distances</li>
+<li><strong>Grid Lines:</strong> Latitude and longitude</li>
 </ul>
 
 <h4>Cardinal Directions</h4>
-<ul>
-<li><strong>North (N)</strong> - Usually at the top of the map</li>
-<li><strong>South (S)</strong> - Opposite of north</li>
-<li><strong>East (E)</strong> - Where the sun rises</li>
-<li><strong>West (W)</strong> - Where the sun sets</li>
-</ul>
-
-<h4>Intermediate Directions</h4>
-<p>Northeast (NE), Northwest (NW), Southeast (SE), Southwest (SW)</p>
+<p><strong>North (N):</strong> Top of map. <strong>South (S):</strong> Bottom. <strong>East (E):</strong> Sunrise. <strong>West (W):</strong> Sunset.</p>
 
 <h4>Latitude and Longitude</h4>
-<ul>
-<li><strong>Latitude:</strong> Horizontal lines that measure distance north or south of the Equator</li>
-<li><strong>Longitude:</strong> Vertical lines that measure distance east or west of the Prime Meridian</li>
-<li>Sri Lanka is located between 5°N and 10°N latitude, and 79°E and 82°E longitude</li>
-</ul>
-
-<h4>Map Scale</h4>
-<p>A scale tells you how much real distance is represented on the map.</p>
-<p>Example: 1:100,000 scale means 1 cm on the map = 1 km in real life</p>
+<p><strong>Latitude:</strong> Horizontal lines (north/south of Equator)</p>
+<p><strong>Longitude:</strong> Vertical lines (east/west of Prime Meridian)</p>
+<p>Sri Lanka: 5°N - 10°N latitude, 79°E - 82°E longitude</p>
 
 <h4>Practice Questions</h4>
 <ol>
@@ -550,193 +1020,96 @@ const G6_GEOGRAPHY = {
 
     'earths-surface-landforms': `
 <h3>Earth's Surface & Landforms</h3>
-<h4>The Earth's Surface</h4>
-<p>The Earth's surface is made up of <strong>land</strong> (29%) and <strong>water</strong> (71%). The surface is constantly changing due to natural processes.</p>
-
 <h4>Major Landforms</h4>
-
-<p><strong>1. Mountains</strong></p>
 <ul>
-<li>High, elevated land with steep sides and peaks</li>
-<li><strong>Fold Mountains:</strong> Formed when tectonic plates collide (Himalayas, Alps)</li>
-<li><strong>Volcanic Mountains:</strong> Formed by volcanic eruptions (Mount Fuji, Kilimanjaro)</li>
-<li><strong>Block Mountains:</strong> Formed when the Earth's crust cracks and lifts</li>
-<li>Sri Lanka's highest peak: Pidurutalagala (2,524 m)</li>
+<li><strong>Mountains:</strong> High, steep land. Fold mountains (Himalayas), volcanic (Fuji), block mountains.</li>
+<li><strong>Hills:</strong> Lower than mountains, less steep.</li>
+<li><strong>Plateaus:</strong> Flat, elevated land (Tibetan Plateau).</li>
+<li><strong>Plains:</strong> Flat land at low elevation. Good for farming.</li>
+<li><strong>Valleys:</strong> Low land between hills/mountains.</li>
+<li><strong>Deserts:</strong> Very dry, less than 250 mm rain per year.</li>
 </ul>
 
-<p><strong>2. Hills</strong></p>
+<h4>Coastal Landforms</h4>
 <ul>
-<li>Lower and less steep than mountains</li>
-<li>Often covered with forests or used for farming</li>
-</ul>
-
-<p><strong>3. Plateaus</strong></p>
-<ul>
-<li>Flat, elevated land that rises sharply above surrounding areas</li>
-<li>Tibetan Plateau - the highest plateau in the world</li>
-<li>Used for farming and settlements</li>
-</ul>
-
-<p><strong>4. Plains</strong></p>
-<ul>
-<li>Flat or gently rolling land at low elevation</li>
-<li>Good for farming and building cities</li>
-<li>Northern Sri Lanka is mostly plains</li>
-</ul>
-
-<p><strong>5. Valleys</strong></p>
-<ul>
-<li>Low land between hills or mountains</li>
-<li><strong>V-shaped valleys:</strong> Created by rivers</li>
-<li><strong>U-shaped valleys:</strong> Created by glaciers</li>
-</ul>
-
-<p><strong>6. Deserts</strong></p>
-<ul>
-<li>Dry areas with very little rainfall (less than 250 mm per year)</li>
-<li>Cover about 20% of Earth's land surface</li>
-<li>Can be hot (Sahara) or cold (Antarctica, Gobi)</li>
-</ul>
-
-<p><strong>7. Coastal Landforms</strong></p>
-<ul>
-<li><strong>Beaches:</strong> Sandy or pebbly shores along coastlines</li>
+<li><strong>Beaches:</strong> Sandy shores along coastlines</li>
 <li><strong>Cliffs:</strong> Steep rock faces along the coast</li>
 <li><strong>Bays:</strong> Curved inlets of the sea</li>
 <li><strong>Peninsulas:</strong> Land surrounded by water on three sides</li>
-<li><strong>Islands:</strong> Land completely surrounded by water (Sri Lanka is an island)</li>
+<li><strong>Islands:</strong> Land completely surrounded by water</li>
 </ul>
 
-<h4>Water Bodies</h4>
-<ul>
-<li><strong>Oceans:</strong> Largest water bodies (Pacific, Atlantic, Indian, Southern, Arctic)</li>
-<li><strong>Seas:</strong> Smaller than oceans, partly enclosed by land</li>
-<li><strong>Rivers:</strong> Flowing water from higher to lower land</li>
-<li><strong>Lakes:</strong> Body of water surrounded by land</li>
-<li><strong>Waterfalls:</strong> Where rivers flow over a steep drop</li>
-</ul>
+<h4>Highest Peak in Sri Lanka</h4>
+<p>Pidurutalagala (2,524 m)</p>
 
 <h4>Practice Questions</h4>
 <ol>
-<li>Name three types of mountains and how they are formed</li>
-<li>What is the difference between a mountain and a hill?</li>
-<li>What is the highest mountain peak in Sri Lanka?</li>
+<li>Name three types of mountains</li>
+<li>What is the highest mountain in Sri Lanka?</li>
+<li>What is the difference between a bay and a peninsula?</li>
 </ol>
 `,
 
     'provinces-districts': `
 <h3>Provinces & Districts of Sri Lanka</h3>
-<h4>Administrative Divisions</h4>
-<p>Sri Lanka is divided into <strong>9 provinces</strong> and <strong>25 districts</strong> for administrative purposes.</p>
-
 <h4>The 9 Provinces</h4>
 <ol>
-<li><strong>Western Province:</strong> Colombo (capital), Gampaha, Kalutara. The most populated and economically developed province.</li>
-<li><strong>Central Province:</strong> Kandy, Matale, Nuwara Eliya. Known for tea plantations and cool climate.</li>
-<li><strong>Southern Province:</strong> Galle, Matara, Hambantota. Famous for beaches and the port of Hambantota.</li>
-<li><strong>Northern Province:</strong> Jaffna, Kilinochchi, Mannar, Mullaitivu, Vavuniya. Tamil culture and heritage.</li>
-<li><strong>Eastern Province:</strong> Batticaloa, Ampara, Trincomalee. Natural harbors and beaches.</li>
-<li><strong>North Western Province:</strong> Kurunegala, Puttalam. Coconut plantations and agriculture.</li>
-<li><strong>North Central Province:</strong> Anuradhapura, Polonnaruwa. Ancient kingdoms and reservoirs.</li>
-<li><strong>Uva Province:</strong> Badulla, Monaragala. Mountains and tea estates.</li>
-<li><strong>Sabaragamuwa Province:</strong> Ratnapura, Kegalle. Gem mining and rainforests.</li>
+<li><strong>Western:</strong> Colombo (capital), Gampaha, Kalutara</li>
+<li><strong>Central:</strong> Kandy, Matale, Nuwara Eliya</li>
+<li><strong>Southern:</strong> Galle, Matara, Hambantota</li>
+<li><strong>Northern:</strong> Jaffna, Kilinochchi, Mannar, Mullaitivu, Vavuniya</li>
+<li><strong>Eastern:</strong> Batticaloa, Ampara, Trincomalee</li>
+<li><strong>North Western:</strong> Kurunegala, Puttalam</li>
+<li><strong>North Central:</strong> Anuradhapura, Polonnaruwa</li>
+<li><strong>Uva:</strong> Badulla, Monaragala</li>
+<li><strong>Sabaragamuwa:</strong> Ratnapura, Kegalle</li>
 </ol>
-
-<h4>Important Cities</h4>
-<ul>
-<li><strong>Colombo:</strong> Commercial capital and largest city</li>
-<li><strong>Sri Jayawardenepura Kotte:</strong> Administrative capital</li>
-<li><strong>Kandy:</strong> Hill capital, Temple of the Tooth</li>
-<li><strong>Jaffna:</strong> Cultural capital of Northern Province</li>
-<li><strong>Galle:</strong> Dutch fort city, UNESCO heritage site</li>
-<li><strong>Trincomalee:</strong> Natural deep-water harbor</li>
-</ul>
 
 <h4>Key Facts</h4>
 <ul>
-<li>Largest Province: Northern Province (by area)</li>
-<li>Smallest Province: Southern Province (by area)</li>
+<li>Largest Province: Northern (by area)</li>
 <li>Most Populated: Western Province</li>
-<li>Least Populated: Uva Province</li>
-<li>Largest District: Anuradhapura</li>
-<li>Smallest District: Colombo</li>
+<li>25 Districts total</li>
 </ul>
 
 <h4>Practice Questions</h4>
 <ol>
-<li>How many provinces and districts are there in Sri Lanka?</li>
+<li>How many provinces and districts in Sri Lanka?</li>
 <li>What is the capital of Sri Lanka?</li>
-<li>Name the province where you live and two districts in it</li>
+<li>Name the province where you live</li>
 </ol>
 `,
 
     'climate-vegetation': `
 <h3>Climate & Vegetation of Sri Lanka</h3>
-<h4>Climate of Sri Lanka</h4>
-<p>Sri Lanka has a <strong>tropical climate</strong> because it is close to the equator. The climate is warm throughout the year with average temperatures of 27-30°C in lowlands and 15-20°C in the central hills.</p>
-
 <h4>Monsoon Seasons</h4>
-<p>Sri Lanka has two main monsoon seasons:</p>
 <ul>
-<li><strong>Southwest Monsoon (May-September):</strong> Brings rain to the southwestern part of the country. The wind comes from the Indian Ocean.</li>
-<li><strong>Northeast Monsoon (December-February):</strong> Brings rain to the northern and eastern parts. The wind comes from the Bay of Bengal.</li>
-<li><strong>Inter-monsoon periods (March-April, October-November):</strong> Convectional rains with afternoon thunderstorms.</li>
+<li><strong>Southwest Monsoon (May-Sep):</strong> Rain to southwestern part</li>
+<li><strong>Northeast Monsoon (Dec-Feb):</strong> Rain to northern and eastern parts</li>
 </ul>
 
 <h4>Climate Zones</h4>
 <ul>
-<li><strong>Wet Zone:</strong> Southwestern part. Receives over 2,500 mm rainfall annually. Rain throughout the year.</li>
-<li><strong>Dry Zone:</strong> Northern and eastern parts. Receives 1,250-1,750 mm rainfall. Long dry season.</li>
-<li><strong>Intermediate Zone:</strong> Between wet and dry zones. Receives 1,750-2,500 mm rainfall.</li>
-<li><strong>Arid Zone:</strong> Southeast (Hambantota area). Less than 1,250 mm rainfall.</li>
+<li><strong>Wet Zone:</strong> Southwest, >2,500 mm rain. Rainforests, rubber, tea.</li>
+<li><strong>Dry Zone:</strong> North/East, 1,250-1,750 mm. Paddy cultivation.</li>
+<li><strong>Intermediate Zone:</strong> 1,750-2,500 mm.</li>
+<li><strong>Arid Zone:</strong> Southeast, <1,250 mm.</li>
 </ul>
 
 <h4>Natural Vegetation</h4>
-<p>The climate determines what types of plants grow naturally in each area.</p>
-
-<p><strong>1. Tropical Rainforest (Wet Zone)</strong></p>
 <ul>
-<li>Dense forests with tall trees (30-45 m)</li>
-<li>High biodiversity - many species of trees, plants, animals</li>
-<li>Sinharaja Rainforest is a famous example</li>
-<li>Ebony, mahogany, rubber, and many medicinal plants</li>
-</ul>
-
-<p><strong>2. Dry Mixed Evergreen Forests (Dry Zone)</strong></p>
-<ul>
-<li>More open forests with smaller trees</li>
-<li>Trees shed leaves during the dry season</li>
-<li>Palu, weera, and satinwood trees</li>
-<li>National parks like Yala, Wilpattu are in this zone</li>
-</ul>
-
-<p><strong>3. Montane Forests (Central Highlands)</strong></p>
-<ul>
-<li>Found at high elevations above 1,500 m</li>
-<li>Cooler temperatures, misty conditions</li>
-<li>Horton Plains National Park</li>
-<li>Unique plants like rhododendrons and ferns</li>
-</ul>
-
-<p><strong>4. Grasslands (Patana)</strong></p>
-<ul>
-<li>Found in high elevations above 2,000 m</li>
-<li>Grasses and small shrubs</li>
-<li>Horton Plains - known as "World's End"</li>
-</ul>
-
-<p><strong>5. Mangroves & Coastal Vegetation</strong></p>
-<ul>
-<li>Found along the coastline and lagoons</li>
-<li>Salt-tolerant plants</li>
-<li>Important for coastal protection and fish breeding</li>
+<li><strong>Tropical Rainforest:</strong> Dense, tall trees, high biodiversity (Sinharaja)</li>
+<li><strong>Dry Mixed Forests:</strong> Smaller trees, national parks (Yala, Wilpattu)</li>
+<li><strong>Montane Forests:</strong> High elevations, cool climate (Horton Plains)</li>
+<li><strong>Grasslands (Patana):</strong> Above 2,000 m</li>
+<li><strong>Mangroves:</strong> Coastal areas, salt-tolerant</li>
 </ul>
 
 <h4>Practice Questions</h4>
 <ol>
-<li>What are the two main monsoon seasons in Sri Lanka?</li>
-<li>Name the four climate zones and their characteristics</li>
-<li>What type of vegetation is found in the Wet Zone?</li>
+<li>What are the two monsoon seasons in Sri Lanka?</li>
+<li>Name the four climate zones</li>
+<li>What vegetation is found in the Wet Zone?</li>
 </ol>
 `
 };
