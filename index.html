@@ -807,8 +807,25 @@
 </button>
 
 <!-- ============================================
+     CONTENT VIEWER MODAL
+     ============================================ -->
+<div class="content-viewer" id="contentViewer">
+    <div class="content-backdrop"></div>
+    <div class="content-viewer-inner">
+        <div class="content-viewer-header">
+            <span style="font-family: var(--font-heading); font-weight: 600; color: var(--color-foreground);">
+                📖 Study Materials Viewer
+            </span>
+            <button class="content-close" onclick="closeContentViewer()">✕</button>
+        </div>
+        <div id="contentViewerBody"></div>
+    </div>
+</div>
+
+<!-- ============================================
      SCRIPTS
      ============================================ -->
+<script src="js/data.js"></script>
 <script src="js/main.js"></script>
 
 <!-- GitHub OAuth & Site Info (admin use) -->

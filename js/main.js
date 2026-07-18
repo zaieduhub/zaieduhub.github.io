@@ -15,12 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
     initGradeTabs();
     initQuiz();
     initMemoryGame();
+    initContentViewer();
     initBackToTop();
     initSmoothScroll();
     initCounters();
     initContactCards();
     initBotCards();
 });
+
+// Global content viewer state
+let viewerState = {
+    grade: '',
+    subjectKey: '',
+    subject: null,
+    unitIndex: 0,
+    topicIndex: 0
+};
 
 // =============================================
 // 2. LOADING SCREEN
@@ -192,7 +202,7 @@ function initScrollAnimations() {
 }
 
 // =============================================
-// 7. GRADE TABS (Study Materials Filter)
+// 7. GRADE TABS & CONTENT VIEWER (Real Study Materials)
 // =============================================
 function initGradeTabs() {
     const tabs = document.querySelectorAll('.grade-tab');
@@ -200,72 +210,41 @@ function initGradeTabs() {
     
     if (!tabs.length || !subjectGrid) return;
 
-    // Subject data organized by grade
-    const subjects = {
-        'al': [
-            { name: 'Combined Maths', icon: '📐', color: '#667eea', desc: 'Pure Mathematics, Applied Mathematics & Statistics', count: '24+ resources' },
-            { name: 'Physics', icon: '⚡', color: '#f093fb', desc: 'Mechanics, Thermodynamics, Optics & Electromagnetism', count: '20+ resources' },
-            { name: 'Chemistry', icon: '🧪', color: '#4facfe', desc: 'Organic, Inorganic & Physical Chemistry', count: '22+ resources' },
-            { name: 'Biology', icon: '🧬', color: '#43e97b', desc: 'Botany, Zoology & Human Biology', count: '18+ resources' },
-            { name: 'ICT', icon: '💻', color: '#fa709a', desc: 'Programming, Databases, Networks & Web Development', count: '16+ resources' },
-            { name: 'English', icon: '📖', color: '#f6d365', desc: 'Literature, Language & Communication Skills', count: '15+ resources' },
-            { name: 'Accounting', icon: '📊', color: '#a18cd1', desc: 'Financial Accounting, Costing & Management', count: '14+ resources' },
-            { name: 'Economics', icon: '💰', color: '#fbc2eb', desc: 'Microeconomics, Macroeconomics & Development', count: '12+ resources' },
-            { name: 'Business Studies', icon: '🏢', color: '#89f7fe', desc: 'Management, Marketing & Entrepreneurship', count: '13+ resources' },
-            { name: 'Sinhala', icon: '📝', color: '#fddb92', desc: 'Literature, Grammar & Creative Writing', count: '16+ resources' }
-        ],
-        'ol': [
-            { name: 'Mathematics', icon: '📐', color: '#667eea', desc: 'Algebra, Geometry, Trigonometry & Statistics', count: '30+ resources' },
-            { name: 'Science', icon: '🔬', color: '#43e97b', desc: 'Physics, Chemistry & Biology for OL', count: '28+ resources' },
-            { name: 'English', icon: '📖', color: '#f6d365', desc: 'Grammar, Literature & Essay Writing', count: '25+ resources' },
-            { name: 'Sinhala', icon: '📝', color: '#fddb92', desc: 'Language, Literature & Poetry', count: '22+ resources' },
-            { name: 'History', icon: '🏛️', color: '#a18cd1', desc: 'Sri Lankan & World History', count: '18+ resources' },
-            { name: 'Geography', icon: '🌍', color: '#89f7fe', desc: 'Physical & Human Geography', count: '16+ resources' },
-            { name: 'ICT', icon: '💻', color: '#fa709a', desc: 'Computer Science & Technology', count: '15+ resources' },
-            { name: 'Commerce', icon: '💰', color: '#fbc2eb', desc: 'Business & Accounting Fundamentals', count: '14+ resources' },
-            { name: 'Buddhism', icon: '☸️', color: '#f6d365', desc: 'Buddhist Civilization & Philosophy', count: '12+ resources' },
-            { name: 'Tamil', icon: '📝', color: '#667eea', desc: 'Tamil Language & Literature', count: '10+ resources' }
-        ],
-        'grade6-9': [
-            { name: 'Mathematics', icon: '📐', color: '#667eea', desc: 'Basic Arithmetic, Algebra & Geometry', count: '20+ resources' },
-            { name: 'Science', icon: '🔬', color: '#43e97b', desc: 'General Science & Nature Studies', count: '18+ resources' },
-            { name: 'English', icon: '📖', color: '#f6d365', desc: 'Reading, Writing & Vocabulary', count: '16+ resources' },
-            { name: 'Sinhala', icon: '📝', color: '#fddb92', desc: 'Reading, Writing & Grammar', count: '15+ resources' },
-            { name: 'History', icon: '🏛️', color: '#a18cd1', desc: 'Sri Lankan History & World Events', count: '12+ resources' },
-            { name: 'Geography', icon: '🌍', color: '#89f7fe', desc: 'Our World & Environment', count: '11+ resources' },
-            { name: 'Buddhism', icon: '☸️', color: '#f6d365', desc: 'Moral Education & Values', count: '10+ resources' },
-            { name: 'Health', icon: '🏥', color: '#fa709a', desc: 'Physical & Mental Wellbeing', count: '8+ resources' }
-        ],
-        'grade1-5': [
-            { name: 'Mathematics', icon: '🔢', color: '#667eea', desc: 'Numbers, Counting & Basic Operations', count: '15+ resources' },
-            { name: 'English', icon: '📖', color: '#f6d365', desc: 'ABCs, Phonics & Simple Words', count: '14+ resources' },
-            { name: 'Sinhala', icon: '📝', color: '#fddb92', desc: 'Akuru, Vachana & Kaviy', count: '12+ resources' },
-            { name: 'Environment', icon: '🌿', color: '#43e97b', desc: 'Our Surroundings & Nature', count: '10+ resources' },
-            { name: 'Buddhism', icon: '☸️', color: '#a18cd1', desc: 'Good Habits & Values', count: '8+ resources' },
-            { name: 'Tamil', icon: '📝', color: '#89f7fe', desc: 'Basic Tamil Language', count: '6+ resources' }
-        ]
-    };
+    // Helper to get subjects for a grade
+    function getSubjectsForGrade(grade) {
+        const content = getGradeSubjects(grade);
+        const list = [];
+        for (const [key, val] of Object.entries(content)) {
+            const unitCount = val.units ? val.units.length : 0;
+            const topicCount = val.units ? val.units.reduce((sum, u) => sum + (u.topics ? u.topics.length : 0), 0) : 0;
+            list.push({
+                key: key,
+                name: val.name,
+                icon: val.icon || '📚',
+                color: val.color || '#0D9488',
+                desc: `${unitCount} units, ${topicCount} topics with complete study notes`,
+                count: `${topicCount}+ topics`
+            });
+        }
+        return list;
+    }
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            // Update active tab
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-
-            // Get grade key
             const grade = tab.dataset.grade;
-            const gradeSubjects = subjects[grade] || subjects['al'];
-
-            // Render subjects
-            renderSubjects(gradeSubjects);
+            const subjects = getSubjectsForGrade(grade);
+            renderSubjects(subjects, grade);
         });
     });
 
     // Render initial subjects (AL)
-    renderSubjects(subjects['al']);
+    const initialSubjects = getSubjectsForGrade('al');
+    renderSubjects(initialSubjects, 'al');
 }
 
-function renderSubjects(subjects) {
+function renderSubjects(subjects, grade) {
     const grid = document.getElementById('subjectGrid');
     if (!grid) return;
 
@@ -274,7 +253,6 @@ function renderSubjects(subjects) {
     subjects.forEach((subject, index) => {
         const card = document.createElement('div');
         card.className = `subject-card stagger-item`;
-        card.style.transitionDelay = `${index * 50}ms`;
         
         card.innerHTML = `
             <div class="subject-card-icon" style="background: ${subject.color}20; color: ${subject.color}">
@@ -286,14 +264,13 @@ function renderSubjects(subjects) {
                 <span>📚 ${subject.count}</span>
                 <span>⭐ Free Access</span>
             </div>
-            <button class="btn btn-primary btn-sm subject-card-btn" onclick="showToast('📚 ${subject.name} - Study materials are being uploaded! Check back soon.', 'info')">
-                View Materials
+            <button class="btn btn-primary btn-sm subject-card-btn" onclick="openSubjectViewer('${grade}', '${subject.key}')">
+                📖 Study Now
             </button>
         `;
         
         grid.appendChild(card);
         
-        // Trigger scroll animation after adding to DOM
         requestAnimationFrame(() => {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -309,6 +286,148 @@ function renderSubjects(subjects) {
         });
     });
 }
+
+// =============================================
+// 7b. CONTENT VIEWER (Subject/Topic Viewer Modal)
+// =============================================
+function initContentViewer() {
+    const modal = document.getElementById('contentViewer');
+    if (!modal) return;
+    
+    // Close buttons
+    modal.querySelectorAll('.content-close, .content-backdrop').forEach(el => {
+        if (el) el.addEventListener('click', closeContentViewer);
+    });
+    
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeContentViewer();
+    });
+}
+
+window.openSubjectViewer = function(grade, subjectKey) {
+    const content = getSubjectContent(grade.replace('-', '_'), subjectKey);
+    if (!content) {
+        showToast('📚 Content for this subject is being prepared!', 'info');
+        return;
+    }
+    
+    viewerState.grade = grade;
+    viewerState.subjectKey = subjectKey;
+    viewerState.subject = content;
+    viewerState.unitIndex = 0;
+    viewerState.topicIndex = 0;
+    
+    renderContentViewer();
+};
+
+function renderContentViewer() {
+    const modal = document.getElementById('contentViewer');
+    const body = document.getElementById('contentViewerBody');
+    if (!modal || !body || !viewerState.subject) return;
+    
+    const subject = viewerState.subject;
+    const units = subject.units || [];
+    const unit = units[viewerState.unitIndex];
+    const topics = unit ? unit.topics || [] : [];
+    const topic = topics[viewerState.topicIndex];
+    
+    // Build sidebar (unit list)
+    let sidebarHTML = `<div class="content-sidebar-header">
+        <span class="content-sidebar-icon">${subject.icon || '📚'}</span>
+        <h3>${subject.name}</h3>
+    </div>
+    <div class="content-sidebar-units">`;
+    
+    units.forEach((u, ui) => {
+        const isActiveUnit = ui === viewerState.unitIndex;
+        sidebarHTML += `<div class="content-unit-group ${isActiveUnit ? 'active' : ''}">
+            <div class="content-unit-title" onclick="selectUnit(${ui})">
+                <span>${u.title}</span>
+                <span class="content-unit-count">${u.topics ? u.topics.length : 0}</span>
+            </div>`;
+        if (u.topics && isActiveUnit) {
+            u.topics.forEach((t, ti) => {
+                const isActiveTopic = ti === viewerState.topicIndex;
+                sidebarHTML += `<div class="content-topic-item ${isActiveTopic ? 'active' : ''}" onclick="selectTopic(${ui}, ${ti})">
+                    📄 ${t.title}
+                </div>`;
+            });
+        }
+        sidebarHTML += `</div>`;
+    });
+    
+    sidebarHTML += `</div>`;
+    
+    // Build main content area
+    let mainHTML = '';
+    if (topic && topic.content) {
+        mainHTML = `<div class="content-topic-header">
+            <span class="content-breadcrumb">${subject.name} / ${unit ? unit.title : ''} / ${topic.title}</span>
+            <h2>${topic.title}</h2>
+        </div>
+        <div class="content-topic-body">${topic.content}</div>
+        <div class="content-topic-nav">
+            <button class="btn btn-outline btn-sm" onclick="navigateTopic(-1)" ${viewerState.topicIndex <= 0 ? 'disabled' : ''}>
+                ← Previous
+            </button>
+            <span class="content-progress">Topic ${viewerState.topicIndex + 1} of ${topics.length}</span>
+            <button class="btn btn-primary btn-sm" onclick="navigateTopic(1)" ${viewerState.topicIndex >= topics.length - 1 ? 'disabled' : ''}>
+                Next →
+            </button>
+        </div>`;
+    } else if (unit && unit.topics) {
+        mainHTML = `<div class="content-unit-landing">
+            <h2>${unit.title}</h2>
+            <p>Select a topic from the sidebar to start studying.</p>
+            <div class="content-topic-grid">
+                ${unit.topics.map((t, ti) => `
+                    <div class="content-topic-card" onclick="selectTopic(${viewerState.unitIndex}, ${ti})">
+                        <span class="content-topic-card-icon">📄</span>
+                        <span>${t.title}</span>
+                    </div>
+                `).join('')}
+            </div>
+        </div>`;
+    }
+    
+    body.innerHTML = `<div class="content-sidebar">${sidebarHTML}</div>
+        <div class="content-main">${mainHTML}</div>`;
+    
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+window.selectUnit = function(index) {
+    if (viewerState.subject && viewerState.subject.units && viewerState.subject.units[index]) {
+        viewerState.unitIndex = index;
+        viewerState.topicIndex = 0;
+        renderContentViewer();
+    }
+};
+
+window.selectTopic = function(unitIndex, topicIndex) {
+    viewerState.unitIndex = unitIndex;
+    viewerState.topicIndex = topicIndex;
+    renderContentViewer();
+};
+
+window.navigateTopic = function(direction) {
+    const topics = viewerState.subject.units[viewerState.unitIndex].topics;
+    const newIndex = viewerState.topicIndex + direction;
+    if (newIndex >= 0 && newIndex < topics.length) {
+        viewerState.topicIndex = newIndex;
+        renderContentViewer();
+    }
+};
+
+window.closeContentViewer = function() {
+    const modal = document.getElementById('contentViewer');
+    if (modal) {
+        modal.classList.remove('open');
+        document.body.style.overflow = 'visible';
+    }
+};
 
 // =============================================
 // 8. GENERAL KNOWLEDGE QUIZ
