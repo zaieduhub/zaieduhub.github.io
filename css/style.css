@@ -575,7 +575,7 @@ ul {
 .lang-dropdown {
   position: absolute;
   top: calc(100% + 8px);
-  right: 80px;
+  right: 0;
   background: var(--color-surface);
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
@@ -650,7 +650,11 @@ ul {
 /* Mobile responsive for lang dropdown */
 @media (max-width: 768px) {
   .lang-dropdown {
-    right: 130px;
+    right: 52px;
+  }
+  
+  .lang-dropdown::before {
+    right: 24px;
   }
 }
 
