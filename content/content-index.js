@@ -1019,9 +1019,11 @@ function mergeGradeContent(gradeKey, contentData) {
                     .replace(/[^a-z0-9]+/g, '-')
                     .replace(/^-+|-+$/g, '');
                 
+                // Try exact match first, fall back to generated key if exact key doesn't exist
                 const finalKey = exactKey || generatedKey;
-                if (gradeContent[finalKey]) {
-                    topic.content = gradeContent[finalKey];
+                const contentToUse = gradeContent[finalKey] || gradeContent[generatedKey];
+                if (contentToUse) {
+                    topic.content = contentToUse;
                 }
             });
         });
