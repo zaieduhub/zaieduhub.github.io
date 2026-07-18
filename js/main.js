@@ -238,21 +238,26 @@ function initGradeTabs() {
 
     // Helper to get subjects for a grade
     function getSubjectsForGrade(grade) {
-        const content = getGradeSubjects(grade, currentMedium);
+        const content = getGradeSubjects(grade);
         const list = [];
         for (const [key, val] of Object.entries(content)) {
             const unitCount = val.units ? val.units.length : 0;
             const topicCount = val.units ? val.units.reduce((sum, u) => sum + (u.topics ? u.topics.length : 0), 0) : 0;
+            // Include medium info in description
+            const mediumNames = { 'si': '🇱🇰 සිංහල', 'ta': '🇱🇰 தமிழ்', 'en': '🇬🇧 English' };
+            const mediumLabel = val.mediums ? val.mediums.join(', ') : 'All Mediums';
             list.push({
                 key: key,
                 name: val.name,
                 icon: val.icon || '📚',
                 color: val.color || '#0D9488',
-                desc: `${unitCount} ${__('materials.units')}, ${topicCount} ${__('materials.topics')}`,
-                count: `${topicCount}+ ${__('materials.topics').split(' ').pop()}`
+                desc: `${unitCount} units, ${topicCount} topics`,
+                count: `${topicCount}+ topics`,
+                mediums: val.mediums || ['si', 'ta', 'en']
             });
         }
-        return list;
+        // Filter by medium if subject has the 'mediums' property
+        return list.filter(s => s.mediums.includes(currentMedium));
     }
 
     tabs.forEach(tab => {
