@@ -856,25 +856,101 @@ const ZAI_CONTENT_EXPANDED = {
 // ============================================
 
 // Merge grade content into the expanded system
-function mergeGradeContent(gradeKey, contentMap, contentData) {
+// Maps expanded keys to content file keys
+const GRADE_KEY_MAP = {
+    'ol': {
+        'mathematics': 'mathematics',
+        'science': 'science',
+        'history': 'history',
+        'english': 'english',
+        'religion': 'religion',
+        'geography': 'geography'
+    },
+    'grade6_9': {
+        'mathematics-g6': 'mathematics',
+        'science-g6': 'science',
+        'english-g6': 'english',
+        'history-g6': 'history',
+        'geography-g6': 'geography'
+    },
+    'grade1_5': {
+        'mathematics-g1': 'mathematics',
+        'english-g1': 'english',
+        'sinhala-g1': 'sinhala',
+        'tamil-g1': 'tamil',
+        'environment': 'environment'
+    }
+};
+
+// Map topic titles to content keys for each subject
+const TOPIC_KEY_MAP = {
+    // O/L Mathematics
+    'Sets & Real Numbers': 'sets-real-numbers',
+    'Algebraic Expressions': 'algebraic-expressions',
+    'Equations & Inequalities': 'equations-inequalities',
+    // O/L Science
+    'Force & Motion': 'force-motion',
+    'Energy & Work': 'energy-work',
+    'Electricity': 'electricity-ol',
+    'Light & Sound': 'light-sound',
+    // O/L History
+    'Ancient Sri Lanka - Anuradhapura Period': 'ancient-sri-lanka',
+    'Polonnaruwa & Medieval Period': 'polonnaruwa-medieval',
+    'Colonial Period': 'colonial-period',
+    'Independence & Modern Sri Lanka': 'independence-modern',
+    // O/L Geography
+    'Earth Structure & Landforms': 'earth-structure',
+    'Climate & Weather': 'climate-weather',
+    // O/L English
+    'Grammar & Parts of Speech': 'grammar-parts',
+    // G6-9 Maths
+    'Whole Numbers & Decimals': 'whole-numbers',
+    'Fractions & Percentages': 'fractions',
+    // G6-9 Science
+    'Plant Diversity': 'plant-diversity',
+    'Force & Motion': 'force-motion-g6',
+    // G6-9 English
+    'Parts of Speech Basics': 'parts-of-speech-g6',
+    // G1-5 Maths
+    'Number Recognition (1-100)': 'number-recognition',
+    'Addition & Subtraction': 'addition-subtraction',
+    // G1-5 English
+    'Letters & Sounds': 'letters-sounds',
+    // G1-5 Sinhala
+    'හෝඩිය හඳුනා ගැනීම': 'hodiya',
+    // G1-5 Tamil
+    'உயிர் எழுத்துகள்': 'uyir-eluthukal',
+    // G1-5 Environment
+    'School & Home Environment': 'school-home'
+};
+
+function mergeGradeContent(gradeKey, contentData) {
     const grade = ZAI_CONTENT_EXPANDED[gradeKey];
     if (!grade) return;
     
+    const keyMap = GRADE_KEY_MAP[gradeKey] || {};
+    
     Object.entries(grade).forEach(([subjectKey, subject]) => {
         if (!subject.units) return;
+        
+        // Get the correct lookup key for the content file
+        const lookupKey = keyMap[subjectKey] || subjectKey;
+        const gradeContent = contentData[lookupKey];
+        if (!gradeContent) return;
+        
         subject.units.forEach(unit => {
             if (!unit.topics) return;
             unit.topics.forEach(topic => {
-                // Generate a key from the topic title for lookup
-                const topicKey = topic.title
+                // Look up by exact title first, then fall back to generated key
+                const exactKey = TOPIC_KEY_MAP[topic.title];
+                const generatedKey = topic.title
                     .toLowerCase()
                     .replace(/[^a-z0-9]+/g, '-')
                     .replace(/^-+|-+$/g, '');
                 
-                // Look up content from the grade-specific file
-                const gradeContent = contentData[subjectKey];
-                if (gradeContent && gradeContent[topicKey]) {
-                    topic.content = gradeContent[topicKey];
+                const finalKey = exactKey || generatedKey;
+                if (gradeContent[finalKey]) {
+                    topic.content = gradeContent[finalKey];
                 }
             });
         });
@@ -882,9 +958,9 @@ function mergeGradeContent(gradeKey, contentMap, contentData) {
 }
 
 // Merge all grade content
-if (typeof OL_CONTENT !== 'undefined') mergeGradeContent('ol', 'mathematics', OL_CONTENT);
-if (typeof G6_CONTENT !== 'undefined') mergeGradeContent('grade6_9', 'mathematics-g6', G6_CONTENT);
-if (typeof G1_CONTENT !== 'undefined') mergeGradeContent('grade1_5', 'mathematics-g1', G1_CONTENT);
+if (typeof OL_CONTENT !== 'undefined') mergeGradeContent('ol', OL_CONTENT);
+if (typeof G6_CONTENT !== 'undefined') mergeGradeContent('grade6_9', G6_CONTENT);
+if (typeof G1_CONTENT !== 'undefined') mergeGradeContent('grade1_5', G1_CONTENT);
 
 // ============================================
 // CONTENT LOADER FUNCTIONS
