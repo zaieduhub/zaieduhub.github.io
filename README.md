@@ -29,7 +29,7 @@ Simply open `index.html` in your browser, or visit [zaieduhub.github.io](https:/
 
 - **WhatsApp**: [+94 75 076 1016](https://wa.me/94750761016)
 - **Email**: ruzaith2007@gmail.com
-- **Telegram**: [@Zai2007_r](https://t.me/Zai2007_r)
+- **Telegram**: [@zaieditsofficial](https://t.me/zaieditsofficial)
 
 ## ❤️ Made by Zai Creations
 

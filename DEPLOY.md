@@ -99,4 +99,4 @@ The GitHub Actions workflow will automatically redeploy in ~1-2 minutes!
 
 *"Free quality education for every Sri Lankan student"*
 
-📧 ruzaith2007@gmail.com | 💬 +94 75 076 1016 | ✈️ @Zai2007_r
+📧 ruzaith2007@gmail.com | 💬 +94 75 076 1016 | ✈️ @zaieditsofficial

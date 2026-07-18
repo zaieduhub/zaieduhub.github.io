@@ -896,7 +896,7 @@ function initBotCards() {
                 window.open('https://wa.me/94750761016', '_blank');
             } else if (botName.includes('Telegram')) {
                 showToast('🤖 Telegram Bot is being set up! Coming soon.', 'info');
-                window.open('https://t.me/Zai2007_r', '_blank');
+                window.open('https://t.me/zaieditsofficial', '_blank');
             }
         });
     });
