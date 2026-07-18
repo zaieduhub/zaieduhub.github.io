@@ -205,15 +205,40 @@ function initScrollAnimations() {
 // =============================================
 // 7. GRADE TABS & CONTENT VIEWER (Real Study Materials)
 // =============================================
+// Global state for medium filter
+let currentMedium = 'si';
+
 function initGradeTabs() {
     const tabs = document.querySelectorAll('.grade-tab');
+    const mediumTabs = document.querySelectorAll('.medium-tab');
     const subjectGrid = document.getElementById('subjectGrid');
     
     if (!tabs.length || !subjectGrid) return;
 
+    // Medium filter tabs
+    if (mediumTabs.length) {
+        mediumTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                mediumTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentMedium = tab.dataset.medium;
+                
+                // Re-render subjects with new medium filter
+                const activeGradeTab = document.querySelector('.grade-tab.active');
+                const grade = activeGradeTab ? activeGradeTab.dataset.grade : 'al';
+                const subjects = getSubjectsForGrade(grade);
+                renderSubjects(subjects, grade);
+                
+                // Show toast for medium change
+                const mediumNames = { 'si': '🇱🇰 සිංහල', 'ta': '🇱🇰 தமிழ்', 'en': '🇬🇧 English' };
+                showToast(`📚 Showing ${mediumNames[currentMedium]} medium materials`, 'success');
+            });
+        });
+    }
+
     // Helper to get subjects for a grade
     function getSubjectsForGrade(grade) {
-        const content = getGradeSubjects(grade);
+        const content = getGradeSubjects(grade, currentMedium);
         const list = [];
         for (const [key, val] of Object.entries(content)) {
             const unitCount = val.units ? val.units.length : 0;
@@ -223,8 +248,8 @@ function initGradeTabs() {
                 name: val.name,
                 icon: val.icon || '📚',
                 color: val.color || '#0D9488',
-                desc: `${unitCount} units, ${topicCount} topics with complete study notes`,
-                count: `${topicCount}+ topics`
+                desc: `${unitCount} ${__('materials.units')}, ${topicCount} ${__('materials.topics')}`,
+                count: `${topicCount}+ ${__('materials.topics').split(' ').pop()}`
             });
         }
         return list;
@@ -240,7 +265,8 @@ function initGradeTabs() {
         });
     });
 
-    // Render initial subjects (AL)
+    // Render initial subjects (AL - Sinhala medium)
+    currentMedium = 'si';
     const initialSubjects = getSubjectsForGrade('al');
     renderSubjects(initialSubjects, 'al');
 }
