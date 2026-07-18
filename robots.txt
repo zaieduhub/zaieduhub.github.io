@@ -1,0 +1,7 @@
+# Zai Education Hub - Robots.txt
+# Made by Zai Creations with Love ❤️
+
+User-agent: *
+Allow: /
+
+Sitemap: https://zaieduhub.github.io/sitemap.xml

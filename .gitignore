@@ -1,0 +1,31 @@
+# Zai Education Hub - .gitignore
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# Node (if used later)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Env files (secrets)
+.env
+.env.local
+.env.production
+
+# Temp files
+tmp/
+temp/
+*.log
+
+# Design system backups (generated, not source)
+design-system/
