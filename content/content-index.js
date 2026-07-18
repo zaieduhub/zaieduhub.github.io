@@ -852,6 +852,41 @@ const ZAI_CONTENT_EXPANDED = {
 };
 
 // ============================================
+// CONTENT MERGE: Load grade-specific study notes
+// ============================================
+
+// Merge grade content into the expanded system
+function mergeGradeContent(gradeKey, contentMap, contentData) {
+    const grade = ZAI_CONTENT_EXPANDED[gradeKey];
+    if (!grade) return;
+    
+    Object.entries(grade).forEach(([subjectKey, subject]) => {
+        if (!subject.units) return;
+        subject.units.forEach(unit => {
+            if (!unit.topics) return;
+            unit.topics.forEach(topic => {
+                // Generate a key from the topic title for lookup
+                const topicKey = topic.title
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, '-')
+                    .replace(/^-+|-+$/g, '');
+                
+                // Look up content from the grade-specific file
+                const gradeContent = contentData[subjectKey];
+                if (gradeContent && gradeContent[topicKey]) {
+                    topic.content = gradeContent[topicKey];
+                }
+            });
+        });
+    });
+}
+
+// Merge all grade content
+if (typeof OL_CONTENT !== 'undefined') mergeGradeContent('ol', 'mathematics', OL_CONTENT);
+if (typeof G6_CONTENT !== 'undefined') mergeGradeContent('grade6_9', 'mathematics-g6', G6_CONTENT);
+if (typeof G1_CONTENT !== 'undefined') mergeGradeContent('grade1_5', 'mathematics-g1', G1_CONTENT);
+
+// ============================================
 // CONTENT LOADER FUNCTIONS
 // ============================================
 
