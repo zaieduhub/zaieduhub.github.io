@@ -856,27 +856,68 @@ const ZAI_CONTENT_EXPANDED = {
 // ============================================
 
 // Get subjects for a grade, filtered by medium
+// Falls back to original ZAI_CONTENT from data.js for display
 function getGradeSubjects(grade, medium) {
     // Convert grade parameter to match data key
     const gradeKey = grade.replace('-', '_');
-    const content = ZAI_CONTENT_EXPANDED[gradeKey] || {};
+    
+    // Try expanded content first (has mediums property for filtering)
+    const expanded = ZAI_CONTENT_EXPANDED[gradeKey] || {};
     
     // Filter by medium if specified
+    let filtered;
     if (medium) {
-        return Object.fromEntries(
-            Object.entries(content).filter(([key, val]) => {
+        filtered = Object.fromEntries(
+            Object.entries(expanded).filter(([key, val]) => {
                 return !val.mediums || val.mediums.includes(medium);
             })
         );
+    } else {
+        filtered = expanded;
     }
-    return content;
+    
+    // If no expanded content, fall back to original data.js
+    if (Object.keys(filtered).length === 0 && typeof ZAI_CONTENT !== 'undefined') {
+        const original = ZAI_CONTENT[gradeKey];
+        if (original) return original;
+    }
+    
+    return filtered;
 }
 
 // Get full subject content by grade and subject key
+// Falls back to original ZAI_CONTENT from data.js for actual HTML notes
 function getSubjectContent(gradeKey, subjectKey) {
-    const grade = ZAI_CONTENT_EXPANDED[gradeKey];
-    if (!grade) return null;
-    return grade[subjectKey] || null;
+    // Try expanded content first (has metadata but may lack note HTML)
+    const expandedGrade = ZAI_CONTENT_EXPANDED[gradeKey];
+    
+    // Try original data.js content (has complete HTML study notes)
+    const originalGrade = typeof ZAI_CONTENT !== 'undefined' ? ZAI_CONTENT[gradeKey] : null;
+    const originalSubject = originalGrade ? originalGrade[subjectKey] : null;
+    
+    // If no expanded content exists, use original
+    if (!expandedGrade || !expandedGrade[subjectKey]) {
+        return originalSubject;
+    }
+    
+    // If original has actual content (HTML notes), merge with expanded metadata
+    if (originalSubject && originalSubject.units) {
+        const merged = JSON.parse(JSON.stringify(expandedGrade[subjectKey]));
+        // Copy the actual topic content from original
+        merged.units.forEach((unit, ui) => {
+            if (originalSubject.units[ui]) {
+                unit.topics.forEach((topic, ti) => {
+                    const origTopic = originalSubject.units[ui].topics[ti];
+                    if (origTopic && origTopic.content) {
+                        topic.content = origTopic.content;
+                    }
+                });
+            }
+        });
+        return merged;
+    }
+    
+    return expandedGrade[subjectKey] || null;
 }
 
 // Get source attribution for a content item
