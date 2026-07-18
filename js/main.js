@@ -366,11 +366,28 @@ function renderContentViewer() {
     const topics = unit ? unit.topics || [] : [];
     const topic = topics[viewerState.topicIndex];
     
+    // Determine source attribution
+    const sourceKey = subject.source || 'zai';
+    const sourceInfo = typeof getContentSource === 'function' ? getContentSource(sourceKey) : null;
+    const sourceBadge = sourceInfo ? 
+        `<span class="content-source-badge">📄 <strong>Source:</strong> <a href="${sourceInfo.url}" target="_blank">${sourceInfo.name}</a></span>` : '';
+    
+    // Check if topic has actual content
+    const hasContent = topic && topic.content && topic.content.length > 20;
+    const comingSoonMsg = !hasContent && topic ? 
+        `<div class="content-coming-soon">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">📝</div>
+            <h3>Content Being Prepared</h3>
+            <p>Detailed study notes for this topic are being prepared and will be available soon! Check back regularly for updates.</p>
+            <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--color-muted);">Meanwhile, refer to your official textbooks at <a href="https://www.edupub.gov.lk/" target="_blank">edupub.gov.lk</a></p>
+        </div>` : '';
+    
     // Build sidebar (unit list)
     let sidebarHTML = `<div class="content-sidebar-header">
         <span class="content-sidebar-icon">${subject.icon || '📚'}</span>
         <h3>${subject.name}</h3>
     </div>
+    ${sourceBadge}
     <div class="content-sidebar-units">`;
     
     units.forEach((u, ui) => {
@@ -395,7 +412,7 @@ function renderContentViewer() {
     
     // Build main content area
     let mainHTML = '';
-    if (topic && topic.content) {
+    if (topic && topic.content && topic.content.length > 20) {
         mainHTML = `<div class="content-topic-header">
             <span class="content-breadcrumb">${subject.name} / ${unit ? unit.title : ''} / ${topic.title}</span>
             <h2>${topic.title}</h2>
@@ -423,6 +440,15 @@ function renderContentViewer() {
                 `).join('')}
             </div>
         </div>`;
+    } else if (topic && (!topic.content || topic.content.length <= 20)) {
+        mainHTML = `<div class="content-coming-soon" style="text-align: center; padding: 4rem 2rem;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">📝</div>
+            <h3>${__('loading.preparing')}</h3>
+            <p style="color: var(--color-foreground-secondary); margin-top: 0.5rem;">Refer to official textbooks at <a href="https://www.edupub.gov.lk/" target="_blank" style="color: var(--color-primary);">edupub.gov.lk</a></p>
+            <p style="color: var(--color-muted); font-size: 0.875rem; margin-top: 1rem;">🔗 Source: <a href="https://www.nie.ac.lk/" target="_blank">National Institute of Education</a></p>
+        </div>`;
+        // Also show source in sidebar
+        mainHTML += `<div style="padding: 1rem 1.5rem; background: rgba(13, 148, 136, 0.05); border-top: 1px solid var(--color-border-light);">${sourceBadge}</div>`;
     }
     
     body.innerHTML = `<div class="content-sidebar">${sidebarHTML}</div>
