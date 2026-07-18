@@ -419,13 +419,13 @@ function getGradeSubjects(grade) {{
         welcome.pack(fill=tk.X, pady=20)
         
         tk.Label(welcome, text="🏫 Welcome to Zai CMS!", 
-                font=('Baloo 2', 24, 'bold'), bg=welcome.BG_COLOR, fg='#134E4A').pack()
+                font=('Baloo 2', 24, 'bold'), bg=self.BG_COLOR, fg='#134E4A').pack()
         
         tk.Label(welcome, text="Manage all your educational content with AI-powered tools", 
-                font=('Comic Neue', 14), bg=welcome.BG_COLOR, fg='#4B7A75').pack()
+                font=('Comic Neue', 14), bg=self.BG_COLOR, fg='#4B7A75').pack()
         
         # Stats cards
-        stats_frame = tk.Frame(welcome, bg=welcome.BG_COLOR)
+        stats_frame = tk.Frame(welcome, bg=self.BG_COLOR)
         stats_frame.pack(pady=20)
         
         grades = [('al', 'A/L', '#667eea'), ('ol', 'O/L', '#43e97b'), 
@@ -452,10 +452,10 @@ function getGradeSubjects(grade) {{
         
         # Quick actions
         actions_frame = tk.LabelFrame(f, text="⚡ Quick Actions", font=('Baloo 2', 14),
-                                      bg=f.BG_COLOR, fg='#134E4A', padx=20, pady=15)
+                                      bg=self.BG_COLOR, fg='#134E4A', padx=20, pady=15)
         actions_frame.pack(fill=tk.X, padx=40, pady=10)
         
-        btn_frame = tk.Frame(actions_frame, bg=actions_frame.BG_COLOR)
+        btn_frame = tk.Frame(actions_frame, bg=self.BG_COLOR)
         btn_frame.pack()
         
         self.make_btn(btn_frame, "📝 Open Content Manager", lambda: self.notebook.select(1), '#0D9488').pack(side=tk.LEFT, padx=5)
@@ -465,24 +465,24 @@ function getGradeSubjects(grade) {{
         
         # Gemini status
         gem_frame = tk.LabelFrame(f, text="🤖 AI Status", font=('Baloo 2', 14),
-                                  bg=f.BG_COLOR, fg='#134E4A', padx=20, pady=10)
+                                  bg=self.BG_COLOR, fg='#134E4A', padx=20, pady=10)
         gem_frame.pack(fill=tk.X, padx=40, pady=10)
         
         status_text = "✅ Gemini AI Connected & Ready!" if getattr(self, 'gemini_ready', False) else "⚠️ Gemini AI not connected"
         status_color = '#10B981' if getattr(self, 'gemini_ready', False) else '#DC2626'
         tk.Label(gem_frame, text=status_text, font=('Comic Neue', 12),
-                bg=gem_frame.BG_COLOR, fg=status_color).pack()
+                bg=self.BG_COLOR, fg=status_color).pack()
     
     # ─── Content Manager ────────────────────────────────────
     def build_content_manager(self):
         f = self.tab_content
         
         # Top: Grade selector and subject controls
-        top_frame = tk.Frame(f, bg=f.BG_COLOR)
+        top_frame = tk.Frame(f, bg=self.BG_COLOR)
         top_frame.pack(fill=tk.X, pady=(10, 5))
         
         tk.Label(top_frame, text="Grade:", font=('Baloo 2', 12), 
-                bg=top_frame.BG_COLOR, fg='#134E4A').pack(side=tk.LEFT, padx=5)
+                bg=self.BG_COLOR, fg='#134E4A').pack(side=tk.LEFT, padx=5)
         
         self.grade_var = tk.StringVar(value="al")
         grade_menu = ttk.Combobox(top_frame, textvariable=self.grade_var, 
@@ -495,15 +495,15 @@ function getGradeSubjects(grade) {{
         self.make_btn(top_frame, "🔄 Refresh", self.refresh_content_tree, '#64748B').pack(side=tk.RIGHT, padx=5)
         
         # Main: Tree + Editor split
-        main_pane = tk.PanedWindow(f, orient=tk.HORIZONTAL, bg=f.BG_COLOR)
+        main_pane = tk.PanedWindow(f, orient=tk.HORIZONTAL, bg=self.BG_COLOR)
         main_pane.pack(fill=tk.BOTH, expand=True, pady=5)
         
         # Left: Tree view
         left_frame = tk.LabelFrame(main_pane, text="📚 Content Tree", font=('Baloo 2', 12),
-                                   bg=f.BG_COLOR, fg='#134E4A', padx=5, pady=5)
+                                   bg=self.BG_COLOR, fg='#134E4A', padx=5, pady=5)
         main_pane.add(left_frame, width=400, minsize=300)
         
-        tree_frame = tk.Frame(left_frame, bg=left_frame.BG_COLOR)
+        tree_frame = tk.Frame(left_frame, bg=self.BG_COLOR)
         tree_frame.pack(fill=tk.BOTH, expand=True)
         
         self.content_tree = ttk.Treeview(tree_frame, columns=("type",), show="tree")
@@ -519,7 +519,7 @@ function getGradeSubjects(grade) {{
         self.content_tree.bind('<<TreeviewSelect>>', self.on_tree_select)
         
         # Tree action buttons
-        tree_actions = tk.Frame(left_frame, bg=left_frame.BG_COLOR)
+        tree_actions = tk.Frame(left_frame, bg=self.BG_COLOR)
         tree_actions.pack(fill=tk.X, pady=5)
         self.make_btn(tree_actions, "✏️ Edit", self.edit_selected, '#D97706').pack(side=tk.LEFT, padx=2)
         self.make_btn(tree_actions, "➕ Unit", self.add_unit_dialog, '#0D9488').pack(side=tk.LEFT, padx=2)
@@ -528,30 +528,30 @@ function getGradeSubjects(grade) {{
         
         # Right: Editor
         right_frame = tk.LabelFrame(main_pane, text="✏️ Content Editor", font=('Baloo 2', 12),
-                                    bg=f.BG_COLOR, fg='#134E4A', padx=5, pady=5)
+                                    bg=self.BG_COLOR, fg='#134E4A', padx=5, pady=5)
         main_pane.add(right_frame, width=700, minsize=400)
         
         # Editor fields
-        editor_frame = tk.Frame(right_frame, bg=right_frame.BG_COLOR)
+        editor_frame = tk.Frame(right_frame, bg=self.BG_COLOR)
         editor_frame.pack(fill=tk.BOTH, expand=True)
         
         # Title
         tk.Label(editor_frame, text="Title:", font=('Baloo 2', 11),
-                bg=editor_frame.BG_COLOR, fg='#134E4A').pack(anchor=tk.W)
+                bg=self.BG_COLOR, fg='#134E4A').pack(anchor=tk.W)
         self.edit_title = tk.Entry(editor_frame, font=('Comic Neue', 12), 
                                    bg='white', fg='#134E4A', relief=tk.SOLID, bd=1)
         self.edit_title.pack(fill=tk.X, pady=(0, 10))
         
         # Description (for subjects)
         tk.Label(editor_frame, text="Description:", font=('Baloo 2', 11),
-                bg=editor_frame.BG_COLOR, fg='#134E4A').pack(anchor=tk.W)
+                bg=self.BG_COLOR, fg='#134E4A').pack(anchor=tk.W)
         self.edit_desc = tk.Entry(editor_frame, font=('Comic Neue', 11),
                                   bg='white', fg='#134E4A', relief=tk.SOLID, bd=1)
         self.edit_desc.pack(fill=tk.X, pady=(0, 10))
         
         # Content (HTML for topics)
         tk.Label(editor_frame, text="Content (HTML):", font=('Baloo 2', 11),
-                bg=editor_frame.BG_COLOR, fg='#134E4A').pack(anchor=tk.W)
+                bg=self.BG_COLOR, fg='#134E4A').pack(anchor=tk.W)
         
         self.edit_content = scrolledtext.ScrolledText(
             editor_frame, wrap=tk.WORD, font=('Courier', 10),
@@ -561,12 +561,12 @@ function getGradeSubjects(grade) {{
         self.edit_content.pack(fill=tk.BOTH, expand=True, pady=(0, 10))
         
         # Save button
-        btn_row = tk.Frame(editor_frame, bg=editor_frame.BG_COLOR)
+        btn_row = tk.Frame(editor_frame, bg=self.BG_COLOR)
         btn_row.pack(fill=tk.X)
         self.make_btn(btn_row, "💾 Save Changes", self.save_editor, '#0D9488').pack(side=tk.RIGHT, padx=5)
         self.make_btn(btn_row, "🔄 Load Selected", self.load_selected_into_editor, '#64748B').pack(side=tk.RIGHT, padx=5)
         self.editor_info_label = tk.Label(btn_row, text="Select an item from the tree", font=('Comic Neue', 9),
-                                          bg=btn_row.BG_COLOR, fg='#4B7A75')
+                                          bg=self.BG_COLOR, fg='#4B7A75')
         self.editor_info_label.pack(side=tk.LEFT)
     
     def get_selection_info(self):
@@ -727,17 +727,17 @@ function getGradeSubjects(grade) {{
         dialog.grab_set()
         
         tk.Label(dialog, text="Subject Key (e.g., physics):", font=('Baloo 2', 11),
-                bg=dialog.BG_COLOR, fg='#134E4A').pack(pady=(15,5))
+                bg=self.BG_COLOR, fg='#134E4A').pack(pady=(15,5))
         key_entry = tk.Entry(dialog, font=('Comic Neue', 12), width=30)
         key_entry.pack(pady=5)
         
         tk.Label(dialog, text="Subject Name (e.g., Physics):", font=('Baloo 2', 11),
-                bg=dialog.BG_COLOR, fg='#134E4A').pack(pady=(10,5))
+                bg=self.BG_COLOR, fg='#134E4A').pack(pady=(10,5))
         name_entry = tk.Entry(dialog, font=('Comic Neue', 12), width=30)
         name_entry.pack(pady=5)
         
         tk.Label(dialog, text="Icon (emoji):", font=('Baloo 2', 11),
-                bg=dialog.BG_COLOR, fg='#134E4A').pack(pady=(10,5))
+                bg=self.BG_COLOR, fg='#134E4A').pack(pady=(10,5))
         icon_entry = tk.Entry(dialog, font=('Comic Neue', 12), width=10)
         icon_entry.insert(0, "📚")
         icon_entry.pack(pady=5)
@@ -802,7 +802,7 @@ function getGradeSubjects(grade) {{
         dialog.grab_set()
         
         tk.Label(dialog, text="Unit Title:", font=('Baloo 2', 11),
-                bg=dialog.BG_COLOR, fg='#134E4A').pack(pady=(15,5))
+                bg=self.BG_COLOR, fg='#134E4A').pack(pady=(15,5))
         title_entry = tk.Entry(dialog, font=('Comic Neue', 12), width=40)
         title_entry.pack(pady=5)
         
@@ -864,7 +864,7 @@ function getGradeSubjects(grade) {{
         dialog.grab_set()
         
         tk.Label(dialog, text="Topic Title:", font=('Baloo 2', 11),
-                bg=dialog.BG_COLOR, fg='#134E4A').pack(pady=(15,5))
+                bg=self.BG_COLOR, fg='#134E4A').pack(pady=(15,5))
         title_entry = tk.Entry(dialog, font=('Comic Neue', 12), width=40)
         title_entry.pack(pady=5)
         
@@ -979,40 +979,40 @@ function getGradeSubjects(grade) {{
             return
         
         # Top controls
-        control_frame = tk.Frame(f, bg=f.BG_COLOR)
+        control_frame = tk.Frame(f, bg=self.BG_COLOR)
         control_frame.pack(fill=tk.X, pady=10)
         
         tk.Label(control_frame, text="Generate Educational Content with AI", 
-                font=('Baloo 2', 16, 'bold'), bg=control_frame.BG_COLOR, fg='#134E4A').pack(anchor=tk.W)
+                font=('Baloo 2', 16, 'bold'), bg=self.BG_COLOR, fg='#134E4A').pack(anchor=tk.W)
         
         # Subject & Topic inputs
-        input_frame = tk.Frame(f, bg=f.BG_COLOR)
+        input_frame = tk.Frame(f, bg=self.BG_COLOR)
         input_frame.pack(fill=tk.X, pady=10)
         
         # Grade
         tk.Label(input_frame, text="Grade:", font=('Baloo 2', 11),
-                bg=input_frame.BG_COLOR, fg='#134E4A').grid(row=0, column=0, sticky=tk.W, padx=5)
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=0, column=0, sticky=tk.W, padx=5)
         self.ai_grade = ttk.Combobox(input_frame, values=["A/L", "O/L", "Grade 6-9", "Grade 1-5"], width=15)
         self.ai_grade.grid(row=0, column=1, padx=5, pady=5)
         self.ai_grade.set("A/L")
         
         # Subject
         tk.Label(input_frame, text="Subject:", font=('Baloo 2', 11),
-                bg=input_frame.BG_COLOR, fg='#134E4A').grid(row=0, column=2, sticky=tk.W, padx=5)
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=0, column=2, sticky=tk.W, padx=5)
         self.ai_subject = tk.Entry(input_frame, font=('Comic Neue', 11), width=25, relief=tk.SOLID, bd=1)
         self.ai_subject.grid(row=0, column=3, padx=5, pady=5)
         self.ai_subject.insert(0, "Combined Maths")
         
         # Topic
         tk.Label(input_frame, text="Topic:", font=('Baloo 2', 11),
-                bg=input_frame.BG_COLOR, fg='#134E4A').grid(row=0, column=4, sticky=tk.W, padx=5)
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=0, column=4, sticky=tk.W, padx=5)
         self.ai_topic = tk.Entry(input_frame, font=('Comic Neue', 11), width=30, relief=tk.SOLID, bd=1)
         self.ai_topic.grid(row=0, column=5, padx=5, pady=5)
         self.ai_topic.insert(0, "Differentiation")
         
         # Content type
         tk.Label(input_frame, text="Content Style:", font=('Baloo 2', 11),
-                bg=input_frame.BG_COLOR, fg='#134E4A').grid(row=1, column=0, sticky=tk.W, padx=5)
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=1, column=0, sticky=tk.W, padx=5)
         self.ai_style = ttk.Combobox(input_frame, 
             values=["📝 Study Notes", "📊 Summary & Key Points", "❓ Practice Questions", "🎯 Exam Tips", "📚 Complete Lesson"],
             width=30)
@@ -1025,7 +1025,7 @@ function getGradeSubjects(grade) {{
         
         # Output
         output_frame = tk.LabelFrame(f, text="🤖 AI Generated Content", font=('Baloo 2', 12),
-                                    bg=f.BG_COLOR, fg='#134E4A', padx=10, pady=10)
+                                    bg=self.BG_COLOR, fg='#134E4A', padx=10, pady=10)
         output_frame.pack(fill=tk.BOTH, expand=True)
         
         self.ai_output = scrolledtext.ScrolledText(
@@ -1037,7 +1037,7 @@ function getGradeSubjects(grade) {{
         
         # Status
         self.ai_status = tk.Label(output_frame, text="Ready to generate!", 
-                                  font=('Comic Neue', 10), bg=output_frame.BG_COLOR, fg='#4B7A75')
+                                  font=('Comic Neue', 10), bg=self.BG_COLOR, fg='#4B7A75')
         self.ai_status.pack(anchor=tk.W, pady=(5, 0))
     
     def generate_content_ai(self):
@@ -1147,28 +1147,28 @@ Make the content educational, accurate, and easy to understand. DO NOT wrap in H
         
         # Header
         tk.Label(f, text="🎯 AI Study Guide Generator", font=('Baloo 2', 18, 'bold'),
-                bg=f.BG_COLOR, fg='#134E4A').pack(pady=(15,5))
+                bg=self.BG_COLOR, fg='#134E4A').pack(pady=(15,5))
         tk.Label(f, text="Generate personalized study guides and learning plans for students", 
-                font=('Comic Neue', 12), bg=f.BG_COLOR, fg='#4B7A75').pack()
+                font=('Comic Neue', 12), bg=self.BG_COLOR, fg='#4B7A75').pack()
         
         # Inputs
-        input_frame = tk.Frame(f, bg=f.BG_COLOR)
+        input_frame = tk.Frame(f, bg=self.BG_COLOR)
         input_frame.pack(pady=20)
         
         tk.Label(input_frame, text="Student Grade:", font=('Baloo 2', 11),
-                bg=input_frame.BG_COLOR, fg='#134E4A').grid(row=0, column=0, padx=5, sticky=tk.W)
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=0, column=0, padx=5, sticky=tk.W)
         self.sg_grade = ttk.Combobox(input_frame, values=["Grade 5 Scholarship", "Grade 6-9", "O/L", "A/L"], width=20)
         self.sg_grade.grid(row=0, column=1, padx=5, pady=5)
         self.sg_grade.set("A/L")
         
         tk.Label(input_frame, text="Subject:", font=('Baloo 2', 11),
-                bg=input_frame.BG_COLOR, fg='#134E4A').grid(row=0, column=2, padx=5, sticky=tk.W)
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=0, column=2, padx=5, sticky=tk.W)
         self.sg_subject = tk.Entry(input_frame, font=('Comic Neue', 11), width=20, relief=tk.SOLID, bd=1)
         self.sg_subject.grid(row=0, column=3, padx=5, pady=5)
         self.sg_subject.insert(0, "Science")
         
         tk.Label(input_frame, text="Exam Focus:", font=('Baloo 2', 11),
-                bg=input_frame.BG_COLOR, fg='#134E4A').grid(row=0, column=4, padx=5, sticky=tk.W)
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=0, column=4, padx=5, sticky=tk.W)
         self.sg_exam = ttk.Combobox(input_frame, values=[
             "Final Exam", "Term Test", "Unit Test", "General Study", "Quick Revision"
         ], width=15)
@@ -1177,14 +1177,14 @@ Make the content educational, accurate, and easy to understand. DO NOT wrap in H
         
         # Duration
         tk.Label(input_frame, text="Study Duration:", font=('Baloo 2', 11),
-                bg=input_frame.BG_COLOR, fg='#134E4A').grid(row=1, column=0, padx=5, sticky=tk.W)
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=1, column=0, padx=5, sticky=tk.W)
         self.sg_duration = ttk.Combobox(input_frame, values=["1 Day", "3 Days", "1 Week", "2 Weeks", "1 Month"], width=15)
         self.sg_duration.grid(row=1, column=1, padx=5, pady=5)
         self.sg_duration.set("1 Week")
         
         # Student notes
         tk.Label(input_frame, text="Student Notes:", font=('Baloo 2', 11),
-                bg=input_frame.BG_COLOR, fg='#134E4A').grid(row=1, column=2, padx=5, sticky=tk.W)
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=1, column=2, padx=5, sticky=tk.W)
         self.sg_notes = tk.Entry(input_frame, font=('Comic Neue', 11), width=50, relief=tk.SOLID, bd=1)
         self.sg_notes.grid(row=1, column=3, columnspan=2, padx=5, pady=5)
         self.sg_notes.insert(0, "Struggling with formulas, needs more practice")
@@ -1193,7 +1193,7 @@ Make the content educational, accurate, and easy to understand. DO NOT wrap in H
         
         # Output
         output_frame = tk.LabelFrame(f, text="📋 Study Guide", font=('Baloo 2', 12),
-                                    bg=f.BG_COLOR, fg='#134E4A', padx=10, pady=10)
+                                    bg=self.BG_COLOR, fg='#134E4A', padx=10, pady=10)
         output_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=(0, 20))
         
         self.sg_output = scrolledtext.ScrolledText(
@@ -1203,7 +1203,7 @@ Make the content educational, accurate, and easy to understand. DO NOT wrap in H
         self.sg_output.pack(fill=tk.BOTH, expand=True)
         
         self.sg_status = tk.Label(output_frame, text="Enter details and generate a study guide!", 
-                                  font=('Comic Neue', 10), bg=output_frame.BG_COLOR, fg='#4B7A75')
+                                  font=('Comic Neue', 10), bg=self.BG_COLOR, fg='#4B7A75')
         self.sg_status.pack(anchor=tk.W)
     
     def generate_study_guide(self):
@@ -1264,13 +1264,13 @@ Format with clear sections using **bold headers** and line breaks. Keep it pract
         
         # Header
         tk.Label(f, text="🚀 Deploy to GitHub Pages", font=('Baloo 2', 18, 'bold'),
-                bg=f.BG_COLOR, fg='#134E4A').pack(pady=(15,5))
+                bg=self.BG_COLOR, fg='#134E4A').pack(pady=(15,5))
         tk.Label(f, text="Push your content updates to zaieduhub.github.io", 
-                font=('Comic Neue', 12), bg=f.BG_COLOR, fg='#4B7A75').pack()
+                font=('Comic Neue', 12), bg=self.BG_COLOR, fg='#4B7A75').pack()
         
         # Git Status Frame
         status_frame = tk.LabelFrame(f, text="📊 Repository Status", font=('Baloo 2', 12),
-                                    bg=f.BG_COLOR, fg='#134E4A', padx=20, pady=15)
+                                    bg=self.BG_COLOR, fg='#134E4A', padx=20, pady=15)
         status_frame.pack(fill=tk.X, padx=40, pady=20)
         
         self.git_info = scrolledtext.ScrolledText(
@@ -1280,7 +1280,7 @@ Format with clear sections using **bold headers** and line breaks. Keep it pract
         self.git_info.pack(fill=tk.BOTH, expand=True)
         
         # Actions
-        action_frame = tk.Frame(f, bg=f.BG_COLOR)
+        action_frame = tk.Frame(f, bg=self.BG_COLOR)
         action_frame.pack(pady=10)
         
         self.make_btn(action_frame, "🔄 Check Status", self.check_git_status, '#64748B').pack(side=tk.LEFT, padx=10)
@@ -1289,7 +1289,7 @@ Format with clear sections using **bold headers** and line breaks. Keep it pract
         
         # Deploy log
         log_frame = tk.LabelFrame(f, text="📝 Deploy Log", font=('Baloo 2', 12),
-                                 bg=f.BG_COLOR, fg='#134E4A', padx=10, pady=10)
+                                 bg=self.BG_COLOR, fg='#134E4A', padx=10, pady=10)
         log_frame.pack(fill=tk.BOTH, expand=True, padx=40, pady=(0, 20))
         
         self.deploy_log = scrolledtext.ScrolledText(
