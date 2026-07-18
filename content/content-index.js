@@ -911,6 +911,17 @@ const TOPIC_KEY_MAP = {
     'Force & Motion': 'force-motion-g6',
     // G6-9 English
     'Parts of Speech Basics': 'parts-of-speech-g6',
+    // G6-9 History
+    'Ancient Kingdoms': 'ancient-kingdoms',
+    'Cultural Heritage': 'cultural-heritage',
+    'Independence Movement': 'independence-movement',
+    'Early Human Societies': 'early-human-societies',
+    'Ancient Civilizations Overview': 'ancient-civilizations-overview',
+    // G6-9 Geography
+    'Maps & Directions': 'maps-directions',
+    'Earth\'s Surface & Landforms': 'earths-surface-landforms',
+    'Provinces & Districts': 'provinces-districts',
+    'Climate & Vegetation': 'climate-vegetation',
     // G1-5 Maths
     'Number Recognition (1-100)': 'number-recognition',
     'Addition & Subtraction': 'addition-subtraction',
