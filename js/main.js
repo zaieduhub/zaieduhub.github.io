@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initCounters();
     initContactCards();
     initBotCards();
+    initRecordingsGrid();
+    initUsefulLinks();
 });
 
 // Global content viewer state
@@ -998,6 +1000,140 @@ window.addEventListener('load', () => {
 
 // Lazy loading ready for future images (add data-src to <img> tags when ready)
 // IntersectionObserver pattern is available for images, videos, or iframes
+
+// =============================================
+// 17. RECORDINGS GRID (YouTube Channel NIE)
+// =============================================
+function initRecordingsGrid() {
+    const grid = document.getElementById('recordingsGrid');
+    const mediumTabs = document.querySelectorAll('[data-recording-medium]');
+    if (!grid) return;
+    
+    // Get YouTube data or use fallback
+    const hasYouTubeData = typeof ZAI_YOUTUBE !== 'undefined';
+    let currentRecordingMedium = 'si';
+    
+    function renderRecordings(medium) {
+        if (!hasYouTubeData) {
+            grid.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🎥</div>
+                    <p data-i18n="recordings.coming">🎥 Recording player coming soon!</p>
+                </div>
+            `;
+            return;
+        }
+        
+        const mediumData = ZAI_YOUTUBE[medium];
+        if (!mediumData || !mediumData.playlists) {
+            grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 2rem;">No videos available for this medium yet.</p>';
+            return;
+        }
+        
+        let allVideos = [];
+        mediumData.playlists.forEach(playlist => {
+            if (playlist.videos) {
+                playlist.videos.forEach(v => {
+                    allVideos.push({
+                        ...v,
+                        playlistTitle: playlist.title,
+                        playlistGrade: playlist.grade
+                    });
+                });
+            }
+        });
+        
+        // Show up to 6 videos
+        allVideos = allVideos.slice(0, 6);
+        
+        const colors = [
+            ['#667eea', '#764ba2'],
+            ['#f093fb', '#f5576c'],
+            ['#4facfe', '#00f2fe'],
+            ['#43e97b', '#38f9d7'],
+            ['#fa709a', '#fee140'],
+            ['#a18cd1', '#fbc2eb']
+        ];
+        
+        grid.innerHTML = allVideos.map((video, i) => `
+            <div class="recording-card stagger-item">
+                <div class="recording-thumbnail" style="background: linear-gradient(135deg, ${colors[i % colors.length][0]}, ${colors[i % colors.length][1]});">
+                    <div class="recording-play-btn-pulse"></div>
+                    <button class="recording-play-btn" onclick="window.open('${video.url}', '_blank')">
+                        ▶
+                    </button>
+                </div>
+                <div class="recording-info">
+                    <h3>${video.title}</h3>
+                    <p><span class="grade-level-badge">${video.playlistGrade}</span> ${video.playlistTitle}</p>
+                    <div class="recording-meta">
+                        <span>⏱ ${video.duration}</span>
+                        <span>👨‍🏫 ${video.teacher}</span>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        
+        // Trigger stagger animations
+        requestAnimationFrame(() => {
+            grid.querySelectorAll('.stagger-item').forEach((el, i) => {
+                setTimeout(() => el.classList.add('visible'), i * 100);
+            });
+        });
+    }
+    
+    // Medium tab switching
+    if (mediumTabs.length) {
+        mediumTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                mediumTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentRecordingMedium = tab.dataset.recordingMedium;
+                renderRecordings(currentRecordingMedium);
+            });
+        });
+    }
+    
+    // Render initial recordings
+    renderRecordings(currentRecordingMedium);
+}
+
+// =============================================
+// 18. USEFUL LINKS (Government Resources)
+// =============================================
+function initUsefulLinks() {
+    const grid = document.querySelector('.links-grid');
+    if (!grid) return;
+    
+    // Check if new content system is loaded
+    if (typeof getGovernmentResources !== 'function') return;
+    
+    const resources = getGovernmentResources();
+    
+    // Only update if we have the new data
+    if (resources && resources.length > 0) {
+        const linkCards = grid.querySelectorAll('.link-card');
+        
+        resources.forEach((res, i) => {
+            if (linkCards[i]) {
+                const card = linkCards[i];
+                card.querySelector('h3').textContent = res.name;
+                card.querySelector('p').textContent = res.description;
+                const link = card.querySelector('.link-btn');
+                if (link) {
+                    link.href = res.url;
+                    link.setAttribute('data-i18n', 'links.visit');
+                }
+                const iconDiv = card.querySelector('.link-card-icon');
+                if (iconDiv) {
+                    iconDiv.textContent = res.icon;
+                    iconDiv.style.background = `${res.color}20`;
+                    iconDiv.style.color = res.color;
+                }
+            }
+        });
+    }
+}
 
 // ============================================
 // END OF MAIN.JS

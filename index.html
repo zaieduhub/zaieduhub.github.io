@@ -15,7 +15,7 @@
     <meta property="og:url" content="https://zaieduhub.github.io/">
     <meta property="og:image" content="https://zaieduhub.github.io/assets/og-image.png">
     
-    <title>Zai Education Hub - Free Education for Sri Lanka 🇱🇰</title>
+    <title data-i18n="page.title">Zai Education Hub - Free Education for Sri Lanka 🇱🇰</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -262,114 +262,20 @@
             </p>
         </div>
 
-        <div class="recordings-grid">
-            <div class="recording-card stagger-item">
-                <div class="recording-thumbnail" style="background: linear-gradient(135deg, #667eea, #764ba2);">
-                    <div class="recording-play-btn-pulse"></div>
-                    <button class="recording-play-btn" onclick="showToast('🎥 Recording player coming soon!', 'info')">
-                        ▶
-                    </button>
-                </div>
-                <div class="recording-info">
-                    <h3>Combined Maths - Calculus</h3>
-                    <p>Comprehensive lesson on differentiation and integration techniques for A/L students.</p>
-                    <div class="recording-meta">
-                        <span>📅 Dec 2024</span>
-                        <span>⏱ 45 min</span>
-                        <span>👨‍🏫 Mr. Perera</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recording-card stagger-item">
-                <div class="recording-thumbnail" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
-                    <div class="recording-play-btn-pulse"></div>
-                    <button class="recording-play-btn" onclick="showToast('🎥 Recording player coming soon!', 'info')">
-                        ▶
-                    </button>
-                </div>
-                <div class="recording-info">
-                    <h3>Physics - Mechanics</h3>
-                    <p>Easy-to-understand explanation of Newton's laws, forces, and motion for A/L students.</p>
-                    <div class="recording-meta">
-                        <span>📅 Nov 2024</span>
-                        <span>⏱ 50 min</span>
-                        <span>👩‍🏫 Mrs. Silva</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recording-card stagger-item">
-                <div class="recording-thumbnail" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
-                    <div class="recording-play-btn-pulse"></div>
-                    <button class="recording-play-btn" onclick="showToast('🎥 Recording player coming soon!', 'info')">
-                        ▶
-                    </button>
-                </div>
-                <div class="recording-info">
-                    <h3>Chemistry - Organic Reactions</h3>
-                    <p>Master organic chemistry with step-by-step reaction mechanisms and practice problems.</p>
-                    <div class="recording-meta">
-                        <span>📅 Oct 2024</span>
-                        <span>⏱ 55 min</span>
-                        <span>👨‍🔬 Mr. Jayawardena</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recording-card stagger-item">
-                <div class="recording-thumbnail" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
-                    <div class="recording-play-btn-pulse"></div>
-                    <button class="recording-play-btn" onclick="showToast('🎥 Recording player coming soon!', 'info')">
-                        ▶
-                    </button>
-                </div>
-                <div class="recording-info">
-                    <h3>Biology - Human Anatomy</h3>
-                    <p>Explore the human body systems with detailed diagrams and clear explanations for A/L.</p>
-                    <div class="recording-meta">
-                        <span>📅 Sep 2024</span>
-                        <span>⏱ 40 min</span>
-                        <span>👩‍🔬 Dr. Fernando</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recording-card stagger-item">
-                <div class="recording-thumbnail" style="background: linear-gradient(135deg, #fa709a, #fee140);">
-                    <div class="recording-play-btn-pulse"></div>
-                    <button class="recording-play-btn" onclick="showToast('🎥 Recording player coming soon!', 'info')">
-                        ▶
-                    </button>
-                </div>
-                <div class="recording-info">
-                    <h3>ICT - Web Development</h3>
-                    <p>Learn HTML, CSS & JavaScript from scratch. Build your first website in this session.</p>
-                    <div class="recording-meta">
-                        <span>📅 Aug 2024</span>
-                        <span>⏱ 60 min</span>
-                        <span>👨‍💻 Mr. Kamal</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recording-card stagger-item">
-                <div class="recording-thumbnail" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);">
-                    <div class="recording-play-btn-pulse"></div>
-                    <button class="recording-play-btn" onclick="showToast('🎥 Recording player coming soon!', 'info')">
-                        ▶
-                    </button>
-                </div>
-                <div class="recording-info">
-                    <h3>English Literature - Poetry</h3>
-                    <p>Deep dive into classic English poetry with analysis and exam tips for O/L students.</p>
-                    <div class="recording-meta">
-                        <span>📅 Jul 2024</span>
-                        <span>⏱ 35 min</span>
-                        <span>👩‍🏫 Ms. Gunasekara</span>
-                    </div>
-                </div>
-            </div>
+        <!-- Medium Filter for Recordings -->
+        <div class="medium-tabs recordings-medium-tabs animate-on-scroll">
+            <button class="medium-tab active" data-recording-medium="si">🇱🇰 සිංහල</button>
+            <button class="medium-tab" data-recording-medium="ta">🇱🇰 தமிழ்</button>
+            <button class="medium-tab" data-recording-medium="en">🇬🇧 English</button>
+        </div>
+        
+        <div class="recordings-grid" id="recordingsGrid">
+            <!-- Dynamically loaded from content/youtube/channel-nie.js -->
+        </div>
+        
+        <!-- Source Attribution Badge -->
+        <div class="recording-attribution animate-on-scroll">
+            <p>📺 <strong>Source:</strong> <a href="https://www.youtube.com/@ChannelNIE" target="_blank">Channel NIE</a> — National Institute of Education, Sri Lanka. Official curriculum-based video lessons.</p>
         </div>
     </div>
 </section>
@@ -842,6 +748,8 @@
      ============================================ -->
 <script src="js/translations.js"></script>
 <script src="js/data.js"></script>
+<script src="content/youtube/channel-nie.js"></script>
+<script src="content/content-index.js"></script>
 <script src="js/main.js"></script>
 
 <!-- GitHub OAuth & Site Info (admin use) -->
