@@ -468,8 +468,9 @@ function getGradeSubjects(grade) {{
         self.make_btn(btn_frame, "📝 Open Content Manager", lambda: self.notebook.select(1), '#0D9488').pack(side=tk.LEFT, padx=5)
         self.make_btn(btn_frame, "🤖 Generate Content with AI", lambda: self.notebook.select(2), '#D97706').pack(side=tk.LEFT, padx=5)
         self.make_btn(btn_frame, "🎯 Create Study Guide", lambda: self.notebook.select(3), '#10B981').pack(side=tk.LEFT, padx=5)
-        self.make_btn(btn_frame, "🚀 Deploy to GitHub", lambda: self.notebook.select(4), '#3B82F6').pack(side=tk.LEFT, padx=5)
-        self.make_btn(btn_frame, "🧠 AI Tools", lambda: self.notebook.select(5), '#8B5CF6').pack(side=tk.LEFT, padx=5)
+        self.make_btn(btn_frame, "🌐 Web Admin", lambda: self.launch_web_admin(), '#8B5CF6').pack(side=tk.LEFT, padx=5)
+        self.make_btn(btn_frame, "🚀 Deploy to GitHub", lambda: self.notebook.select(5), '#3B82F6').pack(side=tk.LEFT, padx=5)
+        self.make_btn(btn_frame, "🧠 AI Tools", lambda: self.notebook.select(6), '#8B5CF6').pack(side=tk.LEFT, padx=5)
         
         # Gemini status
         gem_frame = tk.LabelFrame(f, text="🤖 AI Status", font=('Baloo 2', 14),
@@ -2108,6 +2109,54 @@ Summary:"""
             self.commit_and_push()
         else:
             self.log("❌ Failed to save data")
+    
+    # ─── Launch Web Admin ──────────────────────────────────
+    def launch_web_admin(self):
+        """Launch the web-based admin panel in the default browser"""
+        import webbrowser
+        
+        # Check if admin_server.py exists
+        server_path = SCRIPT_DIR / "admin_server.py"
+        if not server_path.exists():
+            messagebox.showerror("Error", "admin_server.py not found!")
+            return
+        
+        # Check if already running by testing port 8080
+        if self.is_server_running():
+            webbrowser.open('http://localhost:8080/admin')
+            self.update_status("🌐 Web Admin opened in browser")
+            return
+        
+        # Start server in background
+        def start():
+            try:
+                subprocess.Popen(
+                    [sys.executable, str(server_path)],
+                    cwd=SCRIPT_DIR,
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL
+                )
+                import time
+                time.sleep(2)
+                webbrowser.open('http://localhost:8080/admin')
+                self.root.after(0, lambda: self.update_status("🌐 Web Admin server started on port 8080"))
+            except Exception as e:
+                self.root.after(0, lambda: messagebox.showerror("Error", f"Failed to start server: {e}"))
+        
+        threading.Thread(target=start, daemon=True).start()
+        self.update_status("🌐 Starting Web Admin server...")
+    
+    def is_server_running(self):
+        """Check if the web admin server is already running"""
+        try:
+            import socket
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(1)
+            result = sock.connect_ex(('127.0.0.1', 8080))
+            sock.close()
+            return result == 0
+        except:
+            return False
     
     # ─── Helper Methods ────────────────────────────────────
     def make_btn(self, parent, text, command, color='#0D9488'):

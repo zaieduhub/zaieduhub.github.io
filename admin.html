@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zai CMS - Education Hub Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Comic+Neue:wght@400;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <!-- ====== ADMIN SIDEBAR ====== -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <div class="sidebar-logo-icon">Z</div>
+                <div class="sidebar-logo-text">
+                    <span>Zai CMS</span>
+                    <small>v2.0 Web Admin</small>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#dashboard" class="sidebar-link active" data-tab="dashboard">
+                <span class="sidebar-icon">🏠</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="#content" class="sidebar-link" data-tab="content">
+                <span class="sidebar-icon">📝</span>
+                <span>Content Manager</span>
+            </a>
+            <a href="#generator" class="sidebar-link" data-tab="generator">
+                <span class="sidebar-icon">🤖</span>
+                <span>AI Generator</span>
+            </a>
+            <a href="#aitools" class="sidebar-link" data-tab="aitools">
+                <span class="sidebar-icon">🧠</span>
+                <span>AI Tools</span>
+            </a>
+            <a href="#chat" class="sidebar-link" data-tab="chat">
+                <span class="sidebar-icon">💬</span>
+                <span>AI Chat</span>
+            </a>
+            <a href="#deploy" class="sidebar-link" data-tab="deploy">
+                <span class="sidebar-icon">🚀</span>
+                <span>Deploy</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="ai-status-badge" id="aiStatusBadge">
+                <span class="ai-dot" id="aiDot"></span>
+                <span id="aiStatusText">Checking AI...</span>
+            </div>
+            <button class="theme-toggle-sidebar" onclick="toggleTheme()">🌓</button>
+        </div>
+    </aside>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <main class="admin-main" id="adminMain">
+        
+        <!-- ─── DASHBOARD TAB ─── -->
+        <section class="admin-tab active" id="tab-dashboard">
+            <div class="tab-header">
+                <div>
+                    <h1 class="tab-title">🏠 Dashboard</h1>
+                    <p class="tab-subtitle">Welcome to Zai CMS - Manage your education hub content</p>
+                </div>
+                <div class="header-actions">
+                    <span class="header-time" id="headerTime"></span>
+                </div>
+            </div>
+            
+            <!-- Stats Grid -->
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card shimmer">Loading...</div>
+                <div class="stat-card shimmer">Loading...</div>
+                <div class="stat-card shimmer">Loading...</div>
+                <div class="stat-card shimmer">Loading...</div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-title">⚡ Quick Actions</div>
+                <div class="quick-actions">
+                    <button class="btn btn-primary" onclick="switchTab('content')">
+                        📝 Content Manager
+                    </button>
+                    <button class="btn btn-accent" onclick="switchTab('generator')">
+                        🤖 AI Generator
+                    </button>
+                    <button class="btn" style="background:#8B5CF6;color:white" onclick="switchTab('aitools')">
+                        🧠 AI Tools
+                    </button>
+                    <button class="btn" style="background:#10B981;color:white" onclick="switchTab('deploy')">
+                        🚀 Deploy
+                    </button>
+                </div>
+            </div>
+            
+            <!-- AI Status -->
+            <div class="card">
+                <div class="card-title">🤖 AI Status</div>
+                <div class="ai-status-card" id="aiStatusCard">
+                    <div class="ai-status-indicator">
+                        <span class="ai-dot large" id="aiDotLarge"></span>
+                        <div>
+                            <div class="ai-status-title" id="aiStatusTitle">Checking Gemini AI...</div>
+                            <div class="ai-status-detail" id="aiStatusDetail">Connecting to Google Gemini API</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline btn-sm" onclick="checkAIStatus()">🔄 Refresh</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── CONTENT MANAGER TAB ─── -->
+        <section class="admin-tab" id="tab-content">
+            <div class="tab-header">
+                <div>
+                    <h1 class="tab-title">📝 Content Manager</h1>
+                    <p class="tab-subtitle">Manage all your subjects, units, and study notes</p>
+                </div>
+            </div>
+            
+            <!-- Grade Selector -->
+            <div class="grade-selector">
+                <button class="grade-btn active" data-grade="al">A/L (Gr 12-13)</button>
+                <button class="grade-btn" data-grade="ol">O/L (Gr 10-11)</button>
+                <button class="grade-btn" data-grade="grade6_9">Grade 6-9</button>
+                <button class="grade-btn" data-grade="grade1_5">Grade 1-5</button>
+            </div>
+            
+            <div class="content-layout">
+                <!-- Left: Subject Tree -->
+                <div class="content-tree-panel">
+                    <div class="panel-header">
+                        <h3>📚 Subjects</h3>
+                        <button class="btn btn-primary btn-sm" onclick="showAddSubject()">➕ New</button>
+                    </div>
+                    <div class="tree-container" id="contentTree">
+                        <div class="shimmer" style="height:200px;border-radius:12px;"></div>
+                    </div>
+                </div>
+                
+                <!-- Right: Editor -->
+                <div class="content-editor-panel">
+                    <div class="panel-header">
+                        <h3>✏️ Editor</h3>
+                        <div class="editor-actions">
+                            <button class="btn btn-accent btn-sm" onclick="generateWithAI()">🤖 AI Write</button>
+                            <button class="btn btn-primary btn-sm" onclick="saveEditor()">💾 Save</button>
+                        </div>
+                    </div>
+                    
+                    <div class="editor-form">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" class="form-input" id="editorTitle" placeholder="Topic, Unit, or Subject title">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Content (HTML)</label>
+                            <div class="editor-toolbar">
+                                <button onclick="insertTag('h3')" title="Heading">H3</button>
+                                <button onclick="insertTag('h4')" title="Subheading">H4</button>
+                                <button onclick="insertTag('p')" title="Paragraph">P</button>
+                                <button onclick="insertTag('ul')" title="Bullet List">UL</button>
+                                <button onclick="insertTag('ol')" title="Numbered List">OL</button>
+                                <button onclick="insertTag('li')" title="List Item">LI</button>
+                                <button onclick="insertTag('strong')" title="Bold"><strong>B</strong></button>
+                                <span class="toolbar-sep"></span>
+                                <button onclick="translateContent('si')" title="Translate to Sinhala">🇱🇰 SI</button>
+                                <button onclick="translateContent('ta')" title="Translate to Tamil">🇱🇰 TA</button>
+                                <button onclick="translateContent('en')" title="Translate to English">🇬🇧 EN</button>
+                                <span class="toolbar-sep"></span>
+                                <button onclick="improveContent()" title="Improve with AI">✨ Improve</button>
+                                <button onclick="summarizeContent()" title="Summarize">📋 Summary</button>
+                            </div>
+                            <textarea class="form-textarea" id="editorContent" placeholder="Write your HTML content here..." spellcheck="false"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="editor-info" id="editorInfo">
+                        <span>📌 Select a subject, unit, or topic to edit</span>
+                        <span id="editorStatus"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── AI GENERATOR TAB ─── -->
+        <section class="admin-tab" id="tab-generator">
+            <div class="tab-header">
+                <div>
+                    <h1 class="tab-title">🤖 AI Content Generator</h1>
+                    <p class="tab-subtitle">Generate study notes, summaries, and practice questions with Gemini AI</p>
+                </div>
+            </div>
+            
+            <div class="gen-grid">
+                <div class="card">
+                    <div class="card-title">📝 Generate Study Notes</div>
+                    <div class="form-group">
+                        <label>Grade</label>
+                        <select class="form-input" id="genGrade">
+                            <option value="A/L">A/L (Gr 12-13)</option>
+                            <option value="O/L" selected>O/L (Gr 10-11)</option>
+                            <option value="Grade 6-9">Grade 6-9</option>
+                            <option value="Grade 1-5">Grade 1-5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" class="form-input" id="genSubject" placeholder="e.g. Combined Maths" value="Science">
+                    </div>
+                    <div class="form-group">
+                        <label>Topic</label>
+                        <input type="text" class="form-input" id="genTopic" placeholder="e.g. Chemical Bonding" value="Chemical Reactions">
+                    </div>
+                    <div class="form-group">
+                        <label>Style</label>
+                        <select class="form-input" id="genStyle">
+                            <option>📝 Study Notes</option>
+                            <option>📊 Summary & Key Points</option>
+                            <option>❓ Practice Questions</option>
+                            <option>🎯 Exam Tips</option>
+                            <option>📚 Complete Lesson</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-accent" onclick="generateContent()">🤖 Generate</button>
+                    <button class="btn btn-primary" onclick="saveGeneratedContent()" style="margin-left:8px;">💾 Save to CMS</button>
+                </div>
+                
+                <div class="card" style="grid-column:span 2;">
+                    <div class="card-title">📄 Generated Content</div>
+                    <textarea class="form-textarea" id="genOutput" style="height:400px;font-family:var(--font-mono);" placeholder="Generated content will appear here..." readonly></textarea>
+                    <div class="gen-status" id="genStatus">Ready to generate!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── AI TOOLS TAB ─── -->
+        <section class="admin-tab" id="tab-aitools">
+            <div class="tab-header">
+                <div>
+                    <h1 class="tab-title">🧠 AI Tools</h1>
+                    <p class="tab-subtitle">Advanced AI-powered tools for education</p>
+                </div>
+            </div>
+            
+            <!-- Tool Tabs -->
+            <div class="tool-tabs">
+                <button class="tool-tab active" data-tool="bulk">📦 Bulk Generator</button>
+                <button class="tool-tab" data-tool="question">📝 Question Paper</button>
+                <button class="tool-tab" data-tool="improve">✨ Content Improver</button>
+            </div>
+            
+            <!-- Bulk Generator -->
+            <div class="tool-panel active" id="tool-bulk">
+                <div class="card">
+                    <div class="card-title">📦 Generate Multiple Topics</div>
+                    <p style="color:var(--color-foreground-secondary);margin-bottom:1rem;">Create an entire unit's worth of study notes in one click</p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Grade</label>
+                            <select class="form-input" id="bulkGrade">
+                                <option value="A/L">A/L</option>
+                                <option value="O/L" selected>O/L</option>
+                                <option value="Grade 6-9">Grade 6-9</option>
+                                <option value="Grade 1-5">Grade 1-5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <input type="text" class="form-input" id="bulkSubject" value="Science">
+                        </div>
+                        <div class="form-group">
+                            <label>Unit Title</label>
+                            <input type="text" class="form-input" id="bulkUnit" value="Chemical Reactions">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Topics (comma separated)</label>
+                        <input type="text" class="form-input" id="bulkTopics" value="Types of Reactions, Balancing Equations, Acids & Bases, Oxidation-Reduction">
+                    </div>
+                    <button class="btn btn-accent" onclick="bulkGenerate()">⚡ Generate All</button>
+                    <button class="btn btn-primary" onclick="saveBulkContent()" style="margin-left:8px;">💾 Save All to CMS</button>
+                    <div class="progress-bar" id="bulkProgress" style="margin-top:1rem;display:none;">
+                        <div class="progress-fill" id="bulkProgressFill" style="width:0%"></div>
+                    </div>
+                    <div class="gen-status" id="bulkStatus">Ready</div>
+                    <div class="bulk-results" id="bulkResults"></div>
+                </div>
+            </div>
+            
+            <!-- Question Paper Generator -->
+            <div class="tool-panel" id="tool-question">
+                <div class="card">
+                    <div class="card-title">📝 Generate Question Paper</div>
+                    <p style="color:var(--color-foreground-secondary);margin-bottom:1rem;">Generate full exam papers with mark schemes</p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Grade</label>
+                            <select class="form-input" id="qpGrade">
+                                <option>Grade 5</option>
+                                <option>Grade 6-9</option>
+                                <option selected>O/L</option>
+                                <option>A/L</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <input type="text" class="form-input" id="qpSubject" value="Mathematics">
+                        </div>
+                        <div class="form-group">
+                            <label>Exam Type</label>
+                            <select class="form-input" id="qpType">
+                                <option>Final Exam</option>
+                                <option selected>Term Test</option>
+                                <option>Unit Test</option>
+                                <option>Model Paper</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Topics (comma separated)</label>
+                        <input type="text" class="form-input" id="qpTopics" value="Algebra, Geometry, Trigonometry, Statistics">
+                    </div>
+                    <button class="btn btn-accent" onclick="generateQuestionPaper()">📝 Generate</button>
+                    <div class="gen-status" id="qpStatus">Ready</div>
+                    <textarea class="form-textarea" id="qpOutput" style="height:400px;margin-top:1rem;" placeholder="Question paper will appear here..." readonly></textarea>
+                </div>
+            </div>
+            
+            <!-- Content Improver -->
+            <div class="tool-panel" id="tool-improve">
+                <div class="card">
+                    <div class="card-title">✨ Content Improver</div>
+                    <p style="color:var(--color-foreground-secondary);margin-bottom:1rem;">Improve, rewrite, or enhance existing educational content</p>
+                    <div class="form-group">
+                        <label>Mode</label>
+                        <select class="form-input" id="improveMode">
+                            <option>✨ Enhance & Expand</option>
+                            <option>📝 Simplify for Students</option>
+                            <option>🎯 Add Practice Questions</option>
+                            <option>📊 Create Summary Table</option>
+                            <option>🔄 Rewrite Active Voice</option>
+                            <option>📚 Add Sri Lankan Examples</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Input Content</label>
+                        <textarea class="form-textarea" id="improveInput" style="height:200px;" placeholder="Paste your content here..."></textarea>
+                    </div>                            <button class="btn btn-accent" onclick="improveContentTool()">🚀 Improve</button>
+                    <div class="gen-status" id="improveStatus">Ready</div>
+                    <div class="form-group" style="margin-top:1rem;">
+                        <label>Improved Content</label>
+                        <textarea class="form-textarea" id="improveOutput" style="height:200px;" placeholder="Improved content will appear here..." readonly></textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── AI CHAT TAB ─── -->
+        <section class="admin-tab" id="tab-chat">
+            <div class="tab-header">
+                <div>
+                    <h1 class="tab-title">💬 Zai AI Chat</h1>
+                    <p class="tab-subtitle">Ask any educational question - get instant answers</p>
+                </div>
+            </div>
+            
+            <div class="chat-layout">
+                <div class="chat-sidebar">
+                    <div class="card" style="margin-bottom:1rem;">
+                        <div class="card-title">🎯 Context</div>
+                        <select class="form-input" id="chatContext">
+                            <option>General Education</option>
+                            <option>A/L Science</option>
+                            <option>A/L Maths</option>
+                            <option>O/L Science</option>
+                            <option>O/L Maths</option>
+                            <option>Grade 6-9</option>
+                            <option>Grade 1-5</option>
+                            <option>Study Tips</option>
+                            <option>Exam Preparation</option>
+                        </select>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">💡 Quick Questions</div>
+                        <div class="quick-questions">
+                            <button class="btn btn-ghost btn-sm" onclick="quickChat('Explain photosynthesis')">🌱 Photosynthesis</button>
+                            <button class="btn btn-ghost btn-sm" onclick="quickChat('How to solve quadratic equations?')">📐 Quadratic Eqs</button>
+                            <button class="btn btn-ghost btn-sm" onclick="quickChat('Tips for O/L exam preparation')">🎯 Exam Tips</button>
+                            <button class="btn btn-ghost btn-sm" onclick="quickChat('Explain Newton\'s laws with examples')">⚡ Newton's Laws</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-main">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="chat-message ai">
+                            <div class="chat-avatar">🤖</div>
+                            <div class="chat-bubble">
+                                <strong>Zai AI</strong>
+                                <p>Hi! I'm your AI education assistant. I can help you with study notes, explain concepts, provide exam tips, and more. What would you like to learn today? 📚</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" class="form-input" id="chatInput" placeholder="Ask any educational question..." onkeypress="if(event.key==='Enter') sendChat()">
+                        <button class="btn btn-primary" onclick="sendChat()">➡️ Send</button>
+                    </div>
+                    <div class="chat-status" id="chatStatus">Ready to help!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── DEPLOY TAB ─── -->
+        <section class="admin-tab" id="tab-deploy">
+            <div class="tab-header">
+                <div>
+                    <h1 class="tab-title">🚀 Deploy to GitHub</h1>
+                    <p class="tab-subtitle">Push your content updates to zaieduhub.github.io</p>
+                </div>
+            </div>
+            
+            <div class="deploy-grid">
+                <div class="card">
+                    <div class="card-title">📊 Git Status</div>
+                    <pre class="git-output" id="gitStatus">Loading...</pre>
+                    <button class="btn btn-outline btn-sm" onclick="checkGitStatus()" style="margin-top:0.5rem;">🔄 Refresh</button>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">🚀 Deploy Actions</div>
+                    <div style="display:flex;flex-direction:column;gap:1rem;">
+                        <button class="btn btn-primary btn-lg" onclick="saveAndDeploy()">
+                            💾 Save All & Deploy
+                        </button>
+                        <button class="btn btn-outline" onclick="deployOnly()">
+                            🚀 Deploy Only (without save)
+                        </button>
+                        <p style="font-size:0.8rem;color:var(--color-foreground-secondary);">
+                            ⏱ Changes visible in 1-2 minutes after deployment
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card" style="margin-top:1.5rem;">
+                <div class="card-title">📝 Deploy Log</div>
+                <div class="deploy-log" id="deployLog">
+                    <div class="log-entry">📋 Ready to deploy...</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ====== TOAST CONTAINER ====== -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ====== MODAL OVERLAY ====== -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+    <div class="modal" id="modalDialog">
+        <div class="modal-header">
+            <h3 id="modalTitle">Dialog</h3>
+            <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+        <div class="modal-footer" id="modalFooter"></div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
