@@ -64,7 +64,7 @@ def init_gemini():
     try:
         gemini_client = genai.Client(api_key=GEMINI_API_KEY)
         test = gemini_client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="models/gemini-3.5-flash",
             contents="Say 'connected'"
         )
         return bool(test and test.text)
@@ -156,7 +156,7 @@ def git_commit_push():
     except Exception as e:
         return False, str(e)
 
-def gemini_generate(prompt, model="gemini-2.0-flash"):
+def gemini_generate(prompt, model="models/gemini-3.5-flash"):
     """Generate content using Gemini AI"""
     if not gemini_ready or not gemini_client:
         return None

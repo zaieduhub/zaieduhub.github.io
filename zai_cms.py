@@ -102,7 +102,7 @@ class ZaiCMS:
             self.gemini_client = genai.Client(api_key=GEMINI_API_KEY)
             # Test the API
             test = self.gemini_client.models.generate_content(
-                model="gemini-2.0-flash",
+                model="models/gemini-3.5-flash",
                 contents="Say 'Gemini AI is connected!'"
             )
             if test and test.text:
@@ -1106,7 +1106,7 @@ Include:
 Make the content educational, accurate, and easy to understand. DO NOT wrap in HTML/head/body tags."""
                 
                 response = self.gemini_client.models.generate_content(
-                    model="gemini-2.0-flash",
+                    model="models/gemini-3.5-flash",
                     contents=prompt
                 )
                 
@@ -1263,7 +1263,7 @@ Create a comprehensive study guide that includes:
 Format with clear sections using **bold headers** and line breaks. Keep it practical and actionable for a Sri Lankan student. Use emojis for visual appeal. Do NOT use HTML tags - just plain text with markdown-style formatting."""
                 
                 response = self.gemini_client.models.generate_content(
-                    model="gemini-2.0-flash",
+                    model="models/gemini-3.5-flash",
                     contents=prompt
                 )
                 
@@ -1424,8 +1424,8 @@ Include:
 Use <h4>, <p>, <ul>/<li>, <strong> tags. DO NOT wrap in HTML/head/body tags."""
                     
                     response = self.gemini_client.models.generate_content(
-                        model="gemini-2.0-flash",
-                        contents=prompt
+                    model="models/gemini-3.5-flash",
+                    contents=prompt
                     )
                     
                     content = response.text.strip() if response and response.text else "<p>Content generation failed.</p>"
@@ -1577,7 +1577,7 @@ Provide full solutions for all questions with mark allocations.
 Format with markdown. Keep questions Sinhala/Tamil/English neutral (use English)."""
                 
                 response = self.gemini_client.models.generate_content(
-                    model="gemini-2.0-flash",
+                    model="models/gemini-3.5-flash",
                     contents=prompt
                 )
                 
@@ -1682,7 +1682,7 @@ Original content:
 Improved content:"""
                 
                 response = self.gemini_client.models.generate_content(
-                    model="gemini-2.0-flash",
+                    model="models/gemini-3.5-flash",
                     contents=prompt
                 )
                 
@@ -1802,7 +1802,7 @@ Keep the answer educational and easy to understand. Use emojis appropriately.
 Format with line breaks for readability. DO NOT use HTML tags."""
                 
                 response = self.gemini_client.models.generate_content(
-                    model="gemini-2.0-flash",
+                    model="models/gemini-3.5-flash",
                     contents=prompt
                 )
                 
@@ -1854,7 +1854,7 @@ Content to translate:
 Translated content (keep HTML tags):"""
                 
                 response = self.gemini_client.models.generate_content(
-                    model="gemini-2.0-flash",
+                    model="models/gemini-3.5-flash",
                     contents=prompt
                 )
                 
@@ -1892,7 +1892,7 @@ Content to improve:
 Improved content:"""
                 
                 response = self.gemini_client.models.generate_content(
-                    model="gemini-2.0-flash",
+                    model="models/gemini-3.5-flash",
                     contents=prompt
                 )
                 
@@ -1929,7 +1929,7 @@ Content:
 Summary:"""
                 
                 response = self.gemini_client.models.generate_content(
-                    model="gemini-2.0-flash",
+                    model="models/gemini-3.5-flash",
                     contents=prompt
                 )
                 
