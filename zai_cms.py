@@ -50,7 +50,9 @@ try:
     from google.genai import types
     GEMINI_AVAILABLE = True
 except ImportError:
-    GEMINI_AVAILABLE = False    # ─── Main Application ────────────────────────────────────────
+    GEMINI_AVAILABLE = False
+
+# ─── Main Application ────────────────────────────────────────
 class ZaiCMS:
     # Default background color used throughout the UI
     BG_COLOR = '#F0FDFA'
@@ -409,6 +411,11 @@ function getGradeSubjects(grade) {{
         self.tab_git = ttk.Frame(self.notebook)
         self.notebook.add(self.tab_git, text="🚀 GitHub Deploy")
         self.build_git_sync()
+        
+        # ── Tab 6: AI Tools ──
+        self.tab_aitools = ttk.Frame(self.notebook)
+        self.notebook.add(self.tab_aitools, text="🧠 AI Tools")
+        self.build_ai_tools()
     
     # ─── Dashboard ──────────────────────────────────────────
     def build_dashboard(self):
@@ -462,6 +469,7 @@ function getGradeSubjects(grade) {{
         self.make_btn(btn_frame, "🤖 Generate Content with AI", lambda: self.notebook.select(2), '#D97706').pack(side=tk.LEFT, padx=5)
         self.make_btn(btn_frame, "🎯 Create Study Guide", lambda: self.notebook.select(3), '#10B981').pack(side=tk.LEFT, padx=5)
         self.make_btn(btn_frame, "🚀 Deploy to GitHub", lambda: self.notebook.select(4), '#3B82F6').pack(side=tk.LEFT, padx=5)
+        self.make_btn(btn_frame, "🧠 AI Tools", lambda: self.notebook.select(5), '#8B5CF6').pack(side=tk.LEFT, padx=5)
         
         # Gemini status
         gem_frame = tk.LabelFrame(f, text="🤖 AI Status", font=('Baloo 2', 14),
@@ -565,6 +573,18 @@ function getGradeSubjects(grade) {{
         btn_row.pack(fill=tk.X)
         self.make_btn(btn_row, "💾 Save Changes", self.save_editor, '#0D9488').pack(side=tk.RIGHT, padx=5)
         self.make_btn(btn_row, "🔄 Load Selected", self.load_selected_into_editor, '#64748B').pack(side=tk.RIGHT, padx=5)
+        
+        # AI-powered editor tools
+        ai_editor_row = tk.Frame(editor_frame, bg=self.BG_COLOR)
+        ai_editor_row.pack(fill=tk.X, pady=(0,10))
+        tk.Label(ai_editor_row, text="🤖 AI Tools:", font=('Baloo 2', 10),
+                bg=self.BG_COLOR, fg='#134E4A').pack(side=tk.LEFT, padx=(0,5))
+        self.make_btn(ai_editor_row, "🌐 Translate to Sinhala", lambda: self.ai_translate('si'), '#D97706').pack(side=tk.LEFT, padx=2)
+        self.make_btn(ai_editor_row, "🌐 Translate to Tamil", lambda: self.ai_translate('ta'), '#D97706').pack(side=tk.LEFT, padx=2)
+        self.make_btn(ai_editor_row, "🌐 Translate to English", lambda: self.ai_translate('en'), '#D97706').pack(side=tk.LEFT, padx=2)
+        self.make_btn(ai_editor_row, "✨ Improve Content", self.ai_improve_editor, '#10B981').pack(side=tk.LEFT, padx=2)
+        self.make_btn(ai_editor_row, "📋 Summarize", self.ai_summarize_editor, '#6366F1').pack(side=tk.LEFT, padx=2)
+        
         self.editor_info_label = tk.Label(btn_row, text="Select an item from the tree", font=('Comic Neue', 9),
                                           bg=self.BG_COLOR, fg='#4B7A75')
         self.editor_info_label.pack(side=tk.LEFT)
@@ -1257,6 +1277,672 @@ Format with clear sections using **bold headers** and line breaks. Keep it pract
                 self.root.after(0, lambda: self.sg_status.config(text=f"❌ Error: {str(e)[:50]}"))
         
         threading.Thread(target=generate, daemon=True).start()
+    
+    # ════════════════════════════════════════════════════════════
+    # ─── AI Tools: Advanced Features ───────────────────────
+    # ════════════════════════════════════════════════════════════
+    def build_ai_tools(self):
+        """Build the advanced AI Tools tab with multiple sub-features"""
+        f = self.tab_aitools
+        
+        if not getattr(self, 'gemini_ready', False):
+            tk.Label(f, text="⚠️ Gemini AI Not Connected", font=('Baloo 2', 18),
+                    fg='#DC2626').pack(pady=50)
+            tk.Label(f, text="The AI features require an internet connection and valid API key.",
+                    font=('Comic Neue', 12), fg='#4B7A75').pack()
+            self.make_btn(f, "🔄 Retry Connection", self.init_gemini, '#0D9488').pack(pady=10)
+            return
+        
+        # Sub-notebook for AI tool categories
+        sub_notebook = ttk.Notebook(f)
+        sub_notebook.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
+        
+        # ── Sub Tab 1: Bulk Generator ──
+        self.tab_bulk = ttk.Frame(sub_notebook)
+        sub_notebook.add(self.tab_bulk, text="📦 Bulk Generator")
+        self.build_bulk_generator()
+        
+        # ── Sub Tab 2: Question Paper ──
+        self.tab_qpaper = ttk.Frame(sub_notebook)
+        sub_notebook.add(self.tab_qpaper, text="📝 Question Paper")
+        self.build_question_paper()
+        
+        # ── Sub Tab 3: Content Improver ──
+        self.tab_improver = ttk.Frame(sub_notebook)
+        sub_notebook.add(self.tab_improver, text="✨ Content Improver")
+        self.build_content_improver()
+        
+        # ── Sub Tab 4: AI Chat ──
+        self.tab_chat = ttk.Frame(sub_notebook)
+        sub_notebook.add(self.tab_chat, text="💬 AI Chat")
+        self.build_ai_chat()
+    
+    # ─── Bulk Content Generator ─────────────────────────────
+    def build_bulk_generator(self):
+        f = self.tab_bulk
+        
+        # Header
+        header_frame = tk.Frame(f, bg=self.BG_COLOR)
+        header_frame.pack(fill=tk.X, pady=10)
+        tk.Label(header_frame, text="📦 Generate Multiple Topics at Once", 
+                font=('Baloo 2', 16, 'bold'), bg=self.BG_COLOR, fg='#134E4A').pack(anchor=tk.W)
+        tk.Label(header_frame, text="Create an entire unit's worth of study notes in one click",
+                font=('Comic Neue', 11), bg=self.BG_COLOR, fg='#4B7A75').pack(anchor=tk.W)
+        
+        # Inputs
+        input_frame = tk.Frame(f, bg=self.BG_COLOR)
+        input_frame.pack(fill=tk.X, pady=10)
+        
+        # Row 1
+        tk.Label(input_frame, text="Grade:", font=('Baloo 2', 11),
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=0, column=0, sticky=tk.W, padx=5)
+        self.bulk_grade = ttk.Combobox(input_frame, values=["A/L", "O/L", "Grade 6-9", "Grade 1-5"], width=15)
+        self.bulk_grade.grid(row=0, column=1, padx=5, pady=5)
+        self.bulk_grade.set("O/L")
+        
+        tk.Label(input_frame, text="Subject:", font=('Baloo 2', 11),
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=0, column=2, sticky=tk.W, padx=5)
+        self.bulk_subject = tk.Entry(input_frame, font=('Comic Neue', 11), width=20, relief=tk.SOLID, bd=1)
+        self.bulk_subject.grid(row=0, column=3, padx=5, pady=5)
+        self.bulk_subject.insert(0, "Science")
+        
+        tk.Label(input_frame, text="Unit Title:", font=('Baloo 2', 11),
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=0, column=4, sticky=tk.W, padx=5)
+        self.bulk_unit = tk.Entry(input_frame, font=('Comic Neue', 11), width=25, relief=tk.SOLID, bd=1)
+        self.bulk_unit.grid(row=0, column=5, padx=5, pady=5)
+        self.bulk_unit.insert(0, "Chemical Reactions")
+        
+        # Row 2
+        tk.Label(input_frame, text="Topic List (comma separated):", font=('Baloo 2', 11),
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=1, column=0, sticky=tk.W, padx=5)
+        self.bulk_topics = tk.Entry(input_frame, font=('Comic Neue', 11), width=60, relief=tk.SOLID, bd=1)
+        self.bulk_topics.grid(row=1, column=1, columnspan=4, padx=5, pady=5, sticky=tk.EW)
+        self.bulk_topics.insert(0, "Types of Reactions, Balancing Equations, Acids & Bases, Oxidation-Reduction")
+        
+        self.make_btn(input_frame, "⚡ Generate All Topics", self.generate_bulk_content, '#D97706').grid(row=1, column=5, padx=5)
+        
+        # Progress
+        self.bulk_progress = ttk.Progressbar(f, mode='determinate', length=600)
+        self.bulk_progress.pack(fill=tk.X, padx=10, pady=5)
+        self.bulk_status = tk.Label(f, text="Ready", font=('Comic Neue', 10),
+                                   bg=self.BG_COLOR, fg='#4B7A75')
+        self.bulk_status.pack(anchor=tk.W, padx=10)
+        
+        # Output
+        output_frame = tk.LabelFrame(f, text="📄 Generated Topics", font=('Baloo 2', 12),
+                                    bg=self.BG_COLOR, fg='#134E4A', padx=10, pady=10)
+        output_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=(0,10))
+        
+        self.bulk_output = scrolledtext.ScrolledText(
+            output_frame, wrap=tk.WORD, font=('Courier', 10),
+            bg='#1e293b', fg='#e2e8f0', insertbackground='white',
+            relief=tk.SOLID, bd=1
+        )
+        self.bulk_output.pack(fill=tk.BOTH, expand=True)
+        
+        btn_row = tk.Frame(output_frame, bg=self.BG_COLOR)
+        btn_row.pack(fill=tk.X, pady=(5,0))
+        self.make_btn(btn_row, "💾 Save All to CMS", self.save_bulk_content, '#0D9488').pack(side=tk.RIGHT, padx=5)
+        self.make_btn(btn_row, "🗑️ Clear", lambda: self.bulk_output.delete("1.0", tk.END), '#DC2626').pack(side=tk.RIGHT, padx=5)
+    
+    def generate_bulk_content(self):
+        """Generate multiple topics at once using Gemini"""
+        grade = self.bulk_grade.get().strip()
+        subject = self.bulk_subject.get().strip()
+        unit = self.bulk_unit.get().strip()
+        topics_text = self.bulk_topics.get().strip()
+        topics = [t.strip() for t in topics_text.split(',') if t.strip()]
+        
+        if not subject or not unit or len(topics) == 0:
+            messagebox.showwarning("Input Error", "Please fill in all fields with at least one topic")
+            return
+        
+        self.bulk_progress['maximum'] = len(topics)
+        self.bulk_progress['value'] = 0
+        self.bulk_output.delete("1.0", tk.END)
+        self.bulk_status.config(text=f"⏳ Generating {len(topics)} topics...")
+        
+        self.bulk_results = []
+        
+        def generate_all():
+            for i, topic_name in enumerate(topics):
+                try:
+                    prompt = f"""You are an expert Sri Lankan {grade} {subject} teacher.
+Create comprehensive study notes about "{topic_name}" as part of the unit "{unit}".
+
+Format as HTML:
+<h3>{topic_name}</h3>
+<p>Clear explanation for {grade} students following Sri Lankan curriculum.</p>
+
+Include:
+- Key concepts with definitions
+- Examples relevant to Sri Lankan students
+- Important formulas/theories
+- Practice questions (3-5)
+
+Use <h4>, <p>, <ul>/<li>, <strong> tags. DO NOT wrap in HTML/head/body tags."""
+                    
+                    response = self.gemini_client.models.generate_content(
+                        model="gemini-2.0-flash",
+                        contents=prompt
+                    )
+                    
+                    content = response.text.strip() if response and response.text else "<p>Content generation failed.</p>"
+                    self.bulk_results.append({'title': topic_name, 'content': content})
+                    
+                    # Update output
+                    self.root.after(0, lambda t=topic_name: self.bulk_output.insert(tk.END, f"✅ {t}\n"))
+                    self.root.after(0, lambda: self.bulk_progress.step(1))
+                    self.root.after(0, lambda i=i+1, n=len(topics): self.bulk_status.config(
+                        text=f"✅ Generated {i}/{n} topics"))
+                except Exception as e:
+                    self.bulk_results.append({'title': topic_name, 'content': f"<p>Error: {str(e)[:100]}</p>"})
+                    self.root.after(0, lambda t=topic_name: self.bulk_output.insert(tk.END, f"❌ {t}: Error\n"))
+            
+            self.root.after(0, lambda: self.bulk_status.config(
+                text=f"✅ Complete! Generated {len(self.bulk_results)} topics. Click 'Save All to CMS' to save."))
+        
+        threading.Thread(target=generate_all, daemon=True).start()
+    
+    def save_bulk_content(self):
+        """Save all bulk-generated topics to the CMS"""
+        if not hasattr(self, 'bulk_results') or not self.bulk_results:
+            messagebox.showinfo("Info", "No content to save. Generate first!")
+            return
+        
+        grade_map = {"A/L": "al", "O/L": "ol", "Grade 6-9": "grade6_9", "Grade 1-5": "grade1_5"}
+        grade_key = grade_map.get(self.bulk_grade.get(), "ol")
+        subject_name = self.bulk_subject.get().strip().lower().replace(' ', '-')
+        unit_title = self.bulk_unit.get().strip()
+        
+        if grade_key not in self.content_data:
+            self.content_data[grade_key] = {}
+        
+        if subject_name not in self.content_data[grade_key]:
+            self.content_data[grade_key][subject_name] = {
+                'name': self.bulk_subject.get().strip(),
+                'icon': '📚',
+                'color': '#0D9488',            'units': []
+        }
+        subj = self.content_data[grade_key][subject_name]
+        saved_count = len(self.bulk_results)
+        subj['units'].append({'title': unit_title, 'topics': self.bulk_results})
+        
+        self.save_data()
+        self.bulk_results = []
+        self.update_status(f"✅ Saved {saved_count} topics to {subject_name}/{unit_title}")
+        messagebox.showinfo("Success", f"✅ {saved_count} topics saved successfully!\n\nGrade: {self.bulk_grade.get()}\nSubject: {self.bulk_subject.get()}\nUnit: {unit_title}")
+    
+    # ─── Question Paper Generator ───────────────────────────
+    def build_question_paper(self):
+        f = self.tab_qpaper
+        
+        tk.Label(f, text="📝 AI Question Paper Generator", font=('Baloo 2', 16, 'bold'),
+                bg=self.BG_COLOR, fg='#134E4A').pack(pady=(10,5))
+        tk.Label(f, text="Generate full exam papers with mark schemes for any subject",
+                font=('Comic Neue', 11), bg=self.BG_COLOR, fg='#4B7A75').pack()
+        
+        input_frame = tk.Frame(f, bg=self.BG_COLOR)
+        input_frame.pack(fill=tk.X, padx=20, pady=15)
+        
+        # Row 1
+        tk.Label(input_frame, text="Grade:", font=('Baloo 2', 11),
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=0, column=0, sticky=tk.W, padx=5)
+        self.qp_grade = ttk.Combobox(input_frame, values=["Grade 5", "Grade 6-9", "O/L", "A/L"], width=15)
+        self.qp_grade.grid(row=0, column=1, padx=5, pady=5)
+        self.qp_grade.set("O/L")
+        
+        tk.Label(input_frame, text="Subject:", font=('Baloo 2', 11),
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=0, column=2, sticky=tk.W, padx=5)
+        self.qp_subject = tk.Entry(input_frame, font=('Comic Neue', 11), width=20, relief=tk.SOLID, bd=1)
+        self.qp_subject.grid(row=0, column=3, padx=5, pady=5)
+        self.qp_subject.insert(0, "Mathematics")
+        
+        tk.Label(input_frame, text="Exam Type:", font=('Baloo 2', 11),
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=0, column=4, sticky=tk.W, padx=5)
+        self.qp_type = ttk.Combobox(input_frame, values=["Final Exam", "Term Test", "Unit Test", "Model Paper"], width=15)
+        self.qp_type.grid(row=0, column=5, padx=5, pady=5)
+        self.qp_type.set("Term Test")
+        
+        # Row 2
+        tk.Label(input_frame, text="Topics (comma separated):", font=('Baloo 2', 11),
+                bg=self.BG_COLOR, fg='#134E4A').grid(row=1, column=0, sticky=tk.W, padx=5)
+        self.qp_topics = tk.Entry(input_frame, font=('Comic Neue', 11), width=60, relief=tk.SOLID, bd=1)
+        self.qp_topics.grid(row=1, column=1, columnspan=3, padx=5, pady=5, sticky=tk.EW)
+        self.qp_topics.insert(0, "Algebra, Geometry, Trigonometry, Statistics")
+        
+        self.make_btn(input_frame, "📝 Generate Question Paper", self.generate_question_paper, '#D97706').grid(row=1, column=4, columnspan=2, padx=5)
+        
+        # Output
+        output_frame = tk.LabelFrame(f, text="📋 Generated Question Paper", font=('Baloo 2', 12),
+                                    bg=self.BG_COLOR, fg='#134E4A', padx=10, pady=10)
+        output_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=(0,15))
+        
+        self.qp_output = scrolledtext.ScrolledText(
+            output_frame, wrap=tk.WORD, font=('Comic Neue', 11),
+            bg='white', fg='#134E4A', relief=tk.SOLID, bd=1
+        )
+        self.qp_output.pack(fill=tk.BOTH, expand=True)
+        
+        self.qp_status = tk.Label(output_frame, text="Ready", font=('Comic Neue', 10),
+                                  bg=self.BG_COLOR, fg='#4B7A75')
+        self.qp_status.pack(anchor=tk.W)
+    
+    def generate_question_paper(self):
+        """Generate a question paper using Gemini"""
+        grade = self.qp_grade.get()
+        subject = self.qp_subject.get().strip()
+        exam_type = self.qp_type.get()
+        topics = self.qp_topics.get().strip()
+        
+        self.qp_status.config(text="⏳ Generating question paper...")
+        
+        def generate():
+            try:
+                prompt = f"""You are an expert Sri Lankan {grade} {subject} teacher.
+
+Create a complete {exam_type} question paper for {grade} {subject} following the Sri Lankan curriculum.
+
+Topics covered: {topics}
+
+Structure the paper as follows:
+
+## 📝 {subject} - {exam_type} Question Paper
+### Grade: {grade} | Time: 2 Hours | Total Marks: 100
+
+---
+
+### Part I - Structured Questions (50 marks)
+5 questions (10 marks each)
+- Mix of definitions, short answers, and calculations
+- Include real-world Sri Lankan examples
+
+### Part II - Essay / Problem Solving (30 marks)
+2 questions (15 marks each)
+- Require detailed answers with working
+- Application-based problems
+
+### Part III - Bonus / Challenge (20 marks)
+2 challenging questions (10 marks each)
+- Higher-order thinking skills
+- Cross-topic integration
+
+---
+
+## 📋 Answer Key & Mark Scheme
+
+Provide full solutions for all questions with mark allocations.
+
+Format with markdown. Keep questions Sinhala/Tamil/English neutral (use English)."""
+                
+                response = self.gemini_client.models.generate_content(
+                    model="gemini-2.0-flash",
+                    contents=prompt
+                )
+                
+                if response and response.text:
+                    self.root.after(0, lambda: self.qp_output.delete("1.0", tk.END))
+                    self.root.after(0, lambda: self.qp_output.insert("1.0", response.text.strip()))
+                    self.root.after(0, lambda: self.qp_status.config(text="✅ Question paper generated!"))
+                else:
+                    self.root.after(0, lambda: self.qp_status.config(text="❌ Generation failed"))
+            except Exception as e:
+                self.root.after(0, lambda: self.qp_status.config(text=f"❌ Error: {str(e)[:50]}"))
+        
+        threading.Thread(target=generate, daemon=True).start()
+    
+    # ─── AI Content Improver ────────────────────────────────
+    def build_content_improver(self):
+        f = self.tab_improver
+        
+        tk.Label(f, text="✨ AI Content Improver", font=('Baloo 2', 16, 'bold'),
+                bg=self.BG_COLOR, fg='#134E4A').pack(pady=(10,5))
+        tk.Label(f, text="Improve, rewrite, or enhance existing educational content",
+                font=('Comic Neue', 11), bg=self.BG_COLOR, fg='#4B7A75').pack()
+        
+        # Mode selector
+        mode_frame = tk.Frame(f, bg=self.BG_COLOR)
+        mode_frame.pack(fill=tk.X, padx=20, pady=10)
+        tk.Label(mode_frame, text="Improvement Mode:", font=('Baloo 2', 11),
+                bg=self.BG_COLOR, fg='#134E4A').pack(side=tk.LEFT, padx=5)
+        self.improve_mode = ttk.Combobox(mode_frame, values=[
+            "✨ Enhance & Expand",
+            "📝 Simplify for Students",
+            "🎯 Add Practice Questions",
+            "📊 Create Summary Table",
+            "🔄 Rewrite in Active Voice",
+            "📚 Add Examples"
+        ], width=30)
+        self.improve_mode.pack(side=tk.LEFT, padx=5)
+        self.improve_mode.set("✨ Enhance & Expand")
+        
+        self.make_btn(mode_frame, "🚀 Improve Content", self.improve_content_action, '#D97706').pack(side=tk.LEFT, padx=10)
+        
+        # Input
+        input_frame = tk.LabelFrame(f, text="📝 Input Content", font=('Baloo 2', 12),
+                                   bg=self.BG_COLOR, fg='#134E4A', padx=10, pady=5)
+        input_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=(0,5))
+        
+        self.improve_input = scrolledtext.ScrolledText(
+            input_frame, wrap=tk.WORD, font=('Courier', 10),
+            bg='#1e293b', fg='#e2e8f0', insertbackground='white',
+            relief=tk.SOLID, bd=1, height=8
+        )
+        self.improve_input.pack(fill=tk.BOTH, expand=True)
+        
+        # Output
+        output_frame = tk.LabelFrame(f, text="✨ Improved Content", font=('Baloo 2', 12),
+                                    bg=self.BG_COLOR, fg='#134E4A', padx=10, pady=5)
+        output_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=5)
+        
+        self.improve_output = scrolledtext.ScrolledText(
+            output_frame, wrap=tk.WORD, font=('Courier', 10),
+            bg='#1e293b', fg='#e2e8f0', insertbackground='white',
+            relief=tk.SOLID, bd=1, height=8
+        )
+        self.improve_output.pack(fill=tk.BOTH, expand=True)
+        
+        self.improve_status = tk.Label(output_frame, text="Paste content above and click 'Improve Content'",
+                                      font=('Comic Neue', 10), bg=self.BG_COLOR, fg='#4B7A75')
+        self.improve_status.pack(anchor=tk.W)
+    
+    def improve_content_action(self):
+        """Improve content using Gemini"""
+        content = self.improve_input.get("1.0", tk.END).strip()
+        mode = self.improve_mode.get()
+        
+        if not content or len(content) < 20:
+            messagebox.showwarning("Input Error", "Please paste some content to improve (at least 20 chars)")
+            return
+        
+        self.improve_status.config(text="⏳ Improving content...")
+        
+        def generate():
+            try:
+                mode_instructions = {
+                    "✨ Enhance & Expand": "Enhance and expand this educational content. Add more details, examples, and explanations. Make it comprehensive while keeping it clear.",
+                    "📝 Simplify for Students": "Simplify this content for students. Break down complex concepts into simpler language. Add analogies Sri Lankan students would understand.",
+                    "🎯 Add Practice Questions": "Add 5-7 practice questions with answers to this content. Include a mix of easy, medium, and hard questions.",
+                    "📊 Create Summary Table": "Create a summary table at the end of this content. Include key concepts, definitions, and examples in table format.",
+                    "🔄 Rewrite in Active Voice": "Rewrite this content using active voice. Make it engaging and direct. Keep all educational value.",
+                    "📚 Add Examples": "Add 3-5 practical Sri Lankan examples to this content. Make them relevant to daily life and the curriculum."
+                }
+                instruction = mode_instructions.get(mode, "Enhance this educational content.")
+                
+                prompt = f"""You are an expert Sri Lankan education content creator.
+
+{mode_instructions.get(mode, instruction)}
+
+Keep the HTML formatting intact. Use <h3>, <h4>, <p>, <ul>/<li>, <strong> tags.
+
+Original content:
+{content}
+
+Improved content:"""
+                
+                response = self.gemini_client.models.generate_content(
+                    model="gemini-2.0-flash",
+                    contents=prompt
+                )
+                
+                if response and response.text:
+                    self.root.after(0, lambda: self.improve_output.delete("1.0", tk.END))
+                    self.root.after(0, lambda: self.improve_output.insert("1.0", response.text.strip()))
+                    self.root.after(0, lambda: self.improve_status.config(
+                        text=f"✅ {mode} complete! ({len(response.text)} chars)"))
+                else:
+                    self.root.after(0, lambda: self.improve_status.config(text="❌ Improvement failed"))
+            except Exception as e:
+                self.root.after(0, lambda: self.improve_status.config(text=f"❌ Error: {str(e)[:50]}"))
+        
+        threading.Thread(target=generate, daemon=True).start()
+    
+    # ─── AI Chat Assistant ──────────────────────────────────
+    def build_ai_chat(self):
+        f = self.tab_chat
+        
+        tk.Label(f, text="💬 Zai AI Chat Assistant", font=('Baloo 2', 16, 'bold'),
+                bg=self.BG_COLOR, fg='#134E4A').pack(pady=(10,5))
+        tk.Label(f, text="Ask any educational question - get instant answers from Gemini AI",
+                font=('Comic Neue', 11), bg=self.BG_COLOR, fg='#4B7A75').pack()
+        
+        # Context selector
+        ctx_frame = tk.Frame(f, bg=self.BG_COLOR)
+        ctx_frame.pack(fill=tk.X, padx=20, pady=5)
+        tk.Label(ctx_frame, text="Context:", font=('Baloo 2', 11),
+                bg=self.BG_COLOR, fg='#134E4A').pack(side=tk.LEFT, padx=5)
+        self.chat_context = ttk.Combobox(ctx_frame, values=[
+            "General Education",
+            "A/L Science",
+            "A/L Maths",
+            "O/L Science",
+            "O/L Maths",
+            "Grade 6-9",
+            "Grade 1-5",
+            "Study Tips",
+            "Exam Preparation"
+        ], width=20)
+        self.chat_context.pack(side=tk.LEFT, padx=5)
+        self.chat_context.set("General Education")
+        
+        self.make_btn(ctx_frame, "🗑️ Clear Chat", self.clear_chat, '#DC2626').pack(side=tk.RIGHT, padx=5)
+        
+        # Chat display
+        chat_frame = tk.LabelFrame(f, text="💬 Conversation", font=('Baloo 2', 12),
+                                  bg=self.BG_COLOR, fg='#134E4A', padx=10, pady=10)
+        chat_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=(5,5))
+        
+        self.chat_display = scrolledtext.ScrolledText(
+            chat_frame, wrap=tk.WORD, font=('Comic Neue', 11),
+            bg='white', fg='#134E4A', relief=tk.SOLID, bd=1,
+            state=tk.DISABLED
+        )
+        self.chat_display.pack(fill=tk.BOTH, expand=True)
+        
+        # Input area
+        input_frame = tk.Frame(f, bg=self.BG_COLOR)
+        input_frame.pack(fill=tk.X, padx=20, pady=(0,15))
+        
+        self.chat_input = tk.Entry(input_frame, font=('Comic Neue', 12),
+                                   bg='white', fg='#134E4A', relief=tk.SOLID, bd=1)
+        self.chat_input.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0,5))
+        self.chat_input.insert(0, "Ask any educational question...")
+        self.chat_input.bind('<Return>', lambda e: self.send_chat_message())
+        self.chat_input.bind('<FocusIn>', lambda e: self.chat_input.delete(0, tk.END) if self.chat_input.get() == "Ask any educational question..." else None)
+        
+        self.make_btn(input_frame, "➡️ Send", self.send_chat_message, '#0D9488').pack(side=tk.RIGHT)
+        
+        self.chat_status = tk.Label(f, text="Ready to answer your questions!",
+                                   font=('Comic Neue', 10), bg=self.BG_COLOR, fg='#4B7A75')
+        self.chat_status.pack()
+        
+        # Welcome message
+        self.add_chat_bubble("🤖", "Zai AI", 
+            "Hi! I'm your AI education assistant. I can help you with:\n"
+            "📚 Study notes for any Sri Lankan subject\n"
+            "❓ Answer questions about lessons\n"
+            "💡 Explain difficult concepts\n"
+            "🎯 Provide exam tips and strategies\n\n"
+            "What would you like to learn about today?")
+    
+    def add_chat_bubble(self, icon, sender, message):
+        """Add a message to the chat display"""
+        self.chat_display.config(state=tk.NORMAL)
+        prefix = f"{icon} {sender}: "
+        self.chat_display.insert(tk.END, f"{prefix}{message}\n\n")
+        self.chat_display.see(tk.END)
+        self.chat_display.config(state=tk.DISABLED)
+    
+    def send_chat_message(self):
+        """Send message to AI chat"""
+        message = self.chat_input.get().strip()
+        if not message or message == "Ask any educational question...":
+            return
+        
+        self.add_chat_bubble("👤", "You", message)
+        self.chat_input.delete(0, tk.END)
+        self.chat_status.config(text="⏳ Thinking...")
+        context = self.chat_context.get()
+        
+        def generate():
+            try:
+                prompt = f"""You are Zai AI, a helpful education assistant for Sri Lankan students.
+
+Context: {context}
+Student's Question: {message}
+
+Provide a helpful, accurate, and encouraging answer. Include:
+- Clear explanation suitable for the student's level
+- Relevant examples from Sri Lankan context
+- Study tips if applicable
+- Encouraging tone
+
+Keep the answer educational and easy to understand. Use emojis appropriately.
+Format with line breaks for readability. DO NOT use HTML tags."""
+                
+                response = self.gemini_client.models.generate_content(
+                    model="gemini-2.0-flash",
+                    contents=prompt
+                )
+                
+                if response and response.text:
+                    self.root.after(0, lambda: self.add_chat_bubble("🤖", "Zai AI", response.text.strip()))
+                    self.root.after(0, lambda: self.chat_status.config(text="✅ Answered!"))
+                else:
+                    self.root.after(0, lambda: self.add_chat_bubble("🤖", "Zai AI", "Sorry, I couldn't generate an answer. Please try again."))
+                    self.root.after(0, lambda: self.chat_status.config(text="❌ Failed"))
+            except Exception as e:
+                self.root.after(0, lambda: self.add_chat_bubble("🤖", "Zai AI", f"Sorry, an error occurred: {str(e)[:100]}"))
+                self.root.after(0, lambda: self.chat_status.config(text="❌ Error"))
+        
+        threading.Thread(target=generate, daemon=True).start()
+    
+    def clear_chat(self):
+        """Clear the chat display"""
+        self.chat_display.config(state=tk.NORMAL)
+        self.chat_display.delete("1.0", tk.END)
+        self.chat_display.config(state=tk.DISABLED)
+        self.add_chat_bubble("🤖", "Zai AI", "Chat cleared! Ask me anything about your studies. 📚")
+    
+    # ─── AI Translation (for Content Editor) ────────────────
+    def ai_translate(self, target_lang):
+        """Translate the editor content to target language using Gemini"""
+        content = self.edit_content.get("1.0", tk.END).strip()
+        title = self.edit_title.get().strip()
+        
+        if not content or len(content) < 10:
+            messagebox.showinfo("Info", "Load some content into the editor first!")
+            return
+        
+        lang_names = {'si': 'Sinhala (සිංහල)', 'ta': 'Tamil (தமிழ்)', 'en': 'English'}
+        
+        def translate():
+            try:
+                prompt = f"""You are a professional educational translator for Sri Lankan curriculum.
+
+Translate the following study content to {lang_names.get(target_lang, target_lang)}.
+
+Keep the HTML formatting exactly as is. Only translate the text content.
+Keep <h3>, <h4>, <p>, <ul>/<li>, <strong>, <ol>, <table> tags intact.
+
+Title: {title}
+
+Content to translate:
+{content}
+
+Translated content (keep HTML tags):"""
+                
+                response = self.gemini_client.models.generate_content(
+                    model="gemini-2.0-flash",
+                    contents=prompt
+                )
+                
+                if response and response.text:
+                    self.root.after(0, lambda: self.edit_content.delete("1.0", tk.END))
+                    self.root.after(0, lambda: self.edit_content.insert("1.0", response.text.strip()))
+                    self.root.after(0, lambda: self.update_status(
+                        f"🌐 Translated to {lang_names.get(target_lang, target_lang)}"))
+                else:
+                    self.root.after(0, lambda: messagebox.showerror("Error", "Translation failed"))
+            except Exception as e:
+                self.root.after(0, lambda: messagebox.showerror("Error", str(e)[:100]))
+        
+        threading.Thread(target=translate, daemon=True).start()
+    
+    def ai_improve_editor(self):
+        """Improve the content in the editor using Gemini"""
+        content = self.edit_content.get("1.0", tk.END).strip()
+        if not content or len(content) < 20:
+            messagebox.showinfo("Info", "Load a topic's content into the editor first!")
+            return
+        
+        def improve():
+            try:
+                prompt = f"""You are an expert Sri Lankan education content creator.
+
+Improve and enhance this educational content. Add more explanations, examples, and make it more engaging for students.
+
+Keep the HTML formatting intact. Keep <h3>, <h4>, <p>, <ul>/<li>, <strong>, <ol> tags.
+Add Sri Lankan context examples where appropriate.
+
+Content to improve:
+{content}
+
+Improved content:"""
+                
+                response = self.gemini_client.models.generate_content(
+                    model="gemini-2.0-flash",
+                    contents=prompt
+                )
+                
+                if response and response.text:
+                    self.root.after(0, lambda: self.edit_content.delete("1.0", tk.END))
+                    self.root.after(0, lambda: self.edit_content.insert("1.0", response.text.strip()))
+                    self.root.after(0, lambda: self.update_status("✨ Content improved! Don't forget to save."))
+                else:
+                    self.root.after(0, lambda: self.update_status("❌ Improvement failed"))
+            except Exception as e:
+                self.root.after(0, lambda: self.update_status(f"❌ Error: {str(e)[:50]}"))
+        
+        threading.Thread(target=improve, daemon=True).start()
+    
+    def ai_summarize_editor(self):
+        """Summarize the editor content using Gemini"""
+        content = self.edit_content.get("1.0", tk.END).strip()
+        if not content or len(content) < 50:
+            messagebox.showinfo("Info", "Load a topic's content into the editor first (needs at least 50 chars)!")
+            return
+        
+        def summarize():
+            try:
+                prompt = f"""Create a brief summary of this Sri Lankan study content.
+Include:
+- Key points (bullet format)
+- Important definitions
+- Key formulas/concepts
+- Keep it concise (5-7 bullet points)
+
+Content:
+{content}
+
+Summary:"""
+                
+                response = self.gemini_client.models.generate_content(
+                    model="gemini-2.0-flash",
+                    contents=prompt
+                )
+                
+                if response and response.text:
+                    summary = response.text.strip()
+                    # Insert summary at cursor or at end
+                    self.root.after(0, lambda: self.edit_content.insert(tk.END, f"\n\n<!-- SUMMARY -->\n{summary}\n<!-- END SUMMARY -->"))
+                    self.root.after(0, lambda: self.update_status("📋 Summary added to bottom of content!"))
+                else:
+                    self.root.after(0, lambda: self.update_status("❌ Summarization failed"))
+            except Exception as e:
+                self.root.after(0, lambda: self.update_status(f"❌ Error: {str(e)[:50]}"))
+        
+        threading.Thread(target=summarize, daemon=True).start()
     
     # ─── GitHub Sync ───────────────────────────────────────
     def build_git_sync(self):
